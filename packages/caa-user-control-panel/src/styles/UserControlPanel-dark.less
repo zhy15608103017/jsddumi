@@ -1,0 +1,230 @@
+@theme: dark;
+@shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+@import './common.less';
+
+.UserControlPanelActive {
+    color: #FFC500;
+    background-color: #545454;
+}
+
+.user-info-container-visible-@{theme} {
+    box-shadow: @shadow;
+}
+
+.user-info-container-@{theme} {
+    height: 100%;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 15px;
+   
+    & > svg > path{
+        fill: #fff;
+    }
+    .name-content{
+        padding-left: 10px;
+        padding-right: 10px;
+        .name,
+        .companyName{
+            // 内容溢出
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 95px;
+            margin-bottom: -11px;
+            height: 32px;
+            line-height: 32px;
+        } 
+        .name{
+            font-size: 14px;
+        }
+        .companyName{
+            font-size: 12px;
+            margin-bottom: 1px;
+        }
+    }
+}
+
+.identity-menu{
+    display: flex;
+    .prefix-name{
+        width: 28px;
+        height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
+        border: 2px solid #d8d9d9;
+        border-radius: 2px;
+        color: #6d93c2;
+    }
+    .full-name{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.current-identity{
+    background-color: #FFF8D9 ;
+}
+
+.UserControlPanel-overlay-@{theme} {
+    .rc-menu{
+        border: unset;
+    }
+    .rc-menu-item{
+        cursor: pointer;
+    }
+    ul{
+        width: 180px;
+        padding: unset;
+        border-radius: unset;
+        background-color: #424242;
+        margin-top: -4px;
+        box-shadow: @shadow;
+        .rc-dropdown-menu-submenu-arrow{
+            display: none;
+        }
+        .rc-menu-item{
+            padding: unset;
+        }
+    }
+    ul *{
+        color: #fff;
+    }
+    li{
+        height: 50px;
+        line-height: 50px;
+        padding: unset;
+        text-align: center;
+        font-size: 14px;
+        &:hover{
+            .UserControlPanelActive();
+        }
+        .rc-dropdown-menu-submenu-title{
+            line-height: 50px;
+            padding: unset !important;
+            cursor: default;
+            &:hover{
+                .UserControlPanelActive();
+            }
+            .switchIdentity-title{
+                text-align: center;
+            }
+        }
+    }
+    .rc-dropdown-menu-item-active, .rc-dropdown-menu-submenu-active > .rc-dropdown-menu-submenu-title{
+        background-color: unset;
+        color: #FFC500;
+    }
+}
+
+.UserControlPanel-submenu-@{theme} {
+    ul{
+        padding: unset;
+        min-width: 180px !important;
+        border-radius: unset;
+        box-shadow: @shadow;
+    }
+    ul *{
+        color: #fff;
+    }
+    li{
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background-color: #424242;
+        cursor: pointer;
+    }
+    .rc-dropdown-menu-item{
+        padding: unset;
+        padding: 0 5px;
+        &:hover{
+            .UserControlPanelActive();
+        }
+    }
+    .rc-dropdown-menu-item.rc-dropdown-menu-item-disabled{
+        cursor: not-allowed;
+        color: gray;
+    }
+}
+
+.rc-dropdown.UserControlPanel-overlay-@{theme}.rc-dropdown-placement-bottomLeft.slide-up-enter{
+    animation-name: noAnimation !important;
+}
+.rc-dropdown.UserControlPanel-overlay-@{theme}.rc-dropdown-placement-bottomLeft.slide-up-enter-active{
+    animation-name: noAnimation !important;
+}
+.rc-dropdown.UserControlPanel-overlay-@{theme}.rc-dropdown-placement-bottomLeft.slide-up{
+    animation-name: noAnimation !important;
+}
+
+.UserControlPanel-modal-@{theme}{
+    .rc-modal-content{
+        background-color: #1f1f1f;
+        box-shadow: 0 3px 6px -4px rgba(0,0,0,0.48), 0 6px 16px 0 rgba(0,0,0,0.32), 0 9px 28px 8px rgba(0,0,0,0.2);
+        .rc-modal-header{
+            color: rgba(255,255,255,0.65);
+            background: #1f1f1f;
+            border-bottom: 1px solid #303030;
+            .rc-modal-title{
+                color: rgba(255,255,255,0.85);
+            }
+        }
+        .rc-modal-close-x{
+            color: #c7c7c7;
+        }
+        .rc-form-item{
+            label{
+                color: #fff;
+            }
+        }
+        .desc-dark{
+            color: #fff;
+        }
+        .rc-input {
+            background-color: transparent;
+            color: #fff;
+        }
+        .rc-input-affix-wrapper {
+            background: transparent;
+            border: 1px solid #434343;
+            &:hover{
+                color: #fff;
+            }
+        }
+        .rc-input-password-icon,.rc-input-clear-icon{
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .rc-input-password-icon:hover,.rc-input-clear-icon:hover{
+            color: #fff;
+        }
+    }
+    .reset-pwd-success-wrap{
+        color: #fff;
+        svg {
+            #mailRect,#mailCircle{
+                fill: #fff;
+            }
+        }
+    }
+
+    // 魔改密码输入框 后缀样式 start
+    span.rc-input-password-icon{
+        // 闭眼**
+        &::after{
+            content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTkwMzcyMzkyNDkyIiBzdHlsZT0iZmlsbDojZmZmZmZmNGQ7IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEwOTg0IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0Ij48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwvc3R5bGU+PC9kZWZzPjxwYXRoIGQ9Ik05MTEuNyAzMjYuMmMtNS42LTQuNC0xMi4xLTYuNy0xOC44LTYuNy05LjYgMC0xOC43IDQuNy0yNSAxMi44LTAuMSAwLjEtMC4zIDAuMy0wLjUgMC42LTE3LjMgMTkuNy0xNzMuOCAxOTItMzU1LjMgMTkyLTE3Ni41IDAtMzM4LjktMTczLjgtMzU2LjktMTkzLjZsLTAuNS0wLjVjLTUuOC02LjYtMTQuNC0xMC40LTIzLjYtMTAuNC03LjYgMC0xNC43IDIuNi0yMC4xIDcuNC0xMi41IDEwLjktMTMuOSAzMS4zLTMuMiA0My43IDMuOSA1LjYgMzguNyA0NC4zIDkyLjMgODYuOWwtNzMuMSA3NmMtNS45IDUuOS04LjkgMTMuNy04LjYgMjIuMSAwLjMgOC4zIDMuOSAxNi4xIDkuOSAyMS42IDMuMSA1LjkgMTAuNCA5LjUgMTkuMiA5LjUgOC4yIDAgMTYtMy4zIDIxLjktOS40bDc5LjQtODIuMmM0MS4zIDI4LjQgODYuMyA1MS43IDEzMC41IDY3LjRsLTMwLjIgMTAyLjJjLTIuMiA4LjQtMS4zIDE3IDIuNyAyNC4yIDQuMSA3LjMgMTAuOSAxMi42IDE5LjEgMTQuOGwwLjMgMC4xaDkuMWMxNC41IDAgMjYuNy05LjYgMjkuOC0yMy40bDMwLjItMTAyLjJjMjYuMSA0LjcgNDkuNiA3LjEgNzEuOCA3LjEgMjIuNSAwIDQ2LjYtMi40IDcxLjgtN2wzMC4yIDEwMC43YzMuMyAxNC43IDE3LjcgMjMuNCAyOS44IDIzLjQgMy4xIDAgNi4zIDAgOC4zLTEuNiA3LjktMi4zIDE0LjUtNy40IDE4LjUtMTQuNCA0LjItNy40IDUuMi0xNi4xIDIuOS0yNC42TDY0My40IDU2MmM0NC4xLTE1LjggODkuMS0zOS4xIDEzMC41LTY3LjRsNzggODAuOGM2LjEgNiAxMy44IDkuNCAyMS45IDkuNCA4LjIgMCAxNi0zLjMgMjEuOS05LjQgMTIuMS0xMi4xIDEyLjgtMzAuOSAxLjUtNDMuOEw4MjQgNDU1LjVjNTguNS00My4zIDkzLjQtODUuMSA5My44LTg1LjZsMC4xLTAuMmM5LjMtMTMuNyA2LjYtMzIuNS02LjItNDMuNXoiIHAtaWQ9IjEwOTg1Ij48L3BhdGg+PC9zdmc+');
+        }
+        // 睁眼
+        &::before{
+            content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTkwMzc2MDg1NzI5IiBjbGFzcz0iaWNvbiIgc3R5bGU9ImZpbGw6I2ZmZmZmZjRkOyIgIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBwLWlkPSIxMTE5OSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNOTU0LjYgNDk1LjhjLTc0LjQtMTQxLjYtMjUwLTI4NC41LTQ0Mi42LTI4NC41LTE5Mi42IDAtMzY4LjIgMTQzLTQ0Mi4yIDI4NC42TDYwLjkgNTEybDguOSAxNi4xYzc0IDE0MS4xIDI0OS42IDI4NC42IDQ0Mi4yIDI4NC42czM2OC4yLTE0My40IDQ0Mi42LTI4NC41bDguNS0xNi4xLTguNS0xNi4zek01MTIgNzQ2LjFjLTE1OC43IDAtMzA5LTExOC0zNzcuNi0yMzQuMUMyMDMgMzk1LjQgMzUzLjMgMjc3LjkgNTEyIDI3Ny45UzgyMC45IDM5NS40IDg4OS42IDUxMkM4MjAuOSA2MjguMSA2NzAuNyA3NDYuMSA1MTIgNzQ2LjF6IG0wIDAiIHAtaWQ9IjExMjAwIj48L3BhdGg+PHBhdGggZD0iTTUxMiA1MTJtLTE2MS4zIDBhMTYxLjMgMTYxLjMgMCAxIDAgMzIyLjYgMCAxNjEuMyAxNjEuMyAwIDEgMC0zMjIuNiAwWiIgcC1pZD0iMTEyMDEiPjwvcGF0aD48L3N2Zz4=');
+        }
+    }
+    // 魔改密码输入框 后缀样式 end
+}

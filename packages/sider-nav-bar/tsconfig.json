@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "es6",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "strict": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outDir": "types",
+        "lib": ["es6", "dom", "es2017"],
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx", "src/Intl/index.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "**.d.ts"
+    ],
+}

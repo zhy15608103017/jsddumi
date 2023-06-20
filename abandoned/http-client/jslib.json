@@ -1,0 +1,11 @@
+{
+    "name": "jusda-tools-http-client",
+    "npmname": "jusda-tools-http-client",
+    "umdname": "jusda-tools-http-client",
+    "username": "yazohu",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

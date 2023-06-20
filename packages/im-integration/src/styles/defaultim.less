@@ -1,0 +1,23 @@
+.im-custom-icon, .im-icon {
+    position: relative;
+    img {
+        position: absolute;
+        width: 17px;
+        height: 18px;
+        left: 10px;
+        z-index: 999;
+    }
+    img:first-of-type {
+        z-index: 1000!important;
+    }
+}
+
+.im-icon {
+    display: flex;
+    color: #ffc500;
+    cursor: pointer;
+    svg{
+        width: 40px;
+        height: 40px;   
+    }
+}

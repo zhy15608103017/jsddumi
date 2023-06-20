@@ -1,0 +1,58 @@
+@import '../../styles/common.less';
+.address-basic-modal-container {
+  //   新增、辑地址标题部分
+  background-color: white;
+  position: relative;
+  height: 100%;
+  .address-basic-title-container {
+    display: flex;
+    height: 40px;
+    padding-left: 32px;
+    padding-right: 8px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(242, 242, 242);
+
+    .address-basic-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .address-modal-close {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+    }
+  }
+  // 新增编辑地址的内容部分
+  .address-basic-modal-form-container {
+    padding: 24px 32px 0px 32px;
+    .address-basic-modal-checkbox-container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  // 新增编辑地址底部
+  .address-basic-footer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px 0 32px;
+    width: 100%;
+    bottom: 32px;
+
+    .footer-button-container button {
+      min-width: 120px;
+      margin-left: 16px;
+      height: 40px;
+    }
+  }
+}
+// 解决区号在模态框中报错时下划线消失的问题
+.@{ant-prefix}-form-item-has-error
+  .@{ant-prefix}-input-group-addon
+  .@{ant-prefix}-select.@{ant-prefix}-select-single:not(.@{ant-prefix}-select-customize-input)
+  .@{ant-prefix}-select-selector {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}

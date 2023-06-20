@@ -1,0 +1,32 @@
+.virtual-table-cell{
+    height: 39px;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #FFF;
+    &.ellipsis{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    &.center{
+        text-align: center;
+    }
+    &.left{
+        text-align: left;
+    }
+    &.right{
+        text-align: right;
+    }
+}
+.virtual-table{
+    .ant-table-thead > tr > th{
+        padding: 8px 16px;
+    }
+    .ant-table-thead{
+        .ant-table-cell.ant-table-cell-scrollbar{
+            padding: 0;
+        }
+    }
+    
+}

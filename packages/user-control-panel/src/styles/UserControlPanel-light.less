@@ -1,0 +1,196 @@
+@theme: light;
+@ant-prefix: juslnk;
+@shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+
+.text-hover{
+    color: #EA9000;
+    cursor: pointer;
+}
+
+.user-info-container-visible-@{theme} {
+    // box-shadow: @shadow;
+}
+
+.user-info-container-@{theme} {
+    height: 100%;
+    // min-width: 50px;
+    // max-width: 205px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover{
+        background-color: #F9B400;
+    }
+    .user-info-@{theme} {
+       max-width: 160px;
+       margin-left: 15px;
+       display: flex;
+       flex-direction: column;
+       font-size: 12px;
+       div{
+        max-width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+       }
+    }
+}
+
+
+
+.overlay-panel-container-@{theme} {
+    width: 330px;
+    max-height: 307px;
+    opacity: 0.86;
+    background: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.50);
+    margin-top: -1px;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: #222222;
+    justify-content: space-between;
+    .user-base-info{
+        height: 80px;
+        padding: 20px;
+        .base-info-user-desc{
+            height: 40px;
+            display: flex;
+            margin-bottom: 20px;
+            .base-info-user-icon{
+                background-image: url("./userAvatar42.png");
+                background-size: cover;
+                height: 40px;
+                width: 40px;
+            }
+            .base-info-user-text{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding-left: 20px;
+                div{
+                    max-width: 224px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+    }
+    .person-info-menus{
+        display: flex;
+        justify-content: space-evenly;
+        padding-bottom: 20px;
+        span{
+            height: 14px;
+            line-height: 14px;
+            cursor: pointer;
+        }
+        span:hover{
+            .text-hover()
+        }
+        .settings{
+            padding: 0 20px;
+            border-right: 1px solid #222222;
+            border-left: 1px solid #222222;
+        }
+    }
+    .line{
+        width: 290px;
+        margin: 0 auto;
+        border-bottom: 1px dashed #666666;
+    }
+    .menus{
+        ul{
+            background-color: transparent !important;
+            color: #222222;
+            border: unset;
+            .@{ant-prefix}-menu-submenu-vertical > .@{ant-prefix}-menu-submenu-title .@{ant-prefix}-menu-submenu-arrow{
+                display: none;
+            }
+            li[role="menuitem"],.@{ant-prefix}-menu-submenu-title{
+                padding: unset;
+                margin: unset;
+            }
+            .jusda-title{
+                font-size: 12px;
+                padding-left: 30px;
+                display: flex;
+                align-items: center;
+                .icon{
+                    height: 16px;
+                    width: 16px;
+                    margin-right: 10px;
+                    background-size: cover;
+                }
+                .switch-icon{
+                    background-image: url('./switchBlack.png');
+                }
+                .safe-setting-icon{
+                    background-image: url('./safeSettingBlack.png');
+                }
+                .feed-back-icon{
+                    background-image: url('./feedBackBlack.png');
+                }
+                .message-icon{
+                    background-image: url('./messageBlack.png');
+                }
+            }
+            .@{ant-prefix}-menu-item-selected{
+                background-color: transparent !important;
+                color: #222222;
+            }
+            .jusda-title:hover{
+                color: #222222;
+            }
+            li[role="menuitem"]:hover{
+                background-color: #FFC500 !important;
+                color: #222222 !important;
+            }
+        }
+    }
+    .login-out{
+        background: rgba(74,74,74,.1);
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .login-out:hover{
+        .text-hover()
+    }
+}
+
+.UserControlPanel-submenu-@{theme}{
+    .@{ant-prefix}-menu{
+        border-radius: 0px !important;
+    }
+    ul,li{
+        opacity: 0.86;
+        background: #ffffff !important;
+        color: #222222;
+        font-size: 12px !important;
+    }
+    li[role="menuitem"]{
+        height: 30px;
+        line-height: 30px;
+        margin: unset !important;
+        padding: unset !important;
+    }
+    .default-identity{
+        padding-left: 20px;
+    }
+    .default-identity:hover{
+        background-color: #FFC500;
+        color: #222222;
+    }
+    .@{ant-prefix}-menu-item-disabled{
+        cursor: not-allowed !important;
+        color: gray !important;
+    }
+    .current-identity{
+        color: #EA9000;
+    }
+}

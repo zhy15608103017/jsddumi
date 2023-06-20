@@ -1,0 +1,94 @@
+@import url('../../../css/iconfont.css');
+.modal-item {
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 10px;
+    .iconfont {
+        font-size: 30px;
+    }
+    .iconfont.itemActive {
+        color: #6fc677;
+        border-color: #6fc677;
+    }
+    &.redIcon {
+        .iconfont{
+            color: red!important;
+        }
+    }
+    .item-first {
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        color: #ccc;
+    }
+    .ant-picker {
+        width: 100%;
+    }
+    .edit {
+        padding-top: 25px;
+        .iconfont {
+            color: var(--base-color);
+            cursor: pointer;
+        }
+    }
+}
+.modal-item.active {
+    // .ant-input{
+    //     pointer-events: auto;
+    //     border: 1px solid #d9d9d9;
+    // }
+    // .ant-input:focus{
+    //     box-shadow: 0 0 0 2px rgb(255 197 0 / 20%);
+    // }
+    // .ant-input {
+    //     pointer-events: none;
+    //     border: none;
+    //     padding-left: 0;
+    //     padding-top: 0;
+    // }
+    // .ant-picker {
+    //     pointer-events: none;
+    //     border: none;
+    //     padding-left: 0;
+    //     padding-top: 0;
+    //     .ant-picker-suffix {
+    //         display: none;
+    //     }
+    // }
+    .ant-picker-focused {
+        box-shadow: none;
+    }
+    .ant-form-item-control-input {
+        min-height: 0;
+    }
+    .edit {
+        padding-top: 20px;
+    }
+    .ant-input:focus {
+        box-shadow: none;
+    }
+    // .ant-picker-input input{
+        
+    // }
+
+}
+.activeIcon.milestone-item {
+    i {
+        color: #6fc677;
+        border-color: #6fc677;
+    }
+}
+.modal-item i{
+    color: #ccc;
+    font-size: 30px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+.actives {
+    i {
+        color: #6fc677;
+        border-color: #6fc677;
+    }
+}
+.redIconBorder{
+    color: red!important;
+    border-color: red!important;
+}

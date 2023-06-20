@@ -1,0 +1,29 @@
+.header {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px 0px;
+  background-color: rgb(255, 255, 255);
+  height: 50px;
+}
+.body {
+  position: relative;
+  height: 100%;
+  .bodyLayout {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: flex-start;
+    align-items: flex-start;
+    height: calc(100vh - 50px);
+    -webkit-font-smoothing: antialiased; //字体抗锯齿渲染
+  }
+  .main {
+    flex: 1 1 auto;
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 10px;
+  }
+}

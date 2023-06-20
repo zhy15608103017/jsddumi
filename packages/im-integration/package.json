@@ -1,0 +1,76 @@
+{
+  "name": "@jusda-tools/im-integration",
+  "version": "1.2.0",
+  "description": "IM业务系统组件",
+  "main": "dist/jusda-im.js",
+  "sideEffects": true,
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "test": "echo Error: missing tests",
+    "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.js'",
+    "lint:fix": "eslint --fix -c .eslintrc.js 'src/**/*.js' --fix",
+    "build:self": "rollup -c config/rollup.config.js",
+    "build:esm": "rollup -c config/rollup.config.esm.js",
+    "build:aio": "rollup -c config/rollup.config.aio.js",
+    "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
+    "build": "npm run clean && webpack --config webpack.config.js",
+    "prepublish": "npm run build"
+  },
+  "author": "chenxing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chenxing/im-integration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chenxing/im-integration/issues"
+  },
+  "files": [
+    "/dist",
+    "*.d.ts"
+  ],
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.1.5",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.9.4",
+    "@js-lib/cli": "^1.6.0",
+    "autoprefixer": "^9.7.6",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "5.2.0",
+    "css-loader": "^3.5.2",
+    "es5-shim": "4.5.10",
+    "eslint": "^5.15.1",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "rimraf": "2.6.2",
+    "rollup": "0.57.1",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-less": "^1.1.2",
+    "rollup-plugin-node-resolve": "3.0.3",
+    "rollup-plugin-postcss": "^2.9.0",
+    "rollup-plugin-uglify": "1.0.0",
+    "style-loader": "^1.2.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "@jusda-tools/url-config": "^0.0.16",
+    "@jusda-tools/web-api-client": "0.0.5",
+    "antd": "^4.1.4"
+  },
+  "gitHead": "5b40f928ba8bab85179ca7e19aa4eb2f34aa9e15"
+}

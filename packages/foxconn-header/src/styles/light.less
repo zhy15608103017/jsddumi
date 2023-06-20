@@ -1,0 +1,182 @@
+@import "./common.less";
+@theme: light;
+
+.@{foxconn-ant-prefix}-@{theme} {
+    width: 100%;
+    height: 50px;
+    background-color: @dark-bg-color!important;
+    color: #fff!important;
+    .workbench_btn span {
+        color: #fff!important;
+    }
+    svg {
+        fill: #fff !important;
+    }
+    position: relative;
+    display: flex;
+    .header_left {
+        display: flex;
+        float: left;
+        .apply_icon {
+            width: 56px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            > svg {
+                fill: @primary-color;
+            }
+        }
+        .open {
+            svg {
+                animation: turnopen 0.5s;
+                animation-fill-mode: forwards;
+            }
+        }
+        .close {
+            svg {
+                animation: turnclose 0.5s;
+                animation-fill-mode: forwards;
+            }
+        }
+        .logo_@{theme} {
+            width: 144px;
+            height: 50px;
+            cursor: pointer;
+            background-color: inherit !important;
+            position: relative;
+            text-align: center;
+            svg {
+                width: 100px;
+                height: 50px;
+            }
+            &:hover {
+                background-color: #3e3e3e;
+                &::after {
+                    color: #000;
+                    position: absolute;
+                    top: 55px;
+                    left: 1px;
+                    // transform: translateX(-50%);
+                    background: #fff;
+                    border-radius: 4px;
+                    width: 145px;
+                    height: 30px;
+                    padding-top: 4px;
+                    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+                    z-index: 10;
+                }
+            }
+            img {
+                width: 107px;
+                height: 42px;
+                transform: translateY(4px);
+            }
+            &.tip_lang_zh-CN {
+                &:hover::after {
+                    width: 145px !important;
+                    content: "\70b9\51fb\8fd4\56de\004a\0075\0073\004c\0069\006e\006b\9996\9875" !important;
+                }
+            }
+            &.tip_lang_en-US {
+                &:hover::after {
+                    width: 220px !important;
+                    content: "Click to visit JusLink homepage" !important;
+                }
+            }
+        }
+        .workbench_btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 32px;
+            line-height: 18px;
+            cursor: pointer;
+            height: 32px;
+            margin-top: 10px;
+            padding: 0 9px;
+            svg {
+                width: 18px;
+                height: 18px;
+                margin-right: 7px;
+                color: #2c2c2c;
+            }
+            span {
+                font-family: PingFangSC-Regular;
+                font-size: 16px;
+                color: #222222;
+                text-align: center;
+            }
+            &:hover {
+                background: #ffc500;
+                box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.5);
+                border-radius: 3px;
+                border-radius: 3px;
+            }
+        }
+    }
+    .header_right {
+        margin-left: auto;
+        display: flex;
+        padding-right: 16px;
+        .tooltip_icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            > svg {
+                fill: #fff;
+            }
+            &:hover {
+                background-color: #f9b400;
+            }
+        }
+        .dividerWarp {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 16px;
+            .line {
+                height: 24px;
+                width: 1px;
+                background-color: #cb9c00;
+            }
+        }
+        .has-new-bulletin {
+            position: relative;
+            i {
+                position: absolute;
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+                display: block;
+                background-color: #ff6c6c;
+                top: 20%;
+                right: 18%;
+            }
+        }
+        .not-new-bulletin {
+            i {
+                display: none;
+            }
+        }
+    }
+}
+
+.tooltip_overlay_@{theme} {
+    .@{foxconn-ant-prefix}-tooltip-arrow {
+        margin-top: -6px;
+        .@{foxconn-ant-prefix}-tooltip-arrow-content {
+            background: #fff;
+        }
+    }
+    .@{foxconn-ant-prefix}-tooltip-inner {
+        margin-top: -6px;
+        background: #fff;
+        color: #000000;
+    }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "@jusda-tools/buried-point",
+  "version": "0.3.14",
+  "description": "新埋点组件",
+  "main": "dist/index.js",
+  "jsnext:main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "test": "echo Error: missing tests",
+    "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.js'",
+    "lint:fix": "eslint --fix -c .eslintrc.js 'src/**/*.js' --fix",
+    "build:self": "rollup -c config/rollup.config.js",
+    "build:esm": "rollup -c config/rollup.config.esm.js",
+    "build:aio": "rollup -c config/rollup.config.aio.js",
+    "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
+    "build": "npm run clean && npm run build:self && npm run build:esm",
+    "build:dev": "nodemon --ignore dist/ --ignore node_modules/ --watch src/ -C -e ts,tsx,js,html,less,scss --debug -x \"npm run build\"",
+    "prepublish": "npm run build"
+  },
+  "author": "yazohu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yazohu/@jusda-tools/buried-point.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yazohu/@jusda-tools/buried-point/issues"
+  },
+  "files": [
+    "/dist",
+    "*.d.ts"
+  ],
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.1.5",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@js-lib/cli": "^1.6.0",
+    "@rollup/plugin-terser": "0.4.1",
+    "cross-env": "5.2.0",
+    "es5-shim": "4.5.10",
+    "eslint": "^5.15.1",
+    "nodemon": "^2.0.6",
+    "rimraf": "2.6.2",
+    "rollup": "3.21.0",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-node-resolve": "3.0.3",
+    "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-uglify": "1.0.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "@jusda-tools/auth-tools": "^0.3.2",
+    "@jusda-tools/jusda-publicmethod": "^0.0.6",
+    "@jusda-tools/url-config": "^0.0.16",
+    "uuid": "8.3.2"
+  },
+  "gitHead": "5b40f928ba8bab85179ca7e19aa4eb2f34aa9e15"
+}

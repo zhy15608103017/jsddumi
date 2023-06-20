@@ -1,0 +1,11 @@
+{
+    "name": "@jusda-tools/action-decorator",
+    "npmname": "@jusda-tools/action-decorator",
+    "umdname": "@jusda-tools/action-decorator",
+    "username": "yazohu",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

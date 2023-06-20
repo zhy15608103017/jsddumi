@@ -1,0 +1,11 @@
+{
+    "name": "jusda-tools-web-api-client",
+    "npmname": "jusda-tools-web-api-client",
+    "umdname": "jusda-tools-web-api-client",
+    "username": "wfc",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

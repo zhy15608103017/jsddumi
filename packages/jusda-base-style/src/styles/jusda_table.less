@@ -1,0 +1,127 @@
+// 表格 查看更多模板
+.jusda-main-container {
+  background: #f2f2f2;
+  width: 100%;
+  padding: 24px;
+}
+.jusda-table-switch-wrapper {
+  padding: 24px 24px 36px 24px !important;
+  // 查看更多的盒子
+  .jusda-table-switch-btn-container {
+    margin-top: 8px;
+    height: 30px;
+    position: relative;
+    background-image: linear-gradient(180deg, #e7e7e7 0%, #ffffff 30%);
+    .jusda-table-switch-btn {
+      border-color: transparent;
+      border-bottom-right-radius: 15px 50%;
+      border-bottom-left-radius: 15px 50%;
+      width: 140px;
+      height: 30px;
+      top: 0;
+      list-style: 24px;
+      position: absolute;
+      left: calc(50% - 50px);
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+// 表格 普通模板
+.jusda-table-wrapper {
+  padding: 0 24px;
+}
+
+.jusda-search-container-shadow {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.jusda-table-container {
+  margin-top: 16px;
+  font-size: 14px;
+
+  // 以下区域都是在改table表单的颜色
+  // 权重不及antd原始的权重
+  .ant-table-thead > tr > th {
+    background: #fffbea !important;
+    // padding: 16px 8px !important;
+    border-bottom: 0;
+    .ant-table-column-sorters {
+      padding: 0;
+    }
+  }
+
+  .ant-table-tbody {
+    & > tr > td {
+      // padding: 16px;
+      border-bottom: none;
+    }
+    & > tr:nth-last-child(1) > td {
+      // box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+    & > tr.ant-table-row:hover > td {
+      background: #fff8d9 !important;
+    }
+    // 最后一行的线
+    & > tr:last-child > td {
+      border-bottom: 1px solid #e0e0e0;
+    }
+  }
+  // 选中时颜色修改
+  .ant-table-tbody > tr.ant-table-row-selected > td  {
+    background: #fff8d9 !important;
+    border-bottom: none;
+  }
+  // 选中checkbox的间距修改
+  table tr th.ant-table-selection-column,
+  table tr td.ant-table-selection-column {
+    padding-right: 16px;
+    padding-left: 16px;
+    text-align: center;
+  }
+
+  td.ant-table-column-sort {
+    background: none;
+  }
+  .ant-table-tbody > tr:nth-of-type(2n) {
+    background: #f9f9f9;
+  }
+  tr:nth-of-type(2n) > .ant-table-cell-fix-right,
+  tr:nth-of-type(2n) > .ant-table-cell-fix-left {
+    background-color: #f9f9f9;
+  }
+  // 以上区域都是在改table表单的颜色
+  .jusda-table-icon-color {
+    color: #ea9000;
+    cursor: pointer;
+    &:hover {
+      color: #ffc500;
+    }
+
+    svg {
+      color: #ea9000;
+      cursor: pointer;
+      &:hover {
+        color: #ffc500;
+      }
+    }
+  }
+
+  // 表格有设置横向滚动条时，会在第一行新增.ant-table-measure-row空白行，会导致黑白间隔色顺序错误
+  .ant-table-measure-row ~ tr:nth-child(2n) {
+    background-color: transparent;
+
+    .ant-table-cell-fix-left,
+    .ant-table-cell-fix-right {
+        background-color: #fff;
+      }
+  }
+
+  .ant-table-measure-row ~ tr:nth-child(2n-1) {
+      background-color: #f9f9f9;
+
+      .ant-table-cell-fix-left,
+      .ant-table-cell-fix-right {
+          background-color: #f9f9f9;
+      }
+  }
+}

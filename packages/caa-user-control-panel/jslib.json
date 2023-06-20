@@ -1,0 +1,11 @@
+{
+    "name": "caa-user-control-panel",
+    "npmname": "caa-user-control-panel",
+    "umdname": "caa-user-control-panel",
+    "username": "wenfuchao",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

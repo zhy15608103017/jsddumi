@@ -1,0 +1,11 @@
+{
+    "name": "jusda-userGuide",
+    "npmname": "@jusda-tools/jusda-userguide",
+    "umdname": "@jusda-tools/jusda-userguide",
+    "username": "@jusda-tools/jusda-userguide",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.6.0"
+}

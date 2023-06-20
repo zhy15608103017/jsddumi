@@ -1,0 +1,139 @@
+.contact-us-container {
+    position: fixed;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.jusda-contact-us {
+    .juslink-popover-placement-left {
+        .juslink-popover-content {
+            .juslink-popover-arrow {
+                display: none;
+            }
+        }
+    }
+    .juslink-popover-placement-right {
+        .juslink-popover-content {
+            .juslink-popover-arrow {
+                display: none;
+            }
+        }
+    }
+    .juslink-popover-inner {
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    .juslink-popover-inner-content {
+        padding: 0
+    }
+    .jusda-contact-img {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        pointer-events: none;
+        top: -20px;
+        left: -10px;
+        z-index: 998;
+    }
+    .jusda-contact {
+        position: relative;
+        z-index: 997;
+        width: 40px;
+        height: 140px;
+        background: linear-gradient(180deg, #E9E9E9 5.21%, #FFFFFF 100%);
+        border: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50px;
+        color: #6D9BC2;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        &>span {
+            margin-top: 40px;
+        }
+    }
+    
+    .jusda-contact-zh {
+        writing-mode: vertical-lr;
+        letter-spacing: 5px;
+    }
+    
+    .jusda-contact-en {
+        writing-mode: vertical-lr;
+        letter-spacing: 2px;
+        height: 160px;
+    }
+    
+    .jusda-popover-content {
+        width: 280px;
+        background: linear-gradient(180deg, #E9E9E9 5.21%, #FFFFFF 100%);
+        border: 1px solid #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        padding: 12px;
+        &>div {
+            padding: 12px;
+            cursor: pointer;
+            &:hover {
+                background: linear-gradient(180deg, #FFFFFF 5.21%, #FFFFFF 100%);
+                border-radius: 10px;
+            }
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            color: #6D9BC2;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 18px;
+            font-family: 'Alibaba Sans';
+            font-style: normal;
+        }
+        .tip {
+            color: #666666;
+            font-family: 'Alice';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 18px;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .title{
+            img {
+                width: 20px;
+                margin-right: 8px;
+            }
+            .remind-img {
+                width: 16px;
+                height: 16px;
+                margin-left: 8px;
+                transform: rotateY(180deg);
+            }
+        } 
+    }
+}
+
+.JusAI {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 1216px;
+    height: 720px;
+    box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+    border-radius: 24px;
+    overflow: hidden;
+    z-index: 999999999;
+    .JusAI-close-icon {
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        font-size: 24px;
+        color: #555;
+    }
+    .JusAI-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}

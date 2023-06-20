@@ -1,0 +1,25 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "npmClientArgs": [
+    "--prefer-offline"
+  ],
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "command": {
+    "publish": {
+      "registry": "http://nexus.jusda.int/verdaccio/",
+      "ignoreChanges": [
+        "ignored-file",
+        "*.md",
+        ".gitignore",
+        "package-lock.json",
+        ".DS_Store"
+      ],
+      "allowBranch": ["master", "develop"]
+    }
+  },
+  "lerna": "4.0.0"
+}

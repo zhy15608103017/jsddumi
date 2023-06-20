@@ -1,0 +1,132 @@
+.addRessBook {
+    // overflow-y: scroll;
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 500px;
+    
+    .group-name {
+        padding: 5px 5%;
+        background-color: #313131;
+        color: #ffc500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .imant-collapse {
+        border: none;
+        background-color: unset;
+        .imant-collapse-item {
+            border-bottom: none;
+            border-radius: unset;
+            &:last-child {
+                border-radius: unset;
+                .imant-collapse-header {
+                    border-radius: unset;
+                }
+                .imant-collapse-content {
+                    border-radius: unset;
+                }
+            }
+            .imant-collapse-header {
+                background-color: #313131;
+                color: #ffc500;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .imant-collapse-content {
+                border-top: unset;
+                background-color: unset;
+                .imant-collapse-content-box {
+                    margin: 0;
+                    padding: 0;
+                    .addRessBook-ul {
+                        padding: 0;
+                        margin: 0;
+                        .contact {
+                            padding: 10px 5%;
+                            padding-right: 0px;
+                            margin-bottom: 3px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            background-color: rgba(0, 0, 0, 0.9);
+                            .contact-status {
+                                width: 10px;
+                                height: 10px;
+                                margin: 2px;
+                                border-radius: 5px;
+                            }
+                            .contact-people {
+                                flex: 1;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                margin-left: 10px;
+                                min-width: 50px;
+                                .contact-icon {
+                                    width: 25px;
+                                    height: 25px;
+                                    border-radius: 13px;
+                                    display: inline-block;
+                                    text-align: center;
+                                    line-height: 25px;
+                                    font-size: 15px;
+                                    flex: 0 0 auto;
+                                }
+                                .contact-left {
+                                    margin-left: 10px;
+                                    padding-right: 10px;
+                                    flex: auto;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                }
+                            }
+                        }
+                        .offline {
+                            .contact-icon {
+                                background: #666666;
+                            }
+                            .contact-left {
+                                color: #666666;
+                            }
+                            .contact-status {
+                                background-color: #666666;
+                            }
+                        }
+                        .online {
+                            .contact-icon {
+                                background: #ffc500;
+                            }
+                            .contact-left {
+                                color: #fff;
+                            }
+                            .contact-status {
+                                background-color: #ffc500;
+                                box-shadow: 0px 0px 5px #ffc500;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.addressbook-popover {
+    width: 250px;
+    .imant-popover-inner-content {
+        padding: 0px;
+    }
+    .imant-popover-inner {
+        background-color: unset !important;
+    }
+    &.imant-popover-placement-bottomLeft {
+        padding-top: unset;
+        .imant-popover-arrow {
+            border-top-color: transparent !important;
+            border-left-color: transparent !important;
+        }
+    }
+}

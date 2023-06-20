@@ -1,0 +1,11 @@
+{
+    "name": "language-control-panel",
+    "npmname": "language-control-panel",
+    "umdname": "language-control-panel",
+    "username": "wangym",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.6.0"
+}

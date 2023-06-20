@@ -1,0 +1,30 @@
+{
+  "name": "@jusda-tools/umi-plugin-jusda-mf",
+  "version": "0.0.21",
+  "description": "simple config to support module-federation",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "father-build",
+    "prepublish": "npm run build"
+  },
+  "keywords": [],
+  "repository": "Jusda/@jusda-tools/umi-plugin-jusda-mf",
+  "authors": {
+    "name": "chinasoft.yh.zhang",
+    "email": "chinasoft.yh.zhang@jusad.int"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@umijs/types": "3.5.27",
+    "father-build": "^1.20.0"
+  },
+  "dependencies": {
+    "@jusda-tools/umi-plugin-jusda-mf-bootstrap": "^0.0.2",
+    "webpack-remote-types-plugin": "^0.2.7"
+  },
+  "gitHead": "8ab0abd494e2da3b7395ea20dca9ca0befbd6181"
+}

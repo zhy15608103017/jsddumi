@@ -1,0 +1,11 @@
+{
+    "name": "mapbox-config",
+    "npmname": "mapbox-config",
+    "umdname": "mapbox-config",
+    "username": "yazohu",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

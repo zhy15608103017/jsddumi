@@ -1,0 +1,11 @@
+{
+    "name": "component-base-config-tools",
+    "npmname": "component-base-config-tools",
+    "umdname": "component-base-config-tools",
+    "username": "fcw",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

@@ -1,0 +1,65 @@
+@theme: light;
+
+.sider-nav-bar-wrapper-@{theme}{
+    .jusda-sider-drawer.jusda-sider-drawer-left.jusda-sider-drawer-open.no-mask{
+        width: 194px !important;
+    }
+    .arrow-icon{
+        position: absolute;
+        background: #FFFFFF;
+        height: 14px;
+        width: 46px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        right: -30px;
+        top: calc(50% - 7px);
+    }
+    .icon-right{
+        transform: rotate(90deg);
+        border-radius: 3px 3px 0px 0px;
+        box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16);
+    }
+    .icon-left{
+        transform: rotate(-90deg);
+        border-radius: 0px 0px 3px 3px;
+        box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16);
+    }
+    .bu-info-wrapper{
+        .bu-name-icon-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #222222;
+            padding-bottom: 20px;
+            font-weight: 500;
+            span{
+                width: 18px;
+            }
+        }
+        .bu-line{
+            width: 150px;
+            height: 1px;
+            background: #E0E0E0;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.jusda-sider-drawer-body{
+    padding: 1px;
+    padding-top: 20px;
+}
+.jusda-sider-menu-inline{
+    border: none;
+}
+
+.jusda-sider-menu-submenu-selected,
+.jusda-sider-menu-item-selected,
+.jusda-sider-menu-submenu-title:hover,
+.jusda-sider-menu-item-active:hover{
+    color: #EA9000;
+}

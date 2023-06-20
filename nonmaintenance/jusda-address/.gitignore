@@ -1,0 +1,12 @@
+lerna-debug.log
+/node_modules/
+/packages/action-decorator/package-lock.json
+*/.idea
+*/.umi
+/es
+/dist
+.umi
+/.history/
+/.idea/
+/**/.idea/
+/**/.rpt2_cache/

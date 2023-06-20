@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "declarationDir": ".",
+    "lib": [
+      "dom",
+      "es5",
+      "es6",
+      "es2017",
+      "scripthost",
+      "es2015.collection"
+    ],
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "**.d.ts"
+  ]
+}

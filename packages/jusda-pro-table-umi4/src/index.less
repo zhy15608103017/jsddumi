@@ -1,0 +1,74 @@
+.ant-tree-node-content-wrapper {
+    .ant-pro-table-column-setting-list-item-title{
+        max-width: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+.jusda-pro-table-umi4 {
+    .react-resizable {
+        position: relative;
+        background-clip: padding-box;
+        // color: #ccc;
+    }
+    .react-resizable-handle {
+        position: absolute;
+        right: -5px;
+        bottom: 0;
+        z-index: 1;
+        width: 10px;
+        height: 100%;
+        cursor: col-resize;
+        background: none;
+    }
+    // 默认
+    .ant-table {
+        z-index: 1;
+
+        .ant-table-thead > tr > th {
+            padding: 16px 16px;
+        }
+
+        .ant-table-tbody > tr > td {
+            padding: 16px 16px;
+        }
+    }
+    // 中等
+    .ant-table-middle {
+        .ant-table-thead > tr > th {
+            padding: 12px 16px;
+        }
+
+        .ant-table-tbody > tr > td {
+            padding: 12px 16px;
+        }
+    }
+    // 紧凑
+    .ant-table-small {
+        .ant-table-thead > tr > th {
+            padding: 8px 16px;
+        }
+
+        .ant-table-tbody > tr > td {
+            padding: 8px 16px;
+        }
+    }
+    // 设置调整列宽
+    .react-resizable .react-resizable-handle {
+        opacity: 0.5;
+    }
+}
+// 自定义行高的选中后的字体颜色
+.ant-dropdown-menu-item-selected {
+    color: #ea9000;
+}
+// 列隐藏的重置字体颜色
+.ant-pro-table-column-setting-overlay {
+    a {
+        color: #ea9000;
+    }
+}
+
+.ant-pro-table-list-toolbar-setting-item:hover {
+    color: #ffc500;
+}

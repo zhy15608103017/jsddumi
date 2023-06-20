@@ -1,0 +1,123 @@
+@import url('./css/iconfont.css');
+.active.milestone-item {
+    i {
+        color: #6fc677;
+        border-color: #6fc677;
+    }
+
+    .lines {
+        background-color: #6fc677;
+    }
+}
+
+.milestone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    // width: 1200px;
+    padding-top: 35px;
+
+    .item {
+        width: 100%;
+    }
+
+    .milestoneBox {
+        width: 100%;
+    }
+
+    .milestoneBox > .item:last-child .lines {
+        display: none;
+    }
+
+    .transport {
+        position: absolute;
+        left: calc(35% + 10px);
+        display: inline-block;
+        color: #6fc677;
+        font-size: 30px;
+        line-height: 30px;
+        background-color: #fff;
+    }
+
+    .update-item {
+        position: absolute;
+        top: 8px;
+        right: 5px;
+
+        .ant-btn {
+            min-width: 80px;
+            height: 24px;
+            margin-right: 5px;
+            padding: 0 12px 0 10px;
+            color: var(--base-text-color);
+            border-radius: 3px;
+        }
+
+        i {
+            color: var(--base-text-color);
+            font-size: 16px;
+            vertical-align: middle;
+        }
+    }
+}
+
+.milestone-item {
+    display: flex;
+    // width: 100%;
+    margin-bottom: 10px;
+
+    .title {
+        width: 35%;
+        margin: auto 0;
+        color: #000;
+        text-align: right;
+    }
+
+    .circle {
+        position: relative;
+        display: inline-block;
+        height: 60px;
+        padding: 0 10px;
+        cursor: pointer;
+    }
+
+    .transport {
+        display: none;
+    }
+
+    .time {
+        margin: auto 0;
+        // width: 130px;
+        padding-right: 20px;
+        color: var(--base-second-color);
+    }
+
+    .lines {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        display: inline-block;
+        width: 2px;
+        height: 38px;
+        margin-top: -1px;
+        background-color: #ccc;
+    }
+
+    i {
+        color: #ccc;
+        font-size: 30px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+    }
+    .redIcon {
+        .iconfont{
+            color: red!important;
+        }
+    }
+}
+.redIconBorder{
+    color: red!important;
+    border-color: red!important;
+}

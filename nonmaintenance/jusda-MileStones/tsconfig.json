@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "target": "ES6",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "skipLibCheck": true,
+    "outDir": "es",
+    "declarationDir": "types",
+    "strict": true,
+    "declaration": true,
+    "noImplicitAny": false,
+    // "emitDeclarationOnly": true,
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/locales/zh-CN.js",
+    "src/locales/en-US.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}

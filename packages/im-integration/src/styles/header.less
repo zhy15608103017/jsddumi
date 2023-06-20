@@ -1,0 +1,54 @@
+.im-div {
+    display: flex;
+    color: #ffc500;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        background-color: #F9B400;
+    }
+    .im-addressbook {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .kefu-icon{
+            display: flex;
+            cursor: pointer;
+            svg {
+                width: 30px;
+                height: 30px;   
+            }
+        }
+    }
+    .im-msg {
+        display: flex;
+        // margin-left: 20px;
+        cursor: pointer;
+        justify-items: center;
+        align-items: center;
+        position: relative;
+        svg {
+            width: 30px;
+            height: 30px;   
+        }
+        .msg-count {
+            position: absolute;
+            top: -2px;
+            right: -5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 2px;
+            width: 20px;
+            height: 20px;
+            background: #F25220;
+            border-radius: 10px;
+            text-align: center;
+            span{
+                transform: scale(0.8);
+            }
+        }
+    }
+}

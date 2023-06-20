@@ -1,0 +1,114 @@
+// 标题
+.common-address-title {
+  height: 40px;
+  background: #f2f2f2;
+  padding: 0 8px 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .common-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .common-close {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+//     内容盒子
+.common-address-content {
+  padding: 0 32px;
+}
+
+//     搜索与切换新增.
+.common-search-container {
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .common-search {
+    .search-icon {
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.common-address-footer {
+  display: flex;
+  padding: 32px 0;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 20px;
+    height: 40px;
+    min-width: 120px;
+  }
+}
+
+.common-list-container {
+  overflow: auto;
+  height: 432px;
+
+  .common-list-item-container {
+    background: #f9f9f9;
+    margin-bottom: 8px;
+    position: relative;
+    cursor: pointer;
+    padding: 8px 8px 8px 12px;
+    display: flex;
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+
+    &::after {
+      content: '';
+      height: 100%;
+      width: 3px;
+      background: #ffc500;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .common-list-left-container {
+      flex: 1;
+
+      .common-list-item-title {
+        font-size: 14px;
+        color: #444444;
+      }
+
+      .common-list-item-content {
+        font-size: 12px;
+        color: #999999;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 600px;
+      }
+    }
+
+    .common-list-right-container {
+      width: 5%;
+
+      & > div {
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .common-list-item-selected {
+    border: 1px solid #ffc500;
+  }
+}

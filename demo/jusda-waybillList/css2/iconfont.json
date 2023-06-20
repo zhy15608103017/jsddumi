@@ -1,0 +1,695 @@
+{
+    "id": "2526277",
+    "name": "Juslink-运输下单",
+    "font_family": "transport",
+    "css_prefix_text": "transport-",
+    "description": "Juslink-运输下单",
+    "glyphs": [
+        {
+            "icon_id": "25321539",
+            "name": "服务商-01",
+            "font_class": "agent",
+            "unicode": "e95d",
+            "unicode_decimal": 59741
+        },
+        {
+            "icon_id": "21658720",
+            "name": "邮件svg",
+            "font_class": "youjiansvg",
+            "unicode": "e924",
+            "unicode_decimal": 59684
+        },
+        {
+            "icon_id": "21587432",
+            "name": "货架",
+            "font_class": "Shelf",
+            "unicode": "e923",
+            "unicode_decimal": 59683
+        },
+        {
+            "icon_id": "21586673",
+            "name": "高速 ",
+            "font_class": "Speed",
+            "unicode": "e920",
+            "unicode_decimal": 59680
+        },
+        {
+            "icon_id": "21586674",
+            "name": "禁止 ",
+            "font_class": "Stop",
+            "unicode": "e921",
+            "unicode_decimal": 59681
+        },
+        {
+            "icon_id": "21586675",
+            "name": "卸货 ",
+            "font_class": "Unload",
+            "unicode": "e922",
+            "unicode_decimal": 59682
+        },
+        {
+            "icon_id": "21582338",
+            "name": "金额",
+            "font_class": "Money",
+            "unicode": "e91e",
+            "unicode_decimal": 59678
+        },
+        {
+            "icon_id": "21582339",
+            "name": "委托报关-2",
+            "font_class": "Customs-2",
+            "unicode": "e91f",
+            "unicode_decimal": 59679
+        },
+        {
+            "icon_id": "21582200",
+            "name": "日期",
+            "font_class": "Date",
+            "unicode": "e91d",
+            "unicode_decimal": 59677
+        },
+        {
+            "icon_id": "21529003",
+            "name": "海关监管无",
+            "font_class": "not-customs-supervision",
+            "unicode": "e91a",
+            "unicode_decimal": 59674
+        },
+        {
+            "icon_id": "21529004",
+            "name": "海关监管有",
+            "font_class": "customs-supervision",
+            "unicode": "e91b",
+            "unicode_decimal": 59675
+        },
+        {
+            "icon_id": "21528988",
+            "name": "指定机场-01",
+            "font_class": "designated-airport",
+            "unicode": "e918",
+            "unicode_decimal": 59672
+        },
+        {
+            "icon_id": "21528989",
+            "name": "不指定机场-01",
+            "font_class": "not-designated-airport",
+            "unicode": "e919",
+            "unicode_decimal": 59673
+        },
+        {
+            "icon_id": "21528983",
+            "name": "不指定港口-01",
+            "font_class": "not-designated-port",
+            "unicode": "e916",
+            "unicode_decimal": 59670
+        },
+        {
+            "icon_id": "21528984",
+            "name": "指定港口-01",
+            "font_class": "designated-port",
+            "unicode": "e917",
+            "unicode_decimal": 59671
+        },
+        {
+            "icon_id": "21528981",
+            "name": "无保价-01",
+            "font_class": "not-insured",
+            "unicode": "e914",
+            "unicode_decimal": 59668
+        },
+        {
+            "icon_id": "21528982",
+            "name": "保价-01",
+            "font_class": "insured",
+            "unicode": "e915",
+            "unicode_decimal": 59669
+        },
+        {
+            "icon_id": "21528978",
+            "name": "未开启委托报关-01",
+            "font_class": "close-entrust-declaration",
+            "unicode": "e912",
+            "unicode_decimal": 59666
+        },
+        {
+            "icon_id": "21528979",
+            "name": "开启委托报关-01",
+            "font_class": "open-entrust-declaration",
+            "unicode": "e913",
+            "unicode_decimal": 59667
+        },
+        {
+            "icon_id": "21528974",
+            "name": "关闭押运-01",
+            "font_class": "close-escort",
+            "unicode": "e910",
+            "unicode_decimal": 59664
+        },
+        {
+            "icon_id": "21528976",
+            "name": "开启押运-01",
+            "font_class": "open-escort",
+            "unicode": "e911",
+            "unicode_decimal": 59665
+        },
+        {
+            "icon_id": "21528967",
+            "name": "不指定车站-01",
+            "font_class": "not-designated-station",
+            "unicode": "e90e",
+            "unicode_decimal": 59662
+        },
+        {
+            "icon_id": "21528968",
+            "name": "指定车站-01",
+            "font_class": "designated-station",
+            "unicode": "e90f",
+            "unicode_decimal": 59663
+        },
+        {
+            "icon_id": "21528962",
+            "name": "非日游-01",
+            "font_class": "not-day-trip",
+            "unicode": "e90c",
+            "unicode_decimal": 59660
+        },
+        {
+            "icon_id": "21528963",
+            "name": "一日游-01",
+            "font_class": "day-trip",
+            "unicode": "e90d",
+            "unicode_decimal": 59661
+        },
+        {
+            "icon_id": "21497716",
+            "name": "目的地",
+            "font_class": "destination",
+            "unicode": "e8ef",
+            "unicode_decimal": 59631
+        },
+        {
+            "icon_id": "21497717",
+            "name": "急单",
+            "font_class": "urgent-order",
+            "unicode": "e8f0",
+            "unicode_decimal": 59632
+        },
+        {
+            "icon_id": "21497718",
+            "name": "体积",
+            "font_class": "volume",
+            "unicode": "e8f1",
+            "unicode_decimal": 59633
+        },
+        {
+            "icon_id": "21497719",
+            "name": "委托报关",
+            "font_class": "entrust-customs-declaration",
+            "unicode": "e8f2",
+            "unicode_decimal": 59634
+        },
+        {
+            "icon_id": "21497720",
+            "name": "B_人头",
+            "font_class": "header",
+            "unicode": "e8f3",
+            "unicode_decimal": 59635
+        },
+        {
+            "icon_id": "21497721",
+            "name": "尺寸",
+            "font_class": "size",
+            "unicode": "e8f4",
+            "unicode_decimal": 59636
+        },
+        {
+            "icon_id": "21497722",
+            "name": "重量",
+            "font_class": "weight",
+            "unicode": "e8f5",
+            "unicode_decimal": 59637
+        },
+        {
+            "icon_id": "21497723",
+            "name": "武装押运",
+            "font_class": "armed-escort",
+            "unicode": "e8f6",
+            "unicode_decimal": 59638
+        },
+        {
+            "icon_id": "21497724",
+            "name": "起始地",
+            "font_class": "starting-point",
+            "unicode": "e8f7",
+            "unicode_decimal": 59639
+        },
+        {
+            "icon_id": "21497725",
+            "name": "普通押运",
+            "font_class": "ordinary-escort",
+            "unicode": "e8f8",
+            "unicode_decimal": 59640
+        },
+        {
+            "icon_id": "21497499",
+            "name": "地图-01",
+            "font_class": "map",
+            "unicode": "e8ec",
+            "unicode_decimal": 59628
+        },
+        {
+            "icon_id": "21497500",
+            "name": "B_国际-01",
+            "font_class": "international",
+            "unicode": "e8ed",
+            "unicode_decimal": 59629
+        },
+        {
+            "icon_id": "21497502",
+            "name": "国内",
+            "font_class": "domestic",
+            "unicode": "e8ee",
+            "unicode_decimal": 59630
+        },
+        {
+            "icon_id": "21497296",
+            "name": "供应商-01",
+            "font_class": "supplier",
+            "unicode": "e8e6",
+            "unicode_decimal": 59622
+        },
+        {
+            "icon_id": "21497297",
+            "name": "B_发货方-01",
+            "font_class": "shipper",
+            "unicode": "e8e7",
+            "unicode_decimal": 59623
+        },
+        {
+            "icon_id": "21497298",
+            "name": "企业-01",
+            "font_class": "enterprise",
+            "unicode": "e8e8",
+            "unicode_decimal": 59624
+        },
+        {
+            "icon_id": "21497299",
+            "name": "B_收货方-01",
+            "font_class": "consignee",
+            "unicode": "e8e9",
+            "unicode_decimal": 59625
+        },
+        {
+            "icon_id": "21497300",
+            "name": "B_委托方-01",
+            "font_class": "cient",
+            "unicode": "e8ea",
+            "unicode_decimal": 59626
+        },
+        {
+            "icon_id": "21497301",
+            "name": "客户-01",
+            "font_class": "customer",
+            "unicode": "e8eb",
+            "unicode_decimal": 59627
+        },
+        {
+            "icon_id": "21497290",
+            "name": "C_碳排放",
+            "font_class": "carbon-emission",
+            "unicode": "e8e5",
+            "unicode_decimal": 59621
+        },
+        {
+            "icon_id": "21496196",
+            "name": "B_快递包裹-01",
+            "font_class": "express-package",
+            "unicode": "e8e4",
+            "unicode_decimal": 59620
+        },
+        {
+            "icon_id": "21494624",
+            "name": "A_运输交通_船运_1-01",
+            "font_class": "transportation-shipping_1-01",
+            "unicode": "e8e0",
+            "unicode_decimal": 59616
+        },
+        {
+            "icon_id": "21494625",
+            "name": "A_运输交通_陆运_1-01",
+            "font_class": "transportation-land",
+            "unicode": "e8e1",
+            "unicode_decimal": 59617
+        },
+        {
+            "icon_id": "21494626",
+            "name": "A_运输交通_空运_1-01",
+            "font_class": "transportation-air",
+            "unicode": "e8e2",
+            "unicode_decimal": 59618
+        },
+        {
+            "icon_id": "21494627",
+            "name": "A_运输交通_铁运_1-01",
+            "font_class": "transportation-rail",
+            "unicode": "e8e3",
+            "unicode_decimal": 59619
+        },
+        {
+            "icon_id": "21494616",
+            "name": "B_快递文档-01",
+            "font_class": "express-documents",
+            "unicode": "e8df",
+            "unicode_decimal": 59615
+        },
+        {
+            "icon_id": "21494581",
+            "name": "B_空运侧面-01",
+            "font_class": "air-transport-side",
+            "unicode": "e8da",
+            "unicode_decimal": 59610
+        },
+        {
+            "icon_id": "21494582",
+            "name": "B_陆运侧面-01",
+            "font_class": "land-transportation-side",
+            "unicode": "e8db",
+            "unicode_decimal": 59611
+        },
+        {
+            "icon_id": "21494583",
+            "name": "B_海运侧面-01",
+            "font_class": "ship-transportation-side",
+            "unicode": "e8dc",
+            "unicode_decimal": 59612
+        },
+        {
+            "icon_id": "21494584",
+            "name": "B_铁运侧面-01",
+            "font_class": "rail-transportation-side",
+            "unicode": "e8dd",
+            "unicode_decimal": 59613
+        },
+        {
+            "icon_id": "21494585",
+            "name": "B_运输侧面-01",
+            "font_class": "car-transportation-side",
+            "unicode": "e8de",
+            "unicode_decimal": 59614
+        },
+        {
+            "icon_id": "21494571",
+            "name": "B_运输_s-02",
+            "font_class": "land-transportation-circular",
+            "unicode": "e8d6",
+            "unicode_decimal": 59606
+        },
+        {
+            "icon_id": "21494572",
+            "name": "B_运输_s-01",
+            "font_class": "ship-transportation-circular",
+            "unicode": "e8d7",
+            "unicode_decimal": 59607
+        },
+        {
+            "icon_id": "21494573",
+            "name": "B_运输_s-03",
+            "font_class": "air-transport-circular",
+            "unicode": "e8d8",
+            "unicode_decimal": 59608
+        },
+        {
+            "icon_id": "21494574",
+            "name": "B_运输_s-04",
+            "font_class": "rail-transport-circular",
+            "unicode": "e8d9",
+            "unicode_decimal": 59609
+        },
+        {
+            "icon_id": "21494551",
+            "name": "B_空运-01",
+            "font_class": "air-transport-front",
+            "unicode": "e8d2",
+            "unicode_decimal": 59602
+        },
+        {
+            "icon_id": "21494552",
+            "name": "B_海运-01",
+            "font_class": "ship-transport-front",
+            "unicode": "e8d3",
+            "unicode_decimal": 59603
+        },
+        {
+            "icon_id": "21494553",
+            "name": "B_铁运-01",
+            "font_class": "rail-transport-front",
+            "unicode": "e8d4",
+            "unicode_decimal": 59604
+        },
+        {
+            "icon_id": "21494554",
+            "name": "B_陆运-01",
+            "font_class": "land-transport-front",
+            "unicode": "e8d5",
+            "unicode_decimal": 59605
+        },
+        {
+            "icon_id": "21494098",
+            "name": "采购管理（零件出库）",
+            "font_class": "procurement-management",
+            "unicode": "e8c9",
+            "unicode_decimal": 59593
+        },
+        {
+            "icon_id": "21494099",
+            "name": "补货单",
+            "font_class": "replenishment-order",
+            "unicode": "e8ca",
+            "unicode_decimal": 59594
+        },
+        {
+            "icon_id": "21494100",
+            "name": "货物抵达",
+            "font_class": "goods-arrive",
+            "unicode": "e8cb",
+            "unicode_decimal": 59595
+        },
+        {
+            "icon_id": "21494101",
+            "name": "抵达中转站",
+            "font_class": "arrive-transfer",
+            "unicode": "e8cc",
+            "unicode_decimal": 59596
+        },
+        {
+            "icon_id": "21494102",
+            "name": "货物发运",
+            "font_class": "shipment-of-goods",
+            "unicode": "e8cd",
+            "unicode_decimal": 59597
+        },
+        {
+            "icon_id": "21494103",
+            "name": "码头、起运点",
+            "font_class": "wharf-starting-point",
+            "unicode": "e8ce",
+            "unicode_decimal": 59598
+        },
+        {
+            "icon_id": "21494104",
+            "name": "收发货信息",
+            "font_class": "receiving-and-shipping-information",
+            "unicode": "e8cf",
+            "unicode_decimal": 59599
+        },
+        {
+            "icon_id": "21494105",
+            "name": "离开卸货港",
+            "font_class": "leaving-unloading",
+            "unicode": "e8d0",
+            "unicode_decimal": 59600
+        },
+        {
+            "icon_id": "21494106",
+            "name": "集装箱信息",
+            "font_class": "container-information",
+            "unicode": "e8d1",
+            "unicode_decimal": 59601
+        },
+        {
+            "icon_id": "21493694",
+            "name": "终点",
+            "font_class": "end-pointer",
+            "unicode": "e8c7",
+            "unicode_decimal": 59591
+        },
+        {
+            "icon_id": "21493695",
+            "name": "起点",
+            "font_class": "start-pointer",
+            "unicode": "e8c8",
+            "unicode_decimal": 59592
+        },
+        {
+            "icon_id": "21493683",
+            "name": "时间线_过磅-01",
+            "font_class": "weighing",
+            "unicode": "e8c5",
+            "unicode_decimal": 59589
+        },
+        {
+            "icon_id": "21493684",
+            "name": "联运",
+            "font_class": "intermodal",
+            "unicode": "e8c6",
+            "unicode_decimal": 59590
+        },
+        {
+            "icon_id": "21429436",
+            "name": "抵达",
+            "font_class": "arrival",
+            "unicode": "e8b8",
+            "unicode_decimal": 59576
+        },
+        {
+            "icon_id": "21429437",
+            "name": "抵达始发港",
+            "font_class": "arrive-departure",
+            "unicode": "e8b9",
+            "unicode_decimal": 59577
+        },
+        {
+            "icon_id": "21429438",
+            "name": "海关",
+            "font_class": "customs",
+            "unicode": "e8ba",
+            "unicode_decimal": 59578
+        },
+        {
+            "icon_id": "21429439",
+            "name": "空车",
+            "font_class": "empty-car",
+            "unicode": "e8bb",
+            "unicode_decimal": 59579
+        },
+        {
+            "icon_id": "21429440",
+            "name": "揽派送",
+            "font_class": "take-delivery",
+            "unicode": "e8bc",
+            "unicode_decimal": 59580
+        },
+        {
+            "icon_id": "21429441",
+            "name": "离开目的港",
+            "font_class": "depart-destination",
+            "unicode": "e8bd",
+            "unicode_decimal": 59581
+        },
+        {
+            "icon_id": "21429442",
+            "name": "揽收",
+            "font_class": "collect",
+            "unicode": "e8be",
+            "unicode_decimal": 59582
+        },
+        {
+            "icon_id": "21429443",
+            "name": "装车",
+            "font_class": "loading",
+            "unicode": "e8bf",
+            "unicode_decimal": 59583
+        },
+        {
+            "icon_id": "21429444",
+            "name": "已发运",
+            "font_class": "shipped",
+            "unicode": "e8c0",
+            "unicode_decimal": 59584
+        },
+        {
+            "icon_id": "21429445",
+            "name": "已送达",
+            "font_class": "arrived",
+            "unicode": "e8c1",
+            "unicode_decimal": 59585
+        },
+        {
+            "icon_id": "21428661",
+            "name": "B_审核",
+            "font_class": "review",
+            "unicode": "e8b7",
+            "unicode_decimal": 59575
+        },
+        {
+            "icon_id": "21428596",
+            "name": "出库单",
+            "font_class": "outbound-order",
+            "unicode": "e8b4",
+            "unicode_decimal": 59572
+        },
+        {
+            "icon_id": "21428597",
+            "name": "库存单",
+            "font_class": "inventory-list",
+            "unicode": "e8b5",
+            "unicode_decimal": 59573
+        },
+        {
+            "icon_id": "21428598",
+            "name": "入库单",
+            "font_class": "warehousing-list",
+            "unicode": "e8b6",
+            "unicode_decimal": 59574
+        },
+        {
+            "icon_id": "21428263",
+            "name": "电脑",
+            "font_class": "computer",
+            "unicode": "e8b2",
+            "unicode_decimal": 59570
+        },
+        {
+            "icon_id": "21428126",
+            "name": "对勾",
+            "font_class": "tick",
+            "unicode": "e8b1",
+            "unicode_decimal": 59569
+        },
+        {
+            "icon_id": "21427929",
+            "name": "B_集装箱单-01",
+            "font_class": "container-list",
+            "unicode": "e8af",
+            "unicode_decimal": 59567
+        },
+        {
+            "icon_id": "21427874",
+            "name": "订单",
+            "font_class": "order",
+            "unicode": "e8ae",
+            "unicode_decimal": 59566
+        },
+        {
+            "icon_id": "21409728",
+            "name": "拖车",
+            "font_class": "trailer",
+            "unicode": "e89e",
+            "unicode_decimal": 59550
+        },
+        {
+            "icon_id": "21394332",
+            "name": "带磁-01",
+            "font_class": "magnetic",
+            "unicode": "e89c",
+            "unicode_decimal": 59548
+        },
+        {
+            "icon_id": "21394333",
+            "name": "带电-01",
+            "font_class": "electricity",
+            "unicode": "e89d",
+            "unicode_decimal": 59549
+        }
+    ]
+}

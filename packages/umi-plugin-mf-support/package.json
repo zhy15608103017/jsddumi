@@ -1,0 +1,29 @@
+{
+  "name": "@jusda-tools/umi-plugin-mf-support",
+  "author": "chinasoft.yh.zhang",
+  "version": "0.0.6",
+  "description": "auto config chainwebpack to support module-federation",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "father-build"
+  },
+  "keywords": [],
+  "repository": "JUSDA/umi-plugin-mf-support",
+  "authors": {
+    "name": "chinasoft.yh.zhang",
+    "email": "chinasoft.yh.zhange@jusda.int"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@jusda-tools/umi-plugin-jusda-mf-bootstrap": "^0.0.2",
+    "webpack-remote-types-plugin": "^0.2.7"
+  },
+  "devDependencies": {
+    "@umijs/types": "3.5.35",
+    "father-build": "^1.20.0"
+  }
+}

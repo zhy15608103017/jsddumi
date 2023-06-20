@@ -1,0 +1,8 @@
+**/node_modules/*
+**/dist/*
+**/build/*
+**/public/*
+**/scripts/*
+**/src/static/*
+**/webpack.config.js
+**/src/styles/*

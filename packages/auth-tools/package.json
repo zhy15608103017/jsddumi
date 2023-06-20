@@ -1,0 +1,48 @@
+{
+  "name": "@jusda-tools/auth-tools",
+  "version": "0.3.2",
+  "description": "",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build:commonjs": "babel src --out-dir lib",
+    "build:umd": "cross-env FILE_NAME=auth-tools webpack",
+    "build:umd:min": "cross-env NODE_ENV=production npm run build:umd",
+    "build": "npm run clean && npm run build:commonjs && npm run build:umd && npm run build:umd:min",
+    "clean": "rimraf lib dist",
+    "build:dev": "nodemon --ignore dist/ --ignore node_modules/ --watch src/ -C -e ts,tsx,js,html,less,scss --debug -x \"npm run build\"",
+    "prepublish": "npm run build"
+  },
+  "keywords": [],
+  "author": "jusda-fe",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/runtime": "^7.8.7",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "cross-env": "^7.0.2",
+    "js-cookie": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@jusda-tools/jusda-publicmethod": "^0.0.6",
+    "@jusda-tools/language-control-panel": "^0.3.16",
+    "@jusda-tools/url-config": "^0.0.16",
+    "@jusda-tools/web-api-client": "0.0.5"
+  },
+  "files": [
+    "/lib",
+    "/src",
+    "/types",
+    "/locales"
+  ],
+  "types": "./types/index.d.ts",
+  "gitHead": "5b40f928ba8bab85179ca7e19aa4eb2f34aa9e15"
+}

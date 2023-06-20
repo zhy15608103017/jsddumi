@@ -1,0 +1,56 @@
+{
+  "name": "@jusda-tools/http-client",
+  "version": "0.0.42",
+  "description": "http-client",
+  "main": "dist/index.js",
+  "jsnext:main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "test": "echo Error: missing tests",
+    "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.ts'",
+    "lint:fix": "eslint -c .eslintrc.js 'src/**/*.ts' --fix",
+    "build:self": "rollup -c config/rollup.config.js",
+    "build:esm": "rollup -c config/rollup.config.esm.js",
+    "build:aio": "rollup -c config/rollup.config.aio.js",
+    "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
+    "build": "npm run clean && npm run build:self && npm run build:esm",
+    "prepublish": "npm run build"
+  },
+  "author": "yazohu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yazohu/jusda-tools-http-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yazohu/jusda-tools-http-client/issues"
+  },
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "devDependencies": {
+    "@js-lib/cli": "^1.6.0",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "cross-env": "5.2.0",
+    "es5-shim": "4.5.10",
+    "eslint": "^5.15.1",
+    "rimraf": "2.6.2",
+    "rollup": "0.57.1",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-node-resolve": "3.0.3",
+    "rollup-plugin-typescript2": "0.18.0",
+    "rollup-plugin-uglify": "1.0.0",
+    "ts-node": "7.0.1",
+    "tslib": "1.9.3",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "umi-request": "^1.2.19"
+  },
+  "gitHead": "53755b2a5740838cb3544aa97b6ba28d7dad6444"
+}

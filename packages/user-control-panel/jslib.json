@@ -1,0 +1,11 @@
+{
+    "name": "user-control-panel",
+    "npmname": "user-control-panel",
+    "umdname": "user-control-panel",
+    "username": "wenfuchao",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "target": "es5",
+      "module": "esnext",
+      "outDir": "./ts/dist", // 输出目录
+      "sourceMap": false, // 是否生成sourceMap
+      "moduleResolution": "node",
+      "allowJs": false, // 是否编辑js文件
+      "noUnusedLocals": true, // 未使用变量报错
+      "noImplicitAny": false, // 是否默认禁用 any
+      "experimentalDecorators": true, // 启动装饰器
+      "resolveJsonModule": true, // 加载json
+      "esModuleInterop": true,
+      "removeComments": false, // 删除注释
+  
+      "declaration": true, // 生成定义文件
+      "declarationMap": false, // 生成定义sourceMap
+      "declarationDir": "/types", // 定义文件输出目录
+      "lib": [
+        "dom",
+        "es5",
+        "es6",
+        "scripthost",
+        "esnext",
+        "es2015.collection"
+      ],
+      "jsx": "react"
+    },
+    "include": [
+        "src/**/*.ts"
+, "src/privatization.tsx"    ],
+    "exclude": [
+        "node_modules",
+        "**.d.ts"
+    ]
+}

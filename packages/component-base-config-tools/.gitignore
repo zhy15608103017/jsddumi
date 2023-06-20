@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.github
+.idea
+node_modules
+dist
+.DS_Store
+

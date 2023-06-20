@@ -1,0 +1,35 @@
+.jusda-freight-valuate-report-table {
+  .ant-table-content {
+    > table {
+      .ant-table-thead {
+        > tr {
+          > th {
+            &:last-child {
+              border-left: 1px solid #ccc;
+            }
+          }
+        }
+      }
+      .ant-table-tbody{
+        tr{
+            &:last-child{
+                td{
+                    border-bottom:  1px solid #ccc;
+                }
+            }
+
+        }
+      }
+      .ant-table-tbody,
+      .ant-table-summary {
+        > tr:not(.ant-table-placeholder){
+          > td{
+            &:last-child {
+              border-left: 1px solid #ccc;
+            }
+          }
+        }
+      }
+    }
+  }
+}

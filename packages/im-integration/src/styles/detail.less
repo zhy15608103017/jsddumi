@@ -1,0 +1,30 @@
+.im-detail {
+    .im-icon {
+        display: flex;
+        color: #ffc500;
+        cursor: pointer;
+        svg{
+            width: 40px;
+            height: 40px;   
+        }
+    }
+}
+
+.detail-addressbook {
+    .imant-popover-arrow {
+        border-bottom-color: transparent !important;
+        border-left-color: transparent !important;
+    }
+    .addRessBook {
+        overflow-y: unset;
+        height: unset;
+        .imant-collapse {
+            position: absolute;
+            // bottom: -20px;
+            width: 250px;
+            overflow: auto;
+            overflow-x: hidden;
+            max-height: 500px;
+        }
+    }
+}

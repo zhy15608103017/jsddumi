@@ -1,0 +1,36 @@
+
+
+ /* Border styles */
+ .packversion thead,
+ .packversion tr {
+   border-top-width: 1px;
+   border-top-style: solid;
+   border-top-color: #a8bfde;
+ }
+ .packversion {
+   border-bottom-width: 1px;
+   border-bottom-style: solid;
+   border-bottom-color: #a8bfde;
+ }
+
+ /* Padding and font style */
+ .packversion th {
+   font-size: 25px;
+ }
+ .packversion td,
+ .packversion th {
+   padding: 5px 10px;
+   /* font-size: 12px; */
+   font-family: Verdana;
+   color: #5b7da3;
+ }
+
+ /* Alternating background colors */
+ .packversion tr:nth-child(even) {
+   background: #d3dfed;
+   font-size: 20px;
+ }
+ .packversion tr:nth-child(odd) {
+   background: #fff;
+   font-size: 20px;
+ }

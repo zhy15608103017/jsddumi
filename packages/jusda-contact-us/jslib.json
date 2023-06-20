@@ -1,0 +1,11 @@
+{
+    "name": "im-component",
+    "npmname": "im-component",
+    "umdname": "im-component",
+    "username": "xiajie",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "0.0.1"
+}

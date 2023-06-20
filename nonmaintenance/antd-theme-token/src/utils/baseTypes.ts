@@ -1,0 +1,1 @@
+export const THEMETOKEN = 'Jusda_theme_token'; // antd-theme-token

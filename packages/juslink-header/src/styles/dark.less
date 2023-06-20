@@ -1,0 +1,175 @@
+@import "./common.less";
+@theme: dark;
+
+.@{ant-prefix}-@{theme} {
+    width: 100%;
+    height: 50px;
+    background-color: @dark-bg-color;
+    position: relative;
+    display: flex;
+    :global .transform-pop-container {
+        :global .ant-popover-arrow {
+            display: none !important;
+        }
+        :global .ant-popover-inner {
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+    .header_left {
+        display: flex;
+        float: left;
+        background-color: #222;
+        .apply_icon {
+            width: 56px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            > svg {
+                fill: @primary-color;
+            }
+        }
+        .open {
+            svg {
+                animation: turnopen 0.5s;
+                animation-fill-mode: forwards;
+            }
+        }
+        .close {
+            svg {
+                animation: turnclose 0.5s;
+                animation-fill-mode: forwards;
+            }
+        }
+        .logo_@{theme} {
+            width: 144px;
+            height: 50px;
+            cursor: pointer;
+            background-color: #000;
+            position: relative;
+            text-align: center;
+            &:hover {
+                background-color: #3e3e3e;
+                &::after {
+                    position: absolute;
+                    top: 55px;
+                    left: 1px;
+                    // transform: translateX(-50%);
+                    background: rgba(66, 66, 66, 0.9);
+                    border-radius: 4px;
+                    width: 145px;
+                    height: 30px;
+                    padding-top: 4px;
+                    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+                }
+            }
+            img {
+                width: 107px;
+                height: 42px;
+                transform: translateY(4px);
+            }
+            &.tip_lang_zh-CN {
+                &:hover::after {
+                    width: 145px !important;
+                    content: "\70b9\51fb\8fd4\56de\004a\0075\0073\004c\0069\006e\006b\9996\9875" !important;
+                }
+            }
+            &.tip_lang_en-US {
+                &:hover::after {
+                    width: 220px !important;
+                    content: "Click to visit JusLink homepage" !important;
+                }
+            }
+        }
+        .workbench_btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 32px;
+            line-height: 18px;
+            cursor: pointer;
+            height: 32px;
+            padding: 10px 9px 9px 10px;
+            height: 100%;
+            svg {
+                width: 18px;
+                height: 18px;
+                margin-right: 7px;
+                fill: @primary-color;
+            }
+            span {
+                font-family: PingFangSC-Regular;
+                font-size: 16px;
+                color: @primary-color;
+                text-align: center;
+            }
+            &:hover {
+                background: #3d3d3d;
+            }
+        }
+    }
+    .header_right {
+        margin-left: auto;
+        display: flex;
+        padding-right: 16px;
+        .tooltip_icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            > svg {
+                fill: @primary-color;
+            }
+            &:hover {
+                background-color: #3d3d3d;
+            }
+        }
+        .dividerWarp {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 16px;
+            .line {
+                height: 24px;
+                width: 1px;
+                background-color: #cb9c00;
+            }
+        }
+        .has-new-bulletin {
+            position: relative;
+            i {
+                position: absolute;
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+                display: block;
+                background-color: #ff6c6c;
+                top: 20%;
+                right: 18%;
+            }
+        }
+        .not-new-bulletin {
+            i {
+                display: none;
+            }
+        }
+    }
+}
+
+.tooltip_overlay_@{theme} {
+    .@{ant-prefix}-tooltip-arrow {
+        margin-top: -6px;
+        .@{ant-prefix}-tooltip-arrow-content {
+            background: rgba(66, 66, 66, 0.9);
+        }
+    }
+    .@{ant-prefix}-tooltip-inner {
+        margin-top: -6px;
+        background: rgba(66, 66, 66, 0.9);
+    }
+}

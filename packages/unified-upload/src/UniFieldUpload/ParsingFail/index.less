@@ -1,0 +1,76 @@
+.fail-container {
+  padding: 32px 0 24px 0;
+  & > div {
+    margin-bottom: 16px;
+  }
+  & > div:nth-last-child(1) {
+    margin: 0;
+  }
+  .fail-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      display: flex;
+      align-items: center;
+    }
+    svg {
+      margin-left: 16px;
+      cursor: pointer;
+      &:hover {
+        path {
+          fill: #ffc500;
+        }
+      }
+    }
+  }
+  .fail-text {
+    font-weight: 600;
+    font-size: 14px;
+    span {
+      margin-right: 4px;
+      svg {
+        color: #f96350;
+      }
+    }
+  }
+  .fail-table-container {
+    padding: 0 16px;
+    .ant-table-thead
+      > tr
+      > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+      width: 0;
+      height: 0;
+    }
+    th,
+    tr,
+    td {
+      font-size: 12px;
+    }
+    thead > tr > th {
+      background-color: #e5e5e5 !important;
+    }
+    tbody > tr > td {
+      background-color: #f3f3f3;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .ant-table-header {
+      background-color: #f3f3f3;
+    }
+    .ant-table-cell-scrollbar {
+      display: none;
+    }
+    /*滚动条样式*/
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #97979f;
+      border-radius: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f3f3f3;
+      border-radius: 0;
+    }
+  }
+}

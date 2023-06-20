@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "strict": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outDir": "types",
+        "lib": ["es5", "es6", "es7", "es2017", "dom"],
+        "allowJs": false,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx", "src/Intl/index.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "**.d.ts",
+        "dist", "docs"
+    ],
+    "allowSyntheticDefaultImports": true,
+}

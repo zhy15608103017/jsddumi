@@ -1,0 +1,72 @@
+
+// 去掉动画 start
+@keyframes noAnimation {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+// 去掉动画 end
+
+.rc-btn{
+    color: #000;
+    text-shadow: none;
+    box-shadow: none;
+    &:hover{
+        color: #000;
+    }
+}
+
+// chrome浏览器表单自动填充默认样式-autofill start
+// https://www.cnblogs.com/myyBlog/p/9547836.html
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background: none !important;
+    color: #FFFFFF !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+}
+// chrome浏览器表单自动填充默认样式-autofill end
+
+// 魔改密码输入框 后缀样式 start
+span.rc-input-password-icon{
+    svg[data-icon="eye-invisible"]{
+        display: none;
+    }
+    svg[data-icon="eye"]{
+        display: none;
+    }
+    // 闭眼 **
+    &::after{
+        display: block;
+        content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTkwMzcyMzkyNDkyIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEwOTg0IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0Ij48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwvc3R5bGU+PC9kZWZzPjxwYXRoIGQ9Ik05MTEuNyAzMjYuMmMtNS42LTQuNC0xMi4xLTYuNy0xOC44LTYuNy05LjYgMC0xOC43IDQuNy0yNSAxMi44LTAuMSAwLjEtMC4zIDAuMy0wLjUgMC42LTE3LjMgMTkuNy0xNzMuOCAxOTItMzU1LjMgMTkyLTE3Ni41IDAtMzM4LjktMTczLjgtMzU2LjktMTkzLjZsLTAuNS0wLjVjLTUuOC02LjYtMTQuNC0xMC40LTIzLjYtMTAuNC03LjYgMC0xNC43IDIuNi0yMC4xIDcuNC0xMi41IDEwLjktMTMuOSAzMS4zLTMuMiA0My43IDMuOSA1LjYgMzguNyA0NC4zIDkyLjMgODYuOWwtNzMuMSA3NmMtNS45IDUuOS04LjkgMTMuNy04LjYgMjIuMSAwLjMgOC4zIDMuOSAxNi4xIDkuOSAyMS42IDMuMSA1LjkgMTAuNCA5LjUgMTkuMiA5LjUgOC4yIDAgMTYtMy4zIDIxLjktOS40bDc5LjQtODIuMmM0MS4zIDI4LjQgODYuMyA1MS43IDEzMC41IDY3LjRsLTMwLjIgMTAyLjJjLTIuMiA4LjQtMS4zIDE3IDIuNyAyNC4yIDQuMSA3LjMgMTAuOSAxMi42IDE5LjEgMTQuOGwwLjMgMC4xaDkuMWMxNC41IDAgMjYuNy05LjYgMjkuOC0yMy40bDMwLjItMTAyLjJjMjYuMSA0LjcgNDkuNiA3LjEgNzEuOCA3LjEgMjIuNSAwIDQ2LjYtMi40IDcxLjgtN2wzMC4yIDEwMC43YzMuMyAxNC43IDE3LjcgMjMuNCAyOS44IDIzLjQgMy4xIDAgNi4zIDAgOC4zLTEuNiA3LjktMi4zIDE0LjUtNy40IDE4LjUtMTQuNCA0LjItNy40IDUuMi0xNi4xIDIuOS0yNC42TDY0My40IDU2MmM0NC4xLTE1LjggODkuMS0zOS4xIDEzMC41LTY3LjRsNzggODAuOGM2LjEgNiAxMy44IDkuNCAyMS45IDkuNCA4LjIgMCAxNi0zLjMgMjEuOS05LjQgMTIuMS0xMi4xIDEyLjgtMzAuOSAxLjUtNDMuOEw4MjQgNDU1LjVjNTguNS00My4zIDkzLjQtODUuMSA5My44LTg1LjZsMC4xLTAuMmM5LjMtMTMuNyA2LjYtMzIuNS02LjItNDMuNXoiIHAtaWQ9IjEwOTg1Ij48L3BhdGg+PC9zdmc+');
+        width: 14px;
+        height: 14px;
+    }
+    // 睁眼
+    &::before{
+        display: block;
+        content: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTkwMzc2MDg1NzI5IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjExMTk5IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0Ij48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwvc3R5bGU+PC9kZWZzPjxwYXRoIGQ9Ik05NTQuNiA0OTUuOGMtNzQuNC0xNDEuNi0yNTAtMjg0LjUtNDQyLjYtMjg0LjUtMTkyLjYgMC0zNjguMiAxNDMtNDQyLjIgMjg0LjZMNjAuOSA1MTJsOC45IDE2LjFjNzQgMTQxLjEgMjQ5LjYgMjg0LjYgNDQyLjIgMjg0LjZzMzY4LjItMTQzLjQgNDQyLjYtMjg0LjVsOC41LTE2LjEtOC41LTE2LjN6TTUxMiA3NDYuMWMtMTU4LjcgMC0zMDktMTE4LTM3Ny42LTIzNC4xQzIwMyAzOTUuNCAzNTMuMyAyNzcuOSA1MTIgMjc3LjlTODIwLjkgMzk1LjQgODg5LjYgNTEyQzgyMC45IDYyOC4xIDY3MC43IDc0Ni4xIDUxMiA3NDYuMXogbTAgMCIgcC1pZD0iMTEyMDAiPjwvcGF0aD48cGF0aCBkPSJNNTEyIDUxMm0tMTYxLjMgMGExNjEuMyAxNjEuMyAwIDEgMCAzMjIuNiAwIDE2MS4zIDE2MS4zIDAgMSAwLTMyMi42IDBaIiBwLWlkPSIxMTIwMSI+PC9wYXRoPjwvc3ZnPg==');
+        width: 14px;
+        height: 14px;
+    }
+}
+
+span.rc-input-password-icon[aria-label="eye"]{
+    &::after{
+        display: none;
+    }
+}
+
+span.rc-input-password-icon[aria-label="eye-invisible"]{
+    &::before{
+        display: none;
+    }
+}
+// 魔改密码输入框 后缀样式 end

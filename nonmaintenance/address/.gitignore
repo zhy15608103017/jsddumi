@@ -1,0 +1,8 @@
+/**/node_modules/
+/**/.github/
+/**/dist/
+/**/.idea/
+/**/lib/
+/**/*.d.ts
+/yarn.lock
+/yarn-error.log

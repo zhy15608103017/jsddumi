@@ -1,0 +1,66 @@
+@light-theme: light;
+@dark-theme: dark;
+.iconBox-@{dark-theme} {
+    .icon {
+        > svg {
+            > path {
+                fill: #ffc500;
+            }
+        }
+    }
+}
+
+.iconBox-@{light-theme} {
+    .icon {
+        > svg {
+            > path {
+                fill: #000;
+            }
+        }
+    }
+}
+
+.iconBox {
+    position: relative;
+    line-height: 13px;
+    .icon {
+        cursor: pointer;
+        display: inline-block;
+        svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+    .managerBox {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        width: 687px;
+        height: 311px;
+        padding: 8px;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 12px 0px #0000006f;
+        .businessTable {
+            table {
+                width: 100%;
+            }
+            .businessTable_footer {
+                text-align: center;
+                .footer_btn {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.operate_icon {
+    &:hover {
+        cursor: pointer;
+    }
+    > svg {
+        height: 18px;
+        width: 18px;
+    }
+}

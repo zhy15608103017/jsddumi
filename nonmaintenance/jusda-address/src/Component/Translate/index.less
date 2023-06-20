@@ -1,0 +1,21 @@
+    .translate-container {
+        position: relative;
+        transition: 0.6s;
+
+        .translate-positive-container {
+            position: absolute;
+            pointer-events: none;
+        }
+        .translate-reverse-container {
+            transform: rotateY(180deg);
+            position: absolute;
+            pointer-events: none;
+        }
+        .show-node {
+            z-index: 1000;
+            pointer-events: auto;
+        }
+    }
+    .is-transform {
+        transform: rotateY(180deg);
+    }

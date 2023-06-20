@@ -1,0 +1,11 @@
+{
+    "name": "address",
+    "npmname": "address",
+    "umdname": "address",
+    "username": "xx",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

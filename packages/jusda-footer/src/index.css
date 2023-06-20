@@ -1,0 +1,14 @@
+.jusda-base-footer {
+    line-height: 40px;
+    color: #939393;
+    font-size: 12px;
+    background: #222222;
+    height: 40px;
+    font-family: "Microsoft YaHei", 微软雅黑;
+}
+.jusda-base-footer img{ 
+    padding: 0 10px;
+}
+.bei_a:hover {
+    color: #ffc500 !important;
+}

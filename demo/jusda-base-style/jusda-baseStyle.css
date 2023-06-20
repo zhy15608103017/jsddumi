@@ -1,0 +1,566 @@
+.jusda-search-container {
+  width: 100%;
+  position: relative;
+  background: #fff;
+}
+.jusda-search-container .jusda-search-contents {
+  width: 100%;
+  display: flex;
+}
+.jusda-search-container .jusda-search-wrapper {
+  padding: 20px 0 28px 2.7%;
+  max-width: 85%;
+  flex: 1 1 85%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.jusda-search-container .jusda-search-wrapper .jusda-search-item {
+  max-width: 25%;
+  flex: 1 1 25%;
+  margin-top: 10px;
+  padding-right: 3%;
+}
+.jusda-search-container .jusda-search-wrapper .jusda-search-item:nth-child(4) {
+  margin-top: 0;
+}
+.jusda-search-container .jusda-search-wrapper .jusda-search-item:nth-child(3) {
+  margin-top: 0;
+}
+.jusda-search-container .jusda-search-wrapper .jusda-search-item:nth-child(2) {
+  margin-top: 0;
+}
+.jusda-search-container .jusda-search-wrapper .jusda-search-item:nth-child(1) {
+  margin-top: 0;
+}
+.jusda-search-container .jusda-search-wrapper .jusda-search-item > div {
+  width: 100%;
+}
+.jusda-search-container .jusda-search-input {
+  border-radius: 2px;
+}
+.jusda-search-container .jusda-search-buttons-wrapper {
+  padding: 0 2.4% 0 2.4%;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.jusda-search-container .jusda-search-buttons-wrapper .jusda-search-btn {
+  border-radius: 3px;
+  min-width: 90px;
+  max-width: 140px;
+  width: 100%;
+}
+.jusda-search-container .jusda-search-buttons-wrapper .jusda-search-btn.jusda-search-btn-normal {
+  margin-bottom: 10px;
+}
+.jusda-search-container .jusda-search-buttons-wrapper .jusda-search-btn.jusda-search-btn-normal:hover {
+  border-color: #ffc500;
+}
+.jusda-search-container .jusda-search-switch {
+  position: absolute;
+  bottom: -7px;
+  height: 14px;
+  width: 46px;
+  background: #ffffff;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  cursor: pointer;
+  transform: translateX(-23px);
+  transition: 0.2s;
+}
+.jusda-search-container .jusda-search-switch:hover {
+  background: #ffc500;
+}
+.jusda-main-container {
+  background: #f2f2f2;
+  width: 100%;
+  padding: 24px;
+}
+.jusda-table-switch-wrapper {
+  padding: 24px 24px 36px 24px !important;
+}
+.jusda-table-switch-wrapper .jusda-table-switch-btn-container {
+  margin-top: 8px;
+  height: 30px;
+  position: relative;
+  background-image: linear-gradient(180deg, #e7e7e7 0%, #ffffff 30%);
+}
+.jusda-table-switch-wrapper .jusda-table-switch-btn-container .jusda-table-switch-btn {
+  border-color: transparent;
+  border-bottom-right-radius: 15px 50%;
+  border-bottom-left-radius: 15px 50%;
+  width: 140px;
+  height: 30px;
+  top: 0;
+  list-style: 24px;
+  position: absolute;
+  left: calc(50% - 50px);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.jusda-table-wrapper {
+  padding: 0 24px;
+}
+.jusda-search-container-shadow {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.jusda-table-container {
+  margin-top: 16px;
+  font-size: 14px;
+}
+.jusda-table-container .ant-table-thead > tr > th {
+  background: #fffbea !important;
+  border-bottom: 0;
+}
+.jusda-table-container .ant-table-thead > tr > th .ant-table-column-sorters {
+  padding: 0;
+}
+.jusda-table-container .ant-table-tbody > tr > td {
+  border-bottom: none;
+}
+.jusda-table-container .ant-table-tbody > tr.ant-table-row:hover > td {
+  background: #fff8d9 !important;
+}
+.jusda-table-container .ant-table-tbody > tr:last-child > td {
+  border-bottom: 1px solid #e0e0e0;
+}
+.jusda-table-container .ant-table-tbody > tr.ant-table-row-selected > td {
+  background: #fff8d9 !important;
+  border-bottom: none;
+}
+.jusda-table-container table tr th.ant-table-selection-column,
+.jusda-table-container table tr td.ant-table-selection-column {
+  padding-right: 16px;
+  padding-left: 16px;
+  text-align: center;
+}
+.jusda-table-container td.ant-table-column-sort {
+  background: none;
+}
+.jusda-table-container .ant-table-tbody > tr:nth-of-type(2n) {
+  background: #f9f9f9;
+}
+.jusda-table-container tr:nth-of-type(2n) > .ant-table-cell-fix-right,
+.jusda-table-container tr:nth-of-type(2n) > .ant-table-cell-fix-left {
+  background-color: #f9f9f9;
+}
+.jusda-table-container .jusda-table-icon-color {
+  color: #ea9000;
+  cursor: pointer;
+}
+.jusda-table-container .jusda-table-icon-color:hover {
+  color: #ffc500;
+}
+.jusda-table-container .jusda-table-icon-color svg {
+  color: #ea9000;
+  cursor: pointer;
+}
+.jusda-table-container .jusda-table-icon-color svg:hover {
+  color: #ffc500;
+}
+.jusda-table-container .ant-table-measure-row ~ tr:nth-child(2n) {
+  background-color: transparent;
+}
+.jusda-table-container .ant-table-measure-row ~ tr:nth-child(2n) .ant-table-cell-fix-left,
+.jusda-table-container .ant-table-measure-row ~ tr:nth-child(2n) .ant-table-cell-fix-right {
+  background-color: #fff;
+}
+.jusda-table-container .ant-table-measure-row ~ tr:nth-child(2n-1) {
+  background-color: #f9f9f9;
+}
+.jusda-table-container .ant-table-measure-row ~ tr:nth-child(2n-1) .ant-table-cell-fix-left,
+.jusda-table-container .ant-table-measure-row ~ tr:nth-child(2n-1) .ant-table-cell-fix-right {
+  background-color: #f9f9f9;
+}
+.jusda-table-container .ant-pagination .ant-pagination-item,
+.jusda-table-container .ant-pagination .ant-pagination-prev,
+.jusda-table-container .ant-pagination .ant-pagination-next,
+.jusda-table-container .ant-pagination .ant-pagination-jump-prev,
+.jusda-table-container .ant-pagination .ant-pagination-jump-next {
+  min-width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 4px;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination {
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-total-text,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-select-selector,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-options,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-options-quick-jumper {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  font-size: 12px;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-total-text .ant-select-selection-item,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-select-selector .ant-select-selection-item,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-options .ant-select-selection-item,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-options-quick-jumper .ant-select-selection-item {
+  font-size: 12px;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-total-text input,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-select-selector input,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-options input,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-options-quick-jumper input {
+  height: 24px;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border-color: #ea9000;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-item-container .ant-pagination-item-link-icon {
+  color: #ea9000;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-prev > button,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-next > button {
+  border-radius: 4px;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-prev:not(.ant-pagination-disabled) > button:hover,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-next:not(.ant-pagination-disabled) > button:hover {
+  border-color: #ea9000;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-prev:not(.ant-pagination-disabled) > button:hover span,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-next:not(.ant-pagination-disabled) > button:hover span {
+  color: #ea9000;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-item-active,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-item:hover {
+  border-color: #ea9000;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-item-active a,
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-item:hover a {
+  color: #ea9000;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-item {
+  border-radius: 4px;
+}
+.jusda-table-container .ant-pagination.ant-table-pagination .ant-pagination-item a {
+  font-size: 12px;
+}
+.jusda-drawer-wrap {
+  position: relative;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-create-button {
+  text-align: center;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-collapse-text {
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-collapse-text .jusda-drawer-collapse-number {
+  color: #ffc500;
+  font-size: 16px;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-switch-button {
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 23px);
+  width: 46px;
+  height: 14px;
+  text-align: center;
+  background: #494949;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-switch-button img {
+  position: absolute;
+  top: -9px;
+  left: 7px;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 16px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table th {
+  background-color: #fffbea;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination .ant-pagination-item,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination .ant-pagination-prev,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination .ant-pagination-next,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination .ant-pagination-jump-prev,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination .ant-pagination-jump-next {
+  min-width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 4px;
+  background: unset;
+  border: 0;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-table-pagination.ant-pagination {
+  margin-bottom: 0;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-prev {
+  float: left;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-prev .ant-pagination-item-link {
+  color: #f9f9f9;
+  background-color: unset;
+  border: 0;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-next {
+  float: left;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-next .ant-pagination-item-link {
+  color: #f9f9f9;
+  background-color: unset;
+  border: 0;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-table-tbody > tr:nth-of-type(2n) {
+  background: #f9f9f9;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table tr:nth-of-type(2n) > .ant-table-cell-fix-right,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table tr:nth-of-type(2n) > .ant-table-cell-fix-left {
+  background-color: #f9f9f9;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .jusda-table-icon-color {
+  color: #ea9000;
+  cursor: pointer;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .jusda-table-icon-color:hover {
+  color: #ffc500;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .jusda-table-icon-color svg {
+  color: #ea9000;
+  cursor: pointer;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .jusda-table-icon-color svg:hover {
+  color: #ffc500;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-disabled a,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-disabled:hover a,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-disabled:focus a,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-disabled .ant-pagination-item-link,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-disabled:hover .ant-pagination-item-link,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-disabled:focus .ant-pagination-item-link {
+  color: #f9f9f9;
+  background-color: transparent;
+  border: none;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-item a {
+  color: #f9f9f9;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-item-active a {
+  color: #ffb000;
+  font-size: 14px;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-item,
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-options {
+  float: left;
+}
+.jusda-drawer-wrap .jusda-drawer-container .jusda-drawer-table .ant-pagination-total-text {
+  margin-left: 3px;
+  color: #f9f9f9;
+}
+.jusda-drawer-wrap .ant-drawer-content-wrapper {
+  background: rgba(0, 0, 0, 0.5);
+}
+.jusda-drawer-wrap .ant-drawer-content-wrapper .ant-drawer-content {
+  background-color: unset;
+}
+.jusda-drawer-wrap .ant-drawer-wrapper-body .ant-drawer-body {
+  padding: 20px;
+}
+.jusda-drawer-wrap .ant-drawer-content-wrapper {
+  height: auto;
+}
+.jusda-drawer-wrap .ant-drawer-content-wrapper .ant-drawer-content {
+  position: unset;
+}
+.jusda-tabs-container {
+  background-color: #ffffff;
+}
+.jusda-tabs-container .ant-tabs {
+  height: 100%;
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav {
+  margin: 0;
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav::before {
+  border-bottom-color: #ffc500;
+  border-bottom-width: 2px;
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav .ant-tabs-tab {
+  height: 35px;
+  margin-bottom: 5px;
+  margin-right: 2px;
+  color: #999999;
+  background-color: #f5f5f5;
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav .ant-tabs-tab > div {
+  min-width: 130px;
+  text-align: center;
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav .ant-tabs-tab:hover {
+  color: #ea9000;
+  background-color: #fffbea;
+  border-color: transparent;
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav .ant-tabs-tab-active {
+  height: 40px;
+  margin-bottom: 0;
+  background-color: #fff;
+  border-color: #ffc500;
+  border-width: 2px;
+  border-bottom-color: transparent;
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: rgba(0, 0, 0, 0.65);
+}
+.jusda-tabs-container .ant-tabs .ant-tabs-nav .ant-tabs-tab-active:hover {
+  color: #ea9000;
+  background-color: #fff;
+  border-color: #ffc500;
+  border-width: 2px;
+  border-bottom-color: transparent;
+}
+.jusda-nested-table-container {
+  margin-top: 16px;
+}
+.jusda-nested-table-container .tableShadow > td {
+  border-bottom: 0 !important;
+}
+.jusda-nested-table-container .ant-table-thead > tr > th {
+  background-color: #fffbea;
+  border-bottom: 0;
+}
+.jusda-nested-table-container .ant-table-thead > tr > th .ant-table-column-sorters {
+  padding: 0;
+}
+.jusda-nested-table-container .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #e9e9e9;
+}
+.jusda-nested-table-container .ant-table-tbody .ant-table-expanded-row {
+  background-color: #f9f9f9;
+}
+.jusda-nested-table-container .ant-table-tbody .ant-table-expanded-row td,
+.jusda-nested-table-container .ant-table-tbody .ant-table-expanded-row tr {
+  background-color: #f9f9f9 !important;
+}
+.jusda-nested-table-container .ant-table-tbody .ant-table-expanded-row > td {
+  border-bottom: 0;
+}
+.jusda-nested-table-container table tr th.ant-table-selection-column,
+.jusda-nested-table-container table tr td.ant-table-selection-column {
+  padding-right: 16px;
+  padding-left: 16px;
+  text-align: center;
+}
+.jusda-nested-table-container td.ant-table-column-sort {
+  background: none;
+}
+.jusda-nested-table-container tr:nth-of-type(2n) > .ant-table-cell-fix-right,
+.jusda-nested-table-container tr:nth-of-type(2n) > .ant-table-cell-fix-left {
+  background-color: #f9f9f9;
+}
+.jusda-nested-table-container .jusda-table-icon-color {
+  color: #ea9000;
+  cursor: pointer;
+}
+.jusda-nested-table-container .jusda-table-icon-color:hover {
+  color: #ffc500;
+}
+.jusda-nested-table-container .jusda-table-icon-color svg {
+  color: #ea9000;
+  cursor: pointer;
+}
+.jusda-nested-table-container .jusda-table-icon-color svg:hover {
+  color: #ffc500;
+}
+.jusda-nested-table-container .ant-pagination .ant-pagination-item,
+.jusda-nested-table-container .ant-pagination .ant-pagination-prev,
+.jusda-nested-table-container .ant-pagination .ant-pagination-next,
+.jusda-nested-table-container .ant-pagination .ant-pagination-jump-prev,
+.jusda-nested-table-container .ant-pagination .ant-pagination-jump-next {
+  min-width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 4px;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination {
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-total-text,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-select-selector,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-options,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-options-quick-jumper {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  font-size: 14px;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-total-text .ant-select-selection-item,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-select-selector .ant-select-selection-item,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-options .ant-select-selection-item,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-options-quick-jumper .ant-select-selection-item {
+  font-size: 12px;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-total-text input,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-select-selector input,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-options input,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-options-quick-jumper input {
+  height: 24px;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border-color: #ea9000;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-item-container .ant-pagination-item-link-icon {
+  color: #ea9000;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-prev > button,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-next > button {
+  border-radius: 4px;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-prev:not(.ant-pagination-disabled) > button:hover,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-next:not(.ant-pagination-disabled) > button:hover {
+  border-color: #ea9000;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-prev:not(.ant-pagination-disabled) > button:hover span,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-next:not(.ant-pagination-disabled) > button:hover span {
+  color: #ea9000;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-item-active,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-item:hover {
+  border-color: #ea9000;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-item-active a,
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-item:hover a {
+  color: #ea9000;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-item {
+  border-radius: 4px;
+}
+.jusda-nested-table-container .ant-pagination.ant-table-pagination .ant-pagination-item a {
+  font-size: 12px;
+}
+.ellipsis-line-1 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.ellipsis-line-2 {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+

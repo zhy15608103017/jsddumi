@@ -1,0 +1,176 @@
+// @import "~@/global.less";
+@headerH: 64px;
+@footerH: 40px;
+@globalWidth: 1440px;
+@success-color: #5fbd64;
+
+.waybillMapBox {
+    // top: @headerH;
+    // left: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    // width: 100vw;
+    height: calc(100vh - @headerH - @footerH);
+    padding-top: 20px;
+    // position: fixed;
+    overflow: hidden;
+
+    .hide {
+        display: none;
+    }
+
+    .waybillMap {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    }
+
+    .waybillMapComps {
+        position: relative;
+        z-index: 2;
+        min-width: 50%;
+        max-width: 90%;
+        height: 100%;
+        margin: auto;
+        padding: 20px 0;
+        pointer-events: none;
+
+        .routesComp {
+            // max-height: 200px;
+            // overflow-y: hidden;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            pointer-events: auto;
+        }
+    }
+
+    .changemap {
+        position: absolute;
+        z-index: 10;
+        top: calc(0.375rem + 20px);
+        right: 0.5rem;
+        width: 100px;
+        height: 20px;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        border: 1px solid #444;
+        border-radius: 2px;
+        cursor: pointer;
+
+        .icon {
+            width: 1.25rem;
+            height: 1rem;
+            margin-top: -4px;
+        }
+    }
+}
+
+.startMarker {
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: calc(40px * 200 / 200);
+    background: transparent url('../../assets/img/start.png') no-repeat 0px 0px;
+    background-position: center;
+    background-size: 100%;
+}
+.timeLeft {
+    position: absolute;
+    height: 28px;
+    top: -50px;
+    // min-width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2px 5px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+  .inner{
+      white-space: nowrap;
+  }
+  .closeButton {
+    line-height: 24px;
+    // position: absolute;
+    // right: -15px;
+    padding-left: 5px;
+    font-size: 16;
+    font-weight: bold;
+    top: 1px;
+    cursor: pointer;
+  }
+.endMarker {
+    position: absolute;
+    top: -20px;
+    display: block;
+    width: 50px;
+    height: calc(40px * 200 / 200);
+    background: transparent url('../../assets/img/end.png') no-repeat 13px 0px;
+    background-size: 80%;
+}
+.nowmarke {
+    width: 50px;
+    height: calc(40px * 200 / 200);
+    display: block;
+    background: transparent url('../../assets/img/TPM_ROAD.png') no-repeat 0px 0px;
+    background-size: 100%;
+    background-position: center;
+    position: absolute;
+    top: -20px;
+    cursor: pointer;
+  }
+.flagMarker {
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: calc(40px * 200 / 200);
+    background: transparent url('../../assets/img/start.png') no-repeat 0px 0px;
+    background-position: center;
+    background-size: 100%;
+}
+
+.port {
+    position: relative;
+    bottom: -30px;
+    left: 10px;
+    // width: 100px;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.serialNO {
+    position: relative;
+    bottom: -10px;
+    left: 17px;
+    // left: 15px;
+    width: 16px;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-overflow: ellipsis;
+    background-color: #ffc500;
+}

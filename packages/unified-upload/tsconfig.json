@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "strict": true,
+    "emitDeclarationOnly": true,
+    "lib": ["es6", "dom", "es2017"],
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "declaration": true, // 生成定义文件
+    "declarationMap": false, // 生成定义sourceMap
+    "declarationDir": "types" // 定义文件输出目录
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/Intl/index.js"],
+  "exclude": ["node_modules", "**.d.ts"]
+}

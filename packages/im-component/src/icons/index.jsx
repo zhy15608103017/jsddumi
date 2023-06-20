@@ -1,0 +1,3 @@
+import React from 'react'
+
+export const closeIcon = (<svg t="1624347187587" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16765" width="24" height="24"><path d="M822.624 246.624a32 32 0 0 0-45.248-45.248L512 466.752 246.624 201.376a32 32 0 0 0-45.248 45.248L466.752 512l-265.376 265.376a32 32 0 1 0 45.248 45.248L512 557.248l265.376 265.376a32 32 0 0 0 45.248-45.248L557.248 512l265.376-265.376z" p-id="16766" fill="#97979F"></path></svg>)

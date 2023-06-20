@@ -1,0 +1,11 @@
+{
+    "name": "@jusda-tools/buried-point",
+    "npmname": "@jusda-tools/buried-point",
+    "umdname": "@jusda-tools/buried-point",
+    "username": "yazohu",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}
