@@ -2,10 +2,10 @@ import React, { useImperativeHandle, forwardRef } from 'react';
 import { Form, Row, Button } from 'antd';
 import { itemNodeMap } from './config';
 import classNames from 'classnames';
-import './index.less';
 import { Col } from 'antd';
 import getLocale from '../../locale';
 import { currentLanguage } from '@jusda-tools/language-control-panel';
+import { tableSelect } from './style';
 
 type props = {
     config?: any;
@@ -65,7 +65,7 @@ const TableSearch = (props: props, ref: any) => {
         }
     };
     return (
-        <div className="table-select">
+        <div className={tableSelect()}>
             <Form
                 requiredMark="optional"
                 form={form}

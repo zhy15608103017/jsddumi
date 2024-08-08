@@ -1,7 +1,7 @@
 {
   "name": "@jusda-tools/user-control-panel",
-  "version": "1.0.1-alpha.0",
-  "description": "用户信息面板",
+  "version": "2.0.6-alpha.0",
+  "description": "用户信息面板(antd v5)",
   "main": "dist/index.js",
   "sideEffects": true,
   "scripts": {
@@ -88,9 +88,11 @@
   "dependencies": {
     "@emotion/css": "11.11.0",
     "@emotion/react": "11.11.0",
-    "@jusda-tools/auth-tools": "^0.3.2",
+    "@jusda-tools/auth-switch": "^0.0.3-alpha.0",
+    "@jusda-tools/auth-tools": "^0.3.11",
     "@jusda-tools/jusda-publicmethod": "^0.0.6",
-    "@jusda-tools/jusda-theme-config": "^1.0.1-alpha.0",
+    "@jusda-tools/jusda-theme-config": "^1.0.10",
+    "@jusda-tools/language-control-panel": "^0.3.22",
     "@jusda-tools/url-config": "^0.0.16",
     "@jusda-tools/web-api-client": "^0.0.16",
     "antd": "5.6.0",

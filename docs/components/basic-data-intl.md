@@ -139,12 +139,14 @@ export default BasicDataIntl;
 ```
 ### 获取基础数据类型地址 https://wiki.jusda.int/pages/viewpage.action?pageId=42339733
 
+<!-- 提取MD -->
 ### getBasicDataIntl options 参数
 
 | 参数       | 说明                 | 是否必填 | 类型       | 参数示例                                                                                             |
 | ---------- | -------------------- | -------- | ---------- | ---------------------------------------------------------------------------------------------------- |
 | dataSource | 数据源               | 是       | 对象、数组 | [{code:value} ]                                                                                      |
 | config     | 需要获取国际化的配置 | 是       | 数组对象   | [{ code: 需要添加国际化的字段名, type: 该code所属的类型, nameAfterConversion: 添加后的国际化字段名}] |
+<!-- end提取MD -->
 
 ## 更新日志
 ###### 1.0.9更新内容:

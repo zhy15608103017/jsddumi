@@ -21,7 +21,7 @@ group:
 ```bash
 $ npm install --save @jusda-tools/jusda-footer --registry http://nexus.jusda.int/verdaccio/
 ```
-
+<!-- 提取MD -->
 ## API
 
 | 参数                 | 说明     | 类型   | 默认值               | 备注 |
@@ -31,4 +31,11 @@ $ npm install --save @jusda-tools/jusda-footer --registry http://nexus.jusda.int
 | style                | style对象 | object | -      | -     |
 | attrs                | footer标签上附加的其他属性 | object | -       | -     |
 
+<!-- end提取MD -->
 
+
+
+###### 0.1.16 更新内容:
+```base
+1.判断国内外逻辑剔除，改为使用 @jusda-tools/local-permission 组件判断
+```

@@ -26,7 +26,13 @@ const inputOptions = {
     // 自己的插件
     plugins: [
         json(),
-        nodeResolve(), // 必写!! 让rollup能够定位node_modules里面的依赖
+        nodeResolve({
+            extensions: [".js", ".jsx", ".ts", ".tsx"],
+            jsnext: true,
+            main: true,
+            browser: true,
+            module: true,
+        }), // 必写!! 让rollup能够定位node_modules里面的依赖
         postcss(rollPostcssConfig),
         commonjs(), // 必写!! 让rollup能够解析commonjs格式的包
         // ts文件转换
@@ -41,6 +47,7 @@ const inputOptions = {
             babelHelpers: 'bundled',
             exclude: /^(.+\/)?node_modules\/.+$/,
             extensions: ['.js', '.jsx', '.ts', '.tsx'],
+            skipPreflightCheck: 'true',
         }),
         // 处理js,ts中的图片
         // image({

@@ -10,7 +10,7 @@ group:
 
 ## 背景
 
-个人信息面板组件，现在主要集成于jusda-header组件，也可以单独集成使用
+个人信息面板组件，现在主要集成于juslink-header组件，也可以单独集成使用
 
 
 ## 代码演示
@@ -22,6 +22,8 @@ group:
 ```bash
 $ npm install --save @jusda-tools/user-control-panel --registry http://nexus.jusda.int/verdaccio/
 ```
+
+<!-- 提取MD -->
 
 ## API
 
@@ -44,6 +46,7 @@ $ npm install --save @jusda-tools/user-control-panel --registry http://nexus.jus
 | requirePermission    | 是否校验切换身份     | boolean | true   | -    |
 | subMenuWrapClassName | 子菜单展开样式名称   | string  | -      | -    |
 
+<!-- end提取MD -->
 
 ## 更新日志
 ###### 0.1.87更新内容:
@@ -65,4 +68,9 @@ $ npm install --save @jusda-tools/user-control-panel --registry http://nexus.jus
 ```base
  1. 升级antd(v5.6.0)、react(v18.2.0)、react-dom(v18.2.0)、样式采用css in js 方案
  2. 移除了 overlay 参数
+```
+
+###### 2.0.4-alpha.0更新内容:
+```base
+ 1. 我的反馈增加功能开关管控
 ```

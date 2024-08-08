@@ -7,7 +7,7 @@ group:
   order: 4
 ---
 # unified-upload-task 统一上传组件UI(接入任务中心).
-
+<!-- 提取MD -->
 ## API
 ### unified-upload-task
 | 参数                   | 说明                             | 类型                                                  | 默认                | 备注                                                      |
@@ -47,7 +47,7 @@ group:
 | autoSubmit             | 是否自动提交                     | boolean                                               | false               |                                                           |
 | downloadTip            | 开始下载的提示                   | string                                                | 正在下载，请稍后... |                                                           |
 
-
+<!-- end提取MD -->
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "jusda-cli",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "jusda-cli",
   "main": "src/main.js",
   "scripts": {

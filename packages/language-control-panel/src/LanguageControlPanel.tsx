@@ -4,11 +4,12 @@
 /* eslint-disable @typescript-eslint/indent */
 import * as React from "react";
 import { CookieTools, JUSDA_LANGUAGE } from '@jusda-tools/jusda-publicmethod';
+import { initCssVariables } from "@jusda-tools/jusda-theme-config";
 import { enIcon, zhIcon } from './icons';
 import "./LanguageControlPanel.less";
 
 const { useState } = React;
-
+initCssVariables();
 type localeType = "en-US" | "zh-CN" | "zh";
 interface LanguageControlPanelType {
   onClick: (value: string) => void;

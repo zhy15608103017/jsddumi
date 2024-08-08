@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/interface-name-prefix */
+/* eslint-disable */
+// @ts-nocheck
 import React from 'react';
 import { ConfigProvider, Menu, Layout } from 'antd';
 import Icon, { RightOutlined, LeftOutlined } from '@ant-design/icons';
@@ -8,7 +10,10 @@ import { formatRoutes, getNavSelect } from './utils';
 import { logo } from './icons';
 // @ts-ignore
 import authComponent from '@jusda-tools/auth-component';
-import './styles/sider-nav-menu-light.less';
+import { getAntdConfig, initCssVariables } from "@jusda-tools/jusda-theme-config";
+initCssVariables();
+import { siderMenuPopup, siderNavMenuWrapper } from './styles/index';
+// import './styles/sider-nav-menu-light.less';
 
 const { Sider } = Layout;
 
@@ -25,6 +30,7 @@ interface IRoute {
     target?: '_blank' | '_self' | '_parent' | '_top';
     [key: string]: any;
 }
+
 
 interface SiderNavMenuProps {
     name?: string;
@@ -53,7 +59,7 @@ const SiderNavMenu: React.FC<SiderNavMenuProps> = (props) => {
         onClick,
         collapsed,
         onCollapse = () => {},
-        width = 264,
+        width = 200,
         collapsedWidth = 56,
         iconSize = 32,
     } = props;
@@ -151,13 +157,13 @@ const SiderNavMenu: React.FC<SiderNavMenuProps> = (props) => {
                                     whiteSpace: 'nowrap',
                                     textOverflow: 'ellipsis',
                                     overflow: 'hidden',
-                                    textIndent: '10px',
+                                    // textIndent: '10px',
                                 }}
                             >
                                 {item.name}
                             </span>
                         }
-                        popupClassName={`sider-menu-popup-${theme}`}
+                        popupClassName={`${siderMenuPopup()} sider-menu-popup-${theme}`}
                     >
                         {deepRenderMenus(item.routes)}
                     </SubMenu>
@@ -196,37 +202,44 @@ const SiderNavMenu: React.FC<SiderNavMenuProps> = (props) => {
     }, [routes]);
 
     return (
-        <ConfigProvider prefixCls="juslink">
-            <div className={`sider-nav-menu-wrapper-${theme}`}>
-                <div className="bu-info-wrapper">
-                    <div className="bu-name-icon-wrapper">
-                        {logo}
-                        {collapsed ? null : (
-              <>
-                <span />
-                {name}
-              </>
-                        )}
+        <ConfigProvider
+            prefixCls="juslink"
+            theme={{
+                token: { 
+                    ...getAntdConfig('v5'),
+                    borderRadius: 0,
+                },
+            }}
+        >
+            <Layout>
+                <div className={`${siderNavMenuWrapper()} sider-nav-menu-wrapper-${theme}`}>
+                    <div className="bu-info-wrapper">
+                        <div className="bu-name-icon-wrapper">
+                            {logo}
+                            {collapsed ? null : (
+                                <span>{name}</span>
+                            )}
+                        </div>
+                        <div className="bu-line" />
                     </div>
-                    <div className="bu-line" />
+                    <div className="nav-content">
+                        <Sider
+                            theme="light"
+                            collapsible
+                            collapsed={collapsed}
+                            collapsedWidth={collapsedWidth}
+                            width={width}
+                            trigger={
+                                <div onClick={collapseHandlerClick}>
+                                    {collapsed ? <RightOutlined /> : <LeftOutlined />}
+                                </div>
+                            }
+                        >
+                            {getMenuNodes(routeList)}
+                        </Sider>
+                    </div>
                 </div>
-                <div className="nav-content">
-                    <Sider
-                        theme="light"
-                        collapsible
-                        collapsed={collapsed}
-                        collapsedWidth={collapsedWidth}
-                        width={width}
-                        trigger={
-                            <div onClick={collapseHandlerClick}>
-                                {collapsed ? <RightOutlined /> : <LeftOutlined />}
-                            </div>
-                        }
-                    >
-                        {getMenuNodes(routeList)}
-                    </Sider>
-                </div>
-            </div>
+            </Layout>
         </ConfigProvider>
     );
 };

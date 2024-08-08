@@ -1,0 +1,1 @@
+declare module '@jusda-tools/language-control-panel';

@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.less';
 import {
     FiledIcon,
     DocIcon,
@@ -13,6 +12,7 @@ import {
 } from '../svgIcon/file';
 import { DeleteIcon } from '../svgIcon/system';
 import { SuccessStateProps } from '../types';
+import { successContainer, successName, uniFileUploadIcon } from './style';
 
 const SuccessState = ({
     fileData = {},
@@ -60,9 +60,9 @@ const SuccessState = ({
         rar: () => <RarIcon />,
     };
     return (
-        <div className={'success-container'}>
-            <div className="uni-file-upload-icon">{iconMap?.[fileExtension]?.()}</div>
-            <div className={'success-name'}>
+        <div className={successContainer()}>
+            <div className={uniFileUploadIcon()}>{iconMap?.[fileExtension]?.()}</div>
+            <div className={successName()}>
                 {name}{' '}
                 {(taskStatus != 'CREATED' || !autoSubmit) && <span onClick={deleteCurrentFileData}>
                     <DeleteIcon />

@@ -1,31 +1,30 @@
-import MetadataContext from './metadataContext';
-import MetadataContextProvider from './MetadataContextProvider';
-import MetadataFormRender from './MetadataFormRender';
-import MetadataRender from './MetadataRender';
-
+//@ts-nocheck
 import MetadataFunctionContext from './metadataFunctionContext';
 import MetadataFunctionContextProvider from './MetadataFunctionContextProvider';
 import CustomAreaFormRender from './CustomAreaFormRender';
 import {
-    getUIModal,
-    getTenantModelConfiguration,
     getTenantFunctionConfiguration,
 } from './service';
+import FR, {
+    connectForm,
+    createWidget,
+    mapping,
+    widgets,
+    useForm,
+} from 'form-render';
 
-const getTenantModalUIMetadata = getUIModal;
 
 export {
-    MetadataContext,
-    MetadataFormRender,
-    MetadataContextProvider,
-
     MetadataFunctionContext,
     MetadataFunctionContextProvider,
     CustomAreaFormRender,
-
-    getTenantModalUIMetadata,
-    getTenantModelConfiguration,
     getTenantFunctionConfiguration,
+    FR,
+    useForm,
+    connectForm,
+    createWidget,
+    mapping,
+    widgets,
 };
 
-export default MetadataRender;
+export default MetadataFunctionContextProvider;

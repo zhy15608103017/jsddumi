@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-map",
-  "version": "0.3.0",
+  "version": "0.3.9",
   "description": "",
   "main": "./dist/index.js",
   "types": "./types/src/index.d.ts",
@@ -28,8 +28,8 @@
     "@babel/preset-react": "7.14.5",
     "@babel/preset-typescript": "7.15.0",
     "@jusda-tools/jusda-publicmethod": "^0.0.6",
-    "@jusda-tools/language-control-panel": "^0.3.16",
-    "@jusda-tools/local-permission": "^0.0.8",
+    "@jusda-tools/language-control-panel": "^0.3.22",
+    "@jusda-tools/local-permission": "^0.0.9",
     "@jusda-tools/mapbox-config": "^0.1.15",
     "@jusda-tools/url-config": "^0.0.16",
     "@jusda-tools/web-api-client": "0.0.5",
@@ -57,7 +57,7 @@
     "rollup-plugin-sizes": "1.0.4",
     "rollup-plugin-typescript2": "0.30.0",
     "rollup-plugins-csc-images": "1.0.1",
-    "typescript": "4.4.3"
+    "typescript": "4.6.3"
   },
   "gitHead": "5b40f928ba8bab85179ca7e19aa4eb2f34aa9e15"
 }

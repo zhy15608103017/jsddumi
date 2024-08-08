@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/time-convert",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "JUSDA时间转换",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -92,7 +92,7 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "@jusda-tools/local-permission": "^0.0.8",
+    "@jusda-tools/local-permission": "^0.0.9",
     "@jusda-tools/url-config": "^0.0.16",
     "@types/node": "^14.14.13",
     "antd": "4.8.4",

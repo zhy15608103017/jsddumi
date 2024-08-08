@@ -59,15 +59,15 @@ const plugins = [
 const rollPostcssConfig = {
   plugins,
   extract: true,
-  use: {
-    less: {
-      modifyVars: {
-        '@ant-prefix': 'juslink',
-        'primary-color': '#ffc500',
-      },
-      javascriptEnabled: true,
-    },
-  },
+  // use: {
+  //   less: {
+  //     modifyVars: {
+  //       '@ant-prefix': 'juslink',
+  //       'primary-color': '#ffc500',
+  //     },
+  //     javascriptEnabled: true,
+  //   },
+  // },
   process: processLess,
   extensions: ['.css', '.less'],
 };

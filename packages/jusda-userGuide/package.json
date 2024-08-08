@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-userguide",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "jusda用户引导组件",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -80,9 +80,10 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "@jusda-tools/language-control-panel": "0.2.9",
+    "@jusda-tools/jusda-theme-config": "^1.0.10",
+    "@jusda-tools/language-control-panel": "^0.3.22",
     "@jusda-tools/url-config": "^0.0.16",
-    "@jusda-tools/web-api-client": "0.0.5",
+    "@jusda-tools/web-api-client": "^0.0.16",
     "react": "^17.0.1",
     "react-joyride": "^2.2.1"
   },

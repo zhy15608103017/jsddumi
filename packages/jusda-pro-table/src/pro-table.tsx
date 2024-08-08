@@ -1,30 +1,46 @@
 // @ts-nocheck
-import React, { useState, useEffect, Fragment } from "react";
-import { ProTable } from "@ant-design/pro-components";
-import { ConfigProvider } from "antd";
-import { currentLanguage } from "@jusda-tools/language-control-panel";
-import { useRouteMatch } from 'umi';
-import { Resizable } from "react-resizable";
+import React, {forwardRef, useEffect, useState} from "react";
+import {ProTable} from "@ant-design/pro-components";
+import {Button, ConfigProvider} from "antd";
+import {currentLanguage} from "@jusda-tools/language-control-panel";
+import {exportProtable} from '@jusda-tools/fore-end-export';
+import {useRouteMatch} from 'umi';
+import type {ResizeCallbackData} from "react-resizable";
+import {Resizable} from "react-resizable";
 import "react-resizable/css/styles.css";
-import type { ResizeCallbackData } from "react-resizable";
-import type { ColumnsType, ColumnType } from "antd/es/table";
+import type {ColumnsType, ColumnType} from "antd/es/table";
 import enUS from "antd/lib/locale/en_US";
 import zhCN from "antd/lib/locale/zh_CN";
+import {getAntdConfig, initCssVariables} from "@jusda-tools/jusda-theme-config";
 import _ from "lodash";
-import type { ProTableProps } from '@ant-design/pro-table';
-// import "@ant-design/pro-table/dist/table.less"
-import'./index.less';
+import type {ProTableProps} from '@ant-design/pro-table';
+import Icon from "@ant-design/icons";
+import {exportIcon} from './asssets/svg';
+import './index.less';
 
 //##pro-table的columnsState的值将会存储在localstorage中proTableConfig中，
 //key的命名规则是clientId-cfgType-pathname-customizeKey（一定要区分环境）
 //加入Resizable实现表格列的拖动宽度(width:必须给具体的数值<number>，不给的情况下，超过scroll宽度，会出现列消失的bug，)
 
-
+interface IExportConfig {
+    fileName?: string; // 导出文件名
+    expandColumns?: []; // 需要显示的扩展列
+    searchFn?: () => {};
+    valueFormat?: {}; // 列与value的映射
+    lifecycleConfig?: {};
+    animationConfig?: {};
+    data:any[];
+}
 interface ITableProps {
     resizable?: boolean;
-    propColumnsStateValue?: {any: any};
+    propColumnsStateValue?: { any: any };
     customizeKey?: string;
+    isExportExcel?: boolean;
+    exportConfig?: {IExportConfig};
+    customTheme?: {any: any}
 }
+
+type ProTableRef = React.RefObject<HTMLDivElement>;
 
 const ResizableTitle = (props: { [x: string]: any; onResize: any; width: any; }) => {
     const { onResize, width, ...restProps } = props;
@@ -71,7 +87,9 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
         propColumnsStateValue = {},
         className,
         resizable,
-        size = "large"
+        size = "large",
+        isExportExcel = false,
+        exportConfig = {},
     } = props;
     const clientId = window?.jusdaBaseConfig?.clientId;
     const cfgType = window?.jusdaBaseConfig?.cfgType;
@@ -80,6 +98,33 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
     const [initColumns, setInitColumns] = useState(props?.columns.map(i => ({ ...i })));
     const [columnsStateValue, setColumnsStateValue] = useState({});
     const [tableSize, setTableSize] = useState(size);
+    const [exportLoading, setExportLoading] = useState(false);
+    initCssVariables?.()
+
+    const onExport =  () => {
+        exportProtable({
+            ...exportConfig,
+            searchFn: exportConfig?.searchFn,
+            columns: columns,
+            expandColumns: exportConfig?.expandColumns,
+            fileName: exportConfig?.fileName,
+            lifecycleConfig: exportConfig?.lifecycleConfig || {
+                create: () => setExportLoading(true),
+                end: () => setExportLoading(false),
+            },
+            proTableKey: initTablePersistenceKey(),
+            valueFormat: exportConfig?.valueFormat,
+            animationConfig: exportConfig?.animationConfig,
+
+        })
+    }
+
+    // useImperativeHandle(ref, () => ({
+    //     // 暴露给父组件的属性方法
+    //     handleExport: () => {
+    //         onExport();
+    //     },
+    // }));
 
     const components = {
         header: {
@@ -92,7 +137,7 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
      *@param key: 索引
      * **/
     const getStorageObj = (key?: string) => {
-        const result =  JSON.parse(
+        const result = JSON.parse(
             localStorage.getItem("proTableConfig") || "{}"
         );
         if (key) {
@@ -106,7 +151,7 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
             "proTableConfig",
             JSON.stringify(
                 {
-                    ... getStorageObj(),
+                    ...getStorageObj(),
                     ...obj,
                 }
             )
@@ -172,16 +217,16 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
     const columnsStateValueIsUpdate = (newPropsColumns?: [any]) => {
         const res = {} as any;
         const storageObj = getStorageObj()[initTablePersistenceKey()];
-        const data = (newPropsColumns || columns || [])
+        const data = ((newPropsColumns || columns || []))
         data.forEach((item: any, index: number) => {
             const key = item.dataIndex || item.key || index;
             // 利用localstorage中存储的值覆盖本身的width， 如果没有则取自己的width
-            item.width =  storageObj?.[key]?.width || item.width;
+            item.width = storageObj?.[key]?.width || item.width;
             res[key] = {
                 // ...item,
-                order:  storageObj?.[key]?.order ?? index,
-                show:  storageObj?.[key]?.show,
-                fixed: item?.fixed,
+                order: storageObj?.[key]?.order ?? index,
+                show: storageObj?.[key]?.show,
+                fixed: storageObj?.[key]?.fixed ?? item?.fixed,
                 disable: item?.disable,
                 width: item?.width,
             };
@@ -201,6 +246,7 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
     };
 
     useEffect(() => {
+        // console.log('start', customizeKey, props.columns);
         columnTransformValue();
     }, []);
 
@@ -216,12 +262,12 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
      * **/
     const useStorageProTableConfigData = (result: []) => {
         const data = getStorageObj(initTablePersistenceKey());
-        const mergeResult = result;
+        const mergeResult = (result);
         Object.keys(mergeResult).forEach(item => {
             mergeResult[item] = {
                 ...result[item],
                 width: data[item]?.width,
-                order: typeof result[item]?.order === 'number' ?  result[item]?.order : data[item]?.order,
+                order: typeof result[item]?.order === 'number' ? result[item]?.order : data[item]?.order,
             }
         })
         return mergeResult;
@@ -247,9 +293,10 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
         }
         return {};
     };
+
     return (
         <div className="jusda-pro-table-umi4">
-            <ConfigProvider locale={currentLanguage()?.includes("zh") ? zhCN : enUS}>
+            <ConfigProvider locale={currentLanguage()?.includes("zh") ? zhCN : enUS} theme={{ token: props?.customTheme || getAntdConfig('v5')}} >
                 <ProTable
                     {...props}
                     onChange={onChange}
@@ -261,7 +308,7 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
                     dataSource={dataSource}
                     columnsState={columnsStateRes()}
                     rowKey={rowKey}
-                    locale={{locale: currentLanguage()?.includes('zh') ? zhCN : enUS, ...props?.locale}}
+                    locale={{ locale: currentLanguage()?.includes('zh') ? zhCN : enUS, ...props?.locale }}
                     pagination={pagination}
                     toolbar={toolbar}
                     options={
@@ -269,15 +316,18 @@ function JusdaProTable(props: ProTableProps & ITableProps) {
                             reload: false
                         }
                     }
-                    size={ getStorageObj('proTableSize') || tableSize}
-                    onSizeChange={(size: any) => { setTableSize(size); setStorageObj({  proTableSize: size });}}
-                    toolBarRender={toolBarRender}
+                    size={getStorageObj('proTableSize') || tableSize}
+                    onHandleExport={onExport}
+                    onSizeChange={(size: any) => { setTableSize(size); setStorageObj({ proTableSize: size }); }}
+                    toolBarRender={!isExportExcel ? toolBarRender : () => { return [toolBarRender(),<Button  className="exportExcelBtn" height={24}  loading={exportLoading} onClick={onExport} icon={<Icon style={{
+                        position:"relative",top:"1px"
+                    }} component={exportIcon} />} ><span >{currentLanguage()?.includes('zh') ? '导出': 'Export'}</span></Button>]}}
                 />
             </ConfigProvider>
         </div>
     );
 }
 
-export default JusdaProTable;
+export default forwardRef(JusdaProTable);
 
 

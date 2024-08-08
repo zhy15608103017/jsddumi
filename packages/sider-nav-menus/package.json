@@ -1,7 +1,7 @@
 {
   "name": "@jusda-tools/sider-nav-menus",
-  "version": "0.3.7",
-  "description": "侧边导航菜单",
+  "version": "2.0.0",
+  "description": "侧边导航菜单(antd v5)",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./types",
     "build:dev": "npm run clean && webpack --config ./config/webpack.dev.js",
-    "build": "npm run clean && tsc && webpack --config ./config/webpack.prod.js",
+    "build": "npm run clean && tsc && rollup -c ./config/rollup.config.js",
     "prepublish": "npm run build"
   },
   "author": "jusda-fe",
@@ -31,7 +31,17 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.10.1",
+    "@babel/runtime": "^7.1.2",
+    "@emotion/babel-plugin": "11.11.0",
+    "@emotion/babel-preset-css-prop": "11.11.0",
     "@js-lib/cli": "^1.6.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-image": "^2.1.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-url": "^6.1.0",
+    "@rollup/pluginutils": "^4.1.1",
     "@soda/friendly-errors-webpack-plugin": "^1.7.1",
     "@types/react": "^16.9.53",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
@@ -53,6 +63,12 @@
     "mini-css-extract-plugin": "^1.2.0",
     "prop-types": "^15.7.2",
     "rimraf": "2.6.2",
+    "rollup": "^2.56.2",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-img": "^1.1.0",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-sizes": "^1.0.4",
+    "rollup-plugin-typescript2": "^0.30.0",
     "source-map-support": "0.5.9",
     "style-loader": "^2.0.0",
     "ts-node": "7.0.1",
@@ -65,8 +81,12 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "@emotion/css": "11.11.0",
     "@jusda-tools/auth-component": "^0.2.6",
-    "antd": "4.10.0"
+    "@jusda-tools/jusda-theme-config": "^1.0.10",
+    "antd": "5.9.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "gitHead": "5b40f928ba8bab85179ca7e19aa4eb2f34aa9e15"
 }

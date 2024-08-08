@@ -1,4 +1,6 @@
+/* eslint-disable */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+// @ts-nocheck
 import React, {
     forwardRef,
     ReactElement,
@@ -9,6 +11,7 @@ import React, {
 import { ConfigProvider, Empty, Table } from 'antd';
 import getColumns, { ValuationUnitType } from './columns';
 import { useRequest } from '@jusda-tools/jusda-publichooks';
+import { initCssVariables, getAntdConfig } from '@jusda-tools/jusda-theme-config';
 import {
     getValuate,
     searchContainerSize,
@@ -17,7 +20,7 @@ import {
 } from '../../service';
 import localeStore, { Locale } from '../../locale';
 import useFetchData from '../../hooks/useFetchData';
-import './index.less';
+import { faReportTableStyle } from  './styles/index';
 
 export interface ValuateTableProps {
     params: any;
@@ -112,6 +115,7 @@ const ValuateTable: React.ForwardRefRenderFunction<any, any> = (
     );
 
     useEffect(() => {
+        initCssVariables();
         if (!params) return;
         updateValuation();
     }, []);
@@ -124,9 +128,14 @@ const ValuateTable: React.ForwardRefRenderFunction<any, any> = (
     };
     const { dataSource, totalAmount } = tableInfo;
     return (
-        <ConfigProvider prefixCls='juslink'>
+        <ConfigProvider
+            prefixCls="juslink"
+            theme={{
+                token: getAntdConfig('v5'),
+            }}
+        >
             <Table
-                className="jusda-freight-valuate-report-table"
+                className={`${faReportTableStyle()} jusda-freight-valuate-report-table`}
                 components={{
                     body: {
                         row: ({ children, className }) => {

@@ -54,5 +54,8 @@ export default {
     'Upload completed. For more information, please click Upload Record':'上传完成，如需查看详情信息，请点击上传记录',
     'Uploading':'上传中...',
     Total:'共',
-    'Downloading files, please wait':'正在下载，请稍后...'
+    'Downloading files, please wait':'正在下载，请稍后...',
+    'IS_NOT_A_VALID_TEMPLATE': '模板错误',
+    'SYSTEM_ERROR': '系统错误',
+    abnormalReason: '异常原因',
 };

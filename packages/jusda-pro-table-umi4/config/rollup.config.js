@@ -8,6 +8,7 @@ const rollPostcssConfig = require("./postcss.config.js");
 const json = require("@rollup/plugin-json");
 const size = require("rollup-plugin-sizes");
 const image = require("rollup-plugin-img");
+const terser = require("@rollup/plugin-terser");
 
 const path = require('path');
 const root = process.cwd();
@@ -15,7 +16,7 @@ const inputOptions = {
   // 写你自己的入口文件
   input: "src/index.ts",
   // 写自己要排除的依赖
-  external: ["react", "react-dom", "@jusda-tools/language-control-panel", "umi" ],
+  external: ["react", "react-dom", "@jusda-tools/language-control-panel", "umi","@jusda-tools/fore-end-export","@jusda-tools/jusda-theme-config"],
   // 自己的插件
   plugins: [
     json(),
@@ -33,7 +34,8 @@ const inputOptions = {
     babel({
       babelHelpers: 'bundled',
       exclude: /^(.+\/)?node_modules\/.+$/,
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      // skipPreflightCheck: 'true',
     }),
     // 处理js,ts中的图片
     image({
@@ -42,6 +44,7 @@ const inputOptions = {
       exclude: 'node_modules/**'
     }),
     size(),
+    terser(),
   ],
 };
 
@@ -49,7 +52,7 @@ const outputOptions = {
   file: 'dist/index.js', // 输出文件
   format: "esm", // 输出文件类型
   exports: "named", // 具体解释 https://www.rollupjs.com/guide/big-list-of-options#exports
-  sourcemap: true,  // 输出map文件
+  // sourcemap: true,  // 输出map文件
   plugins: [],  // 输出时要用到的插件 一般不填
 };
 

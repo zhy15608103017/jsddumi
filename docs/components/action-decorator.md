@@ -19,12 +19,14 @@ npm install --save @jusda-tools/action-decorator --registry=http://nexus.jusda.i
 
 ## recordUserActions(appName[, options])
 
+<!-- 提取MD -->
 ### recordUserActions options 参数
 
 | 参数       | 说明                     | 类型   | 可选值                                 |
 | ---------- | ------------------------ | ------ | -------------------------------------- |
 | action     | 用户操作                 | String | initialization , shipment-detail-query |
 | properties | 非initialization操作使用 | Object | 大数据约定格式                         |
+<!-- end提取MD -->
 
 ## Example
 
@@ -73,14 +75,15 @@ orderList.map(item => {
 })
 
 ```
+
+<!-- 提取MD -->
 ### PV 埋点 
 pageViewAction
 
 | 参数                  | 说明              | 类型       | 默认   | 备注 |
 | --------------------- | ----------------- | --------- | -----  | ---- |
 | appName               | xxx              | string  |   clientId |  自定义传参appName > config.js的appName > config.js的clientId    |
-
----
+<!-- end提取MD -->
 
 ```jsx | pure
 

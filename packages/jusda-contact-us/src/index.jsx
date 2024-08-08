@@ -1,17 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Popover, ConfigProvider } from 'antd';
 import './index.less';
-import locales from './locales'
+import locales from './locales/index.js'
 import { currentLanguage } from '@jusda-tools/language-control-panel'
 import { ImSuspend } from '@jusda-tools/im-component'
 import Feedback, { Sdp } from '@jusda-tools/jusda-feedback';
 import Draggable from 'react-draggable';
 import { mp_domain_prefix } from '@jusda-tools/url-config';
+import authSwitch from '@jusda-tools/auth-switch';
 
-const imSvg = require('./assets/imIcon.svg')
-const contactSvg = require('./assets/contact.svg')
-const JusAISvg = require('./assets/openAITitle.png')
-const feedbackSvg = require('./assets/feedback.svg')
+const imSvg = require('./assets/imIcon.svg');
+const contactSvg = require('./assets/contact.svg');
+const JusAISvg = require('./assets/openAITitle.png');
+const feedbackSvg = require('./assets/feedback.svg');
 const remind = require('./assets/remind.gif')
 const configLocales = locales.get(currentLanguage())
 
@@ -26,6 +27,7 @@ export default function ContactUs(props) {
     const [JusAIVisible, setJusAIVisible] = useState(false);
 
     const imRef = useRef();
+    const { AuthorizedSwitchWrap } = authSwitch;
 
     const { isShowJusdaAI = true, jusdaAIIcon } = props;
     const JusAIUrl = `${mp_domain_prefix}/im/#/?type=OpenAI`;
@@ -104,6 +106,8 @@ export default function ContactUs(props) {
             const imState = imRef.current.state
             if (imState.msgState && imState.msgState.generalMsgRead && props.isMsgRemind) {
                 setShowRemind(true);
+            }else{
+                setShowRemind(false);
             }
         }
     }
@@ -115,54 +119,57 @@ export default function ContactUs(props) {
 
     return (
         <ConfigProvider prefixCls="juslink">
-            <div className="jusda-contact-us">
-                
-                <Draggable handle={'.contact-us-container'} bounds={'body'}>
-                    <div className="contact-us-container" style={{ ...(props.defaultPosition || { right: '16px', bottom: '16px' }) }}>
-                        {
-                            isShowImModal || JusAIVisible ? null : (
-                                <Popover
-                                    placement="left"
-                                    getPopupContainer={triggerNode => triggerNode.parentNode}
-                                    title={null}
-                                    destroyTooltipOnHide={true}
-                                    content={<PopoverContent />}
-                                >
-                                    <img className="jusda-contact-img" src={imSvg} alt="" />
-                                    <div className={'jusda-contact ' + (currentLanguage() === 'zh-CN' ? 'jusda-contact-zh' : 'jusda-contact-en')}>
-                                        <span>{locales.header}</span>
-                                    </div>
-                                </Popover>
-                            )
-                        }
-                    </div>
-                </Draggable>
-                <ImSuspend
-                    ref={imRef}
-                    hideOpenImg
-                    isShowModal={isShowImModal}
-                    imCallBack={imCallBack}
-                    imMsgCallBack={imMsgCallBack}
-                    closeIM={closeIm}
-                    {...props}
-                />
-                <Feedback isModalVisible={isShowFeedback} closeModalCallback={feedbackModal} />
-                {
-                    JusAIVisible && (
-                        <div className="JusAI">
-                            <div onClick={() => setJusAIVisible(false)} className="JusAI-close-icon" >
-                                {closeIcon}
-                            </div>
-                            <iframe
-                                allow="microphone;camera"
-                                className="JusAI-iframe"
-                                src={JusAIUrl}>
-                            </iframe>
+            <AuthorizedSwitchWrap authCode="juslink_connect_us">
+                <div className="jusda-contact-us">
+                    
+                    <Draggable handle={'.contact-us-container'} bounds={'body'}>
+                        <div className="contact-us-container" style={{ ...(props.defaultPosition || { right: '16px', bottom: '16px' }) }}>
+                            {
+                                isShowImModal || JusAIVisible ? null : (
+                                    <Popover
+                                        placement="left"
+                                        getPopupContainer={triggerNode => triggerNode.parentNode}
+                                        title={null}
+                                        destroyTooltipOnHide={true}
+                                        content={<PopoverContent />}
+                                    >
+                                        <img className="jusda-contact-img" src={imSvg} alt="" />
+                                        <div className={'jusda-contact ' + (currentLanguage() === 'zh-CN' ? 'jusda-contact-zh' : 'jusda-contact-en')}>
+                                            <span>{locales.header}</span>
+                                        </div>
+                                    </Popover>
+                                )
+                            }
                         </div>
-                    )
-                }
-                
-            </div>
+                    </Draggable>
+                    <ImSuspend
+                        ref={imRef}
+                        hideOpenImg
+                        isShowModal={isShowImModal}
+                        imCallBack={imCallBack}
+                        imMsgCallBack={imMsgCallBack}
+                        closeIM={closeIm}
+                        setShowRemind={setShowRemind}
+                        {...props}
+                    />
+                    <Feedback isModalVisible={isShowFeedback} closeModalCallback={feedbackModal} />
+                    {
+                        JusAIVisible && (
+                            <div className="JusAI">
+                                <div onClick={() => setJusAIVisible(false)} className="JusAI-close-icon" >
+                                    {closeIcon}
+                                </div>
+                                <iframe
+                                    allow="microphone;camera"
+                                    className="JusAI-iframe"
+                                    src={JusAIUrl}>
+                                </iframe>
+                            </div>
+                        )
+                    }
+                    
+                </div>
+            </AuthorizedSwitchWrap>
         </ConfigProvider>
     )
 }

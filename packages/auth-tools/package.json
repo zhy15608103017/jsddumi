@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/auth-tools",
-  "version": "0.3.2",
+  "version": "0.3.11",
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@jusda-tools/jusda-publicmethod": "^0.0.6",
-    "@jusda-tools/language-control-panel": "^0.3.16",
+    "@jusda-tools/language-control-panel": "^0.3.22",
     "@jusda-tools/url-config": "^0.0.16",
     "@jusda-tools/web-api-client": "0.0.5"
   },

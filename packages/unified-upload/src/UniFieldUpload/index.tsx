@@ -4,15 +4,20 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react';
-import type { UploadProps, FileProps } from './types';
+import { UploadProps, FileProps } from './types';
 import './index.less';
-import { Modal, Button, Progress, ConfigProvider } from 'antd';
+import { Modal, Button, Progress, ConfigProvider, Dropdown, Menu } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import DefaultState from './DefaultState';
 import SuccessState from './SuccessState';
 import ParsingFail from './ParsingFail';
 import CustomError from './CustomError';
 import getLocale from '../locale';
+import {
+  initCssVariables,
+  getAntdConfig,
+} from '@jusda-tools/jusda-theme-config';
+import ButtonHoverComponent from '../Component/ButtonHoverComponent';
 
 const FILE_ACCEPT =
   '.xlsx,.docx,.3gpp,.ac3,.asf,.au,.css,.csv,.doc,.dot,.dtd,.dwg,.dxf,.gif,.htm,.html,.jp2,.jpe,.jpeg,.jpg,.js,.json,.mp2,.mp3,.mp4,.mpeg,.mpg,.mpp,.ogg,.pdf,.png,.pot,.pps,.ppt,.rtf,.svf,.tif,.tiff,.txt,.wdb,.wps,.xhtml,.xlc,.xlm,.xls,.xlt,.xlw,.xml,';
@@ -20,9 +25,9 @@ const FILE_ACCEPT =
 const UploadComponent = (
   {
     visible,
-    onChange = () => {},
-    onCancel = () => {},
-    onSubmit = () => {},
+    onChange = () => { },
+    onCancel = () => { },
+    onSubmit = () => { },
     rowKey = 'lineNo',
     tableColumns = [],
     tableProps = {},
@@ -37,9 +42,10 @@ const UploadComponent = (
     maxSize = 1024 * 1024 * 2,
     title = '',
     templateDescribe = '',
-    templateButtonClick = () => {},
+    templateButtonClick = () => { },
     templateButtonLoading = false,
     buttonDescribe = '',
+    buttonHoverProperties,
     uploadDescribe = '',
     accept = FILE_ACCEPT,
     uploadCustomMethod = false,
@@ -49,8 +55,9 @@ const UploadComponent = (
     stopUploadVerification = false,
     submitButtonLoading = false,
     successFooterButton = null,
-    customErrorFailTitle = () => {},
-    customerElement = <div></div>,
+    customErrorFailTitle = () => { },
+    customerElement,
+    customerTipBottom = <div />
   }: UploadProps,
   ref: React.Ref<unknown>,
 ) => {
@@ -64,6 +71,7 @@ const UploadComponent = (
     errorText: '',
   });
 
+  initCssVariables();
   // @ts-ignore
   const stateMuster: any = {
     default: {
@@ -119,13 +127,18 @@ const UploadComponent = (
   }, [fileData]);
 
   return (
-    <ConfigProvider prefixCls="uni-filed">
+    <ConfigProvider
+      prefixCls="juslink"
+      theme={{
+        token: getAntdConfig('v5'),
+      }}
+    >
       <div>
         <Modal
           centered={true}
           title={title || 'Upload'}
-          footer={false}
-          visible={visible}
+          footer={null}
+          open={visible}
           width={640}
           className={'uni-field-upload-container'}
           onCancel={onCancel}
@@ -133,25 +146,22 @@ const UploadComponent = (
           maskClosable={false}
           {...modalProps}
         >
-          {customerElement}
+          {customerElement ? customerElement : <div />}
           <div className={'download-template'}>
             <div className={'leftContainer'}>
               {templateDescribe ||
                 currentLocale[
-                  'Download the template and fill in the information'
+                'Download the template and fill in the information'
                 ]}
             </div>
             <div className={'rightContainer'}>
-              <Button
-                onClick={(e) => {
-                  templateButtonClick(e);
-                }}
-                loading={templateButtonLoading}
-                className={'download-button'}
-                icon={<DownloadOutlined />}
-              >
-                {buttonDescribe || currentLocale['Download']}
-              </Button>
+              <ButtonHoverComponent
+                buttonDescribe={buttonDescribe}
+                buttonHoverProperties={buttonHoverProperties}
+                locale={locale}
+                templateButtonClick={templateButtonClick}
+                templateButtonLoading={templateButtonLoading}
+              />
             </div>
           </div>
           <div className="contentContainer">
@@ -172,6 +182,7 @@ const UploadComponent = (
               />
             </div>
           </div>
+          {customerTipBottom}
           {['success'].includes(fileData.state) ? (
             <div className={'footer-container'}>
               {successFooterButton ? (

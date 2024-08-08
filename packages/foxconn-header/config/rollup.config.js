@@ -24,6 +24,7 @@ const inputOptions = {
     '@jusda-tools/user-control-panel',
     '@jusda-tools/web-api-client',
     '@jusda-tools/local-permission',
+    '@jusda-tools/auth-tools',
   ],
   // 自己的插件
   plugins: [

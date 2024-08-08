@@ -22,7 +22,7 @@ group:
 
 $ npm install --save @jusda-tools/jusda-MileStones --registry http://nexus.jusda.int/verdaccio/
 ```
-
+<!-- 提取MD -->
 ## API
 
 | 参数              | 说明                                                | 类型                    | 默认 | 备注 |
@@ -35,3 +35,4 @@ $ npm install --save @jusda-tools/jusda-MileStones --registry http://nexus.jusda
 | logisticsOrderId  | 高亮根据id依赖                                      | -                       | -    | -    |
 | iconColor         | 自定义异常节点颜色 （非必传）                       | string                  | 红色 | -    |
 
+<!-- end提取MD -->

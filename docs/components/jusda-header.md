@@ -21,7 +21,7 @@ group:
 ```bash
 $ npm install --save @jusda-tools/jusda-header --registry http://nexus.jusda.int/verdaccio/
 ```
-
+<!-- 提取MD -->
 ## API
 
 | 参数                 | 说明                | 类型      | 默认    | 备注 |
@@ -38,6 +38,8 @@ $ npm install --save @jusda-tools/jusda-header --registry http://nexus.jusda.int
 | leftReactNode        | Header 左边元素     | ReactNode |         |      |
 | rightReactNode       | Header 右边元素     | ReactNode |         |      |
 | userIdentitySwitcher | 用户信息面板配置    | Object    |         |      |
+
+<!-- end提取MD -->
 
 ## 更新日志
 ###### 0.0.66更新内容:

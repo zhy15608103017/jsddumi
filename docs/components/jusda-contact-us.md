@@ -14,6 +14,8 @@ group:
 
 <code transform="true" iframe="800" src="../../demo/jusda-contact-us/demo.jsx"></code>
 
+<!-- 提取MD -->
+
 ## API
 | 参数                 | 说明                 | 类型    | 默认值  | 版本 |
 | -------------------- | -------------------- | ------- | ------- | ---- |
@@ -26,3 +28,15 @@ group:
 | orderId           | 订单Id | String | - | - |
 | isShowJusdaAI           | 是否显示AI入口 | Boolean | true | 0.3.7 |
 | jusdaAIIcon           | 自定义AI的icon | reactNode | - | 0.3.7 |
+## 注意
+在2.1.4-alpha.0版本后须在入口文件调用@jusda-tools/juslink-bootstrap组件
+```jsx | pure
+import juslinkBootstrap from '@jusda-tools/juslink-bootstrap';
+
+export async function render(oldRender: any) {
+   ...
+    await juslinkBootstrap()\
+  ...
+}
+```
+<!-- end提取MD -->

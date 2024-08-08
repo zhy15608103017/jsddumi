@@ -18,6 +18,11 @@ group:
 
 <code transform="true" src="../../demo/jusda-file-upload/index.tsx"></code>
 
+## 更新日志
+###### @0.3.4更新内容:
+1.增加getFileDownloadUrlFn方法，此方法返回文件下载地址，但不执行下载文件操作（使用方式与initFileDownloadFn相同）
+
+
 ## 使用方法
 
 ```bash
@@ -71,4 +76,5 @@ region: 域名地址
     ex.getImmutableFileUrlFn(fileId).then((res: any) => {
         console.log(res);
     });
+
 

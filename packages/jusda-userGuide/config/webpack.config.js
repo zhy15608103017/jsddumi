@@ -29,10 +29,10 @@ module.exports = {
                 {
                     loader: 'less-loader', // compiles Less to CSS
                     options: {
-                        modifyVars: {
-                            '@ant-prefix': 'rc',
-                            'primary-color': '#ffc500',
-                        },
+                        // modifyVars: {
+                        //     '@ant-prefix': 'juslink',
+                        //     'primary-color': '#ffc500',
+                        // },
                         javascriptEnabled: true,
                     },
                 }],

@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.less';
 import { FailIcon } from '../svgIcon/file';
 import { DeleteIcon } from '../svgIcon/system';
 import { columns } from './columns';
@@ -8,6 +7,7 @@ import { CloseCircleOutlined } from '@ant-design/icons';
 import getLocale from '../../locale';
 import { ParsingFailProps } from '../types';
 import { currentLanguage } from '@jusda-tools/language-control-panel';
+import { failContainer } from './style';
 
 const DefaultState = ({
     fileData = {},
@@ -27,7 +27,7 @@ const DefaultState = ({
     const currentColumns = tableColumns?.length ? tableColumns : columns();
 
     return (
-        <div className={'fail-container'}>
+        <div className={failContainer()}>
             <div>
                 <FailIcon />
             </div>

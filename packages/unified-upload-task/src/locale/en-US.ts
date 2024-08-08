@@ -23,6 +23,7 @@ export default {
     fileMessageThree: '"Click to upload"',
     dowload: 'Download template',
     dataException: 'data item is abnormal',
+    belongProduct: 'Product',
     taskTitle: 'Title',
     taskStatus: 'Status',
     taskEndTime: 'End time',
@@ -56,5 +57,8 @@ export default {
     'Upload completed. For more information, please click Upload Record':'Upload completed. For more information, please click Upload Record',
     'Uploading':'Uploading...',
     Total:'Total',
-    'Downloading files, please wait':'Downloading files, please wait...'
+    'Downloading files, please wait':'Downloading files, please wait...',
+    'IS_NOT_A_VALID_TEMPLATE': 'Template Error',
+    'SYSTEM_ERROR': 'System Error',
+    abnormalReason: 'Exceptional Reason',
 };

@@ -1,6 +1,6 @@
-import {currentLanguage} from '@jusda-tools/language-control-panel'
-import { CookieTools, UserIdentityId_Tab, UserIdentityId_Newest } from '@jusda-tools/jusda-publicmethod';
-import localesConfig from '../locales/index.js'
+import { CookieTools, UserIdentityId_Newest, UserIdentityId_Tab } from '@jusda-tools/jusda-publicmethod';
+import { currentLanguage } from '@jusda-tools/language-control-panel';
+import localesConfig from '../locales/index.js';
 
 const cookieTools = new CookieTools();
 
@@ -92,4 +92,32 @@ export function monitorWindowStatus() {
         }
     }
     document.addEventListener(visibilityChangeEvent, onVisibilityChange);   // 添加元素事件句柄
+}
+
+// 删除url上的参数
+export function removeParameters(url, paramsToRemove) {
+    try {
+        // 创建一个 URL 对象
+        const urlObj = new URL(url);
+
+        // 处理 URL 的查询参数部分
+        const searchParams = new URLSearchParams(urlObj.search);
+        paramsToRemove.forEach(param => searchParams.delete(param));
+        urlObj.search = searchParams.toString();
+
+        // 处理 URL 的 hash 部分
+        const hash = urlObj.hash;
+
+        if (hash.includes('?')) {
+            const [hashPrefix, hashQuery] = hash.split('?');
+            const hashParams = new URLSearchParams(hashQuery);
+            paramsToRemove.forEach(param => hashParams.delete(param));
+            urlObj.hash = `${hashPrefix}?${hashParams.toString()}`;
+        }
+
+        return urlObj.toString();
+    } catch (error) {
+        console.error('An error occurred:', error.message);
+        return url; // 返回原始 URL 以防止错误中断程序
+    }
 }

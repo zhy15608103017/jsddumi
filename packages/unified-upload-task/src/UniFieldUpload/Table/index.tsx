@@ -1,9 +1,9 @@
 import * as React from 'react';
 //@ts-ignore
 import { ProTable } from '@jusda-tools/jusda-pro-table-umi4';
-import './index.less'
 import { currentLanguage } from '@jusda-tools/language-control-panel';
 import getLocale from 'src/locale';
+import { proTableClass } from './style';
 interface Props {
     request: any;
     Pagination?: any;
@@ -56,7 +56,7 @@ const Table: React.FC<Props> = props => {
         };
     };
     return (
-        <div className='ProTable'>
+        <div className={proTableClass()}>
             <ProTable
                 actionRef={ref}
                 request={requestApi}

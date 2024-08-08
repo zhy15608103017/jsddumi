@@ -5,6 +5,7 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
 import request from '../utils/request';
+import { authCodes } from '../utils/commonData';
 import { ConfigProvider, Divider, Tooltip } from 'antd';
 import ApplyDrawer from './components/ApplyDrawer/ApplyDrawer';
 // @ts-ignore
@@ -13,18 +14,20 @@ import QrcodeIcon from './components/QrcodeIcon';
 import UserControlPanel from '@jusda-tools/user-control-panel';
 // @ts-ignore
 import { mp_workbench_url } from '@jusda-tools/url-config';
+import { getAntdConfig } from "@jusda-tools/jusda-theme-config";
+import authSwitch from '@jusda-tools/auth-switch';
 import { flod } from './assets/svgIcon';
 // @ts-ignore
 import executeStateFN from '../utils/globalVariable';
 import { announcementIcon, helpIcon, taskCenterIcon, workbenchIcon } from './icon';
 import { websitePathsBackup } from '../utils/websiteUrls';
-import { getAntdConfig } from "@jusda-tools/jusda-theme-config";
-import 'antd/dist/antd.variable.min.css';
-import './styles/dark.less';
-import './styles/light.less';
+import { headerStyle, workbenchStyle, headerLeftStyle, headerRightStyle } from './styles/index';
+// import './styles/dark.less';
+// import './styles/light.less';
 // @ts-ignore
 // eslint-disable-next-line
-import logo_noBg from "./assets/icon/logo_noBg.png";
+// import logo_noBg from "./assets/icon/logo_noBg.png";
+import Juslinklogo from "./assets/icon/Juslinklogo.png";
 
 type LocaleType = 'zh-CN' | 'en-US';
 
@@ -74,11 +77,14 @@ const internationalMap = new Map()
     });
 
 const Header: React.FC<HeaderProps> = (props) => {
+    const { AuthorizedSwitchWrap } = authSwitch;
     const [drawerVisible, setDrawerVisible] = useState(false);
     const [hasNewBulletin, setHasNewBulletin] = useState(false);
     const [language, setLanguage] = useState<LocaleType>('en-US');
     const [navigationData, setNavigationData] = useState([]);
     const [showState, setShowState] = useState(undefined);
+    const [logoInfo, setLogoInfo] = useState({});
+    const [hasFetchedLogo, setHasFetchedLogo] = useState(false);
 
     const {
         locale,
@@ -131,18 +137,51 @@ const Header: React.FC<HeaderProps> = (props) => {
         window.open(mp_workbench_url, 'target');
     }
 
-    const initAntdConfig = () => {
-        ConfigProvider.config({
-            theme: getAntdConfig('v4'),
+    const getLogoAndIcon = () => {
+        // 调用中台获取图标信息
+        request('/me/list', {
+            method: 'POST',
+            prefix: '/juslink-common-config/tenants',
+            data: {
+                keysIn:["brower_tag_icon","tenant_logo"],
+                appIdEq:"TENANT_MANAGEMENT",
+                groupCodeEq:"Tenant_mg_conf"
+            }
+        }).then(response => {
+            let { success, data } = response;
+            if (success && data) {
+                let initObject = {};
+                try {
+                    data.forEach((item)=>{
+                        initObject[item.key] = item.value === '' ? null : item.value;
+                    })
+                } catch (error) {
+                    console.log('error: ', error);
+                }
+                setLogoInfo(initObject);
+            }
+        }).catch(e => {
+            console.error(e);
+        }).finally(() => {
+            setHasFetchedLogo(true);
         });
     }
+
+    useEffect(() => {
+        if(logoInfo.brower_tag_icon){
+            const link = document.querySelector("link[rel*='icon']") || document.createElement("link");
+            link.type = "image/x-icon";
+            link.rel = "shortcut icon";
+            link.href = logoInfo.brower_tag_icon;  //icon图标
+            document.getElementsByTagName("head")[0].appendChild(link);
+        }
+    },[logoInfo])
 
     useEffect(() => {
         LANGS.includes(locale as LocaleType) && setLanguage(locale as LocaleType);
     }, [locale]);
 
     useEffect(() => {
-        initAntdConfig();
         // 调用中台获取数据
         request('/base-list/home', {
             method: 'GET',
@@ -153,11 +192,12 @@ const Header: React.FC<HeaderProps> = (props) => {
                 setNavigationData(response.data);
             }
         }).catch(e => { console.error(e); });
+        getLogoAndIcon();
     }, []);
 
 
     useEffect(() => {
-        request('/bulletin-center/bulletin-documents/is-new', {
+        request('/message-service/bulletin-documents/is-new', {
             method: 'GET',
         }).then(response => {
             if (response.success && response.data) {
@@ -175,10 +215,16 @@ const Header: React.FC<HeaderProps> = (props) => {
         }
     };
 
+
     return (
-        <ConfigProvider prefixCls="juslink">
-            <div className={`juslink-${theme}`}>
-                <div className="header_left transform-pop-container">
+        <ConfigProvider
+            prefixCls="juslink"
+            theme={{
+                token: getAntdConfig('v5'),
+            }}
+        >
+            <div className={`${headerStyle(theme)} juslink-${theme}`}>
+                <div className={`${headerLeftStyle(theme)} header_left transform-pop-container`}>
                     {
                         showNavigation &&
                         <div className={`apply_icon ${drawerVisible ? 'open' : 'close'}`} onMouseEnter={moveInDraw} onMouseLeave={moveOutDraw}>
@@ -189,58 +235,66 @@ const Header: React.FC<HeaderProps> = (props) => {
                         logoReplaceReactNode ? logoReplaceReactNode :
                             (
                                 <div className={`logo_${theme} ${isIntranet !== true ? `tip_lang_${language}` : ''}`} onClick={logoClick}>
-                                    <img src={logo_noBg} />
+                                    {hasFetchedLogo && <img src={logoInfo.tenant_logo ? logoInfo.tenant_logo : Juslinklogo} />}
                                 </div>
                             )
                     }
                     {
                         showWorkbench &&
-                        <div className="workbench_btn" onClick={orkbenchOnClick}>
+                        <div className={`${workbenchStyle(theme)} workbench_btn`} onClick={orkbenchOnClick}>
                             {workbenchIcon}
                             <span>{internationalMap.get(language)['intl.工作台']}</span>
                         </div>
                     }
                 </div>
-                <div className="header_right">
+                <div className={`${headerRightStyle(theme)} header_right`}>
                     {leftReactNode}
-                    {
-                        props.showTaskCenter ? (
-                            <Tooltip
-                                transitionName=""
-                                overlayClassName={`tooltip_overlay_${theme}`}
-                                title={internationalMap.get(language)['intl.任务中心']}
-                                >
-                                <div
-                                    className="tooltip_icon"
-                                    onClick={() => goWebsite('tc')}
-                                >{taskCenterIcon} <i /></div>
-                            </Tooltip>   
-                        ) : null
-                    }
-                    <QrcodeIcon
-                        locale={locale}
-                        theme={theme}
-                    />
-                    <Tooltip
-                        transitionName=""
-                        overlayClassName={`tooltip_overlay_${theme}`}
-                        title={internationalMap.get(language)['intl.公告中心']}
-                    >
-                        <div
-                            className={`tooltip_icon ${hasNewBulletin ? 'has-new-bulletin' : 'not-new-bulletin'}`}
-                            onClick={() => goWebsite('ac')}
-                        >{announcementIcon} <i /></div>
-                    </Tooltip>
-                    <Tooltip
-                        transitionName=""
-                        overlayClassName={`tooltip_overlay_${theme}`}
-                        title={internationalMap.get(language)['intl.帮助中心']}
-                    >
-                        <div
-                            className="tooltip_icon"
-                            onClick={() => goWebsite('ch')}
-                        >{helpIcon}</div>
-                    </Tooltip>
+                    <AuthorizedSwitchWrap authCode={authCodes.headerTaskCtr}>
+                        {
+                            props.showTaskCenter ? (
+                                <Tooltip
+                                    transitionName=""
+                                    overlayClassName={`tooltip_overlay_${theme}`}
+                                    title={internationalMap.get(language)['intl.任务中心']}
+                                    >
+                                    <div
+                                        className="tooltip_icon"
+                                        onClick={() => goWebsite('tc')}
+                                    >{taskCenterIcon} <i /></div>
+                                </Tooltip>   
+                            ) : null
+                        }
+                    </AuthorizedSwitchWrap>
+                    <AuthorizedSwitchWrap authCode={authCodes.headerDownload}>
+                        <QrcodeIcon
+                            locale={locale}
+                            theme={theme}
+                        />
+                    </AuthorizedSwitchWrap>
+                    <AuthorizedSwitchWrap authCode={authCodes.headerNoticeCtr}>
+                        <Tooltip
+                            transitionName=""
+                            overlayClassName={`tooltip_overlay_${theme}`}
+                            title={internationalMap.get(language)['intl.公告中心']}
+                        >
+                            <div
+                                className={`tooltip_icon ${hasNewBulletin ? 'has-new-bulletin' : 'not-new-bulletin'}`}
+                                onClick={() => goWebsite('ac')}
+                            >{announcementIcon} <i /></div>
+                        </Tooltip>
+                    </AuthorizedSwitchWrap>
+                    <AuthorizedSwitchWrap authCode={authCodes.headerHelpCenter}>
+                        <Tooltip
+                            transitionName=""
+                            overlayClassName={`tooltip_overlay_${theme}`}
+                            title={internationalMap.get(language)['intl.帮助中心']}
+                        >
+                            <div
+                                className="tooltip_icon"
+                                onClick={() => goWebsite('ch')}
+                            >{helpIcon}</div>
+                        </Tooltip>
+                    </AuthorizedSwitchWrap>
                     {rightReactNode}
                     <div className="dividerWarp">
                         <div className="line" />

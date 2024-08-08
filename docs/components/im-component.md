@@ -35,6 +35,8 @@ IM支持两种打开方式，分别对应不同场景
 $ npm install --save @jusda-tools/im-component --registry http://nexus.jusda.int/verdaccio/
 ```
 
+<!-- 提取MD -->
+
 ## API
 | 参数                 | 说明                 | 类型    | 默认值  | 版本 |
 | -------------------- | -------------------- | ------- | ------- | ---- |
@@ -46,3 +48,5 @@ $ npm install --save @jusda-tools/im-component --registry http://nexus.jusda.int
 | businessData               | 业务数据 | Object | -    | -    |orderId
 | orderId           | 订单Id | String | - | - |
 | content           | 更换IM显示图片 | ReactNode ｜() => ReactNode | -    | -    |
+
+<!-- end提取MD -->

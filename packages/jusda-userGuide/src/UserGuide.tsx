@@ -1,3 +1,4 @@
+/* eslint-disable */
 //@ts-nocheck
 import React, { useState, useEffect, Component } from "react";
 //@ts-ignore
@@ -7,6 +8,7 @@ import { getLocale } from '../utils/fn.js';
 import { currentLanguage } from '@jusda-tools/language-control-panel';
 import request from '../utils/request';
 import Joyride, { CallBackProps, STATUS, LIFECYCLE, Step, StoreHelpers, ACTIONS } from 'react-joyride';
+import { initCssVariables } from "@jusda-tools/jusda-theme-config";
 import './UserGuide.less';
 
 export class UserGuide extends Component {
@@ -26,7 +28,9 @@ export class UserGuide extends Component {
     ['en-US', { back: 'Back', close: 'Close', last: 'Last', next: 'Next', skip: 'Skip' }]
     ])
 
+
     componentDidMount() {
+        initCssVariables();
         const language = currentLanguage() || getLocale() || 'en-US';
         this.setState({
             locale: this.languageMap.get(language)
@@ -180,13 +184,13 @@ export class UserGuide extends Component {
                         options: {
                             zIndex: 10000,
                             textColor: '#222',
-                            primaryColor: '#ffc500',
-                            spotlightShadow: '0 0 0 #ffc500',
+                            primaryColor: 'var(--jusda-primary-color)',
+                            spotlightShadow: '0 0 0 var(--jusda-primary-color)',
                         },
                         buttonNext: {
                             outline: 'none',
                             fontSize: 14,
-                            color:"#444",
+                            color:"var(--jusda-primary-button-text-color)",
                             width: 90,
                             lineHeight: '14px',
                             height: 32,
@@ -194,7 +198,7 @@ export class UserGuide extends Component {
                         buttonClose: {
                             outline: 'none',
                             fontSize: 14,
-                            color:"#444",
+                            color:"var(--jusda-primary-button-text-color)",
                         },
                         buttonSkip: {
                             outline: 'none',

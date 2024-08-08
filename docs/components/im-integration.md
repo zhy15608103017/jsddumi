@@ -14,6 +14,7 @@ group:
 $ npm install --save @jusda-tools/im-integration --registry http://nexus.jusda.int/verdaccio/
 ```
 
+<!-- 提取MD -->
 ## 参数配置(window.jusdaBaseConfig.ImIntegrationDefault)
 
 | 参数                 | 说明     | 类型   | 默认值 | 版本 |
@@ -51,6 +52,7 @@ $ npm install --save @jusda-tools/im-integration --registry http://nexus.jusda.i
 | businessData               | 业务数据 | Object | -    | -    |
 | content           | 显示内容 | ReactNode ｜() => ReactNode | -    | -    |
 
+<!-- end提取MD -->
 ---
 
 ```jsx

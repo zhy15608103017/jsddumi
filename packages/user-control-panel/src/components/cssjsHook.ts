@@ -23,7 +23,6 @@ import { useStyleRegister } from '@ant-design/cssinjs';
 const withHooksHOC = (Component: any) => {
     return () => {
         const { useToken } = theme;
-		console.log('1212==>', useToken())
       	return Component(useToken());
     };
   };

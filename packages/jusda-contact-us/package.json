@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-contact-us",
-  "version": "0.3.10",
+  "version": "2.1.6-alpha.0",
   "description": "联系我们组件",
   "main": "dist/index.js",
   "sideEffects": true,
@@ -69,13 +69,14 @@
   },
   "dependencies": {
     "@babel/runtime": "7.1.2",
-    "@jusda-tools/im-component": "^0.2.3",
-    "@jusda-tools/jusda-feedback": "^0.3.3",
-    "@jusda-tools/language-control-panel": "^0.3.16",
+    "@jusda-tools/auth-switch": "^0.0.3-alpha.0",
+    "@jusda-tools/im-component": "^2.0.3-alpha.0",
+    "@jusda-tools/jusda-feedback": "^2.1.2-alpha.0",
+    "@jusda-tools/language-control-panel": "^0.3.22",
     "@jusda-tools/url-config": "^0.0.13",
-    "antd": "4.24.8",
-    "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "antd": "5.10.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "gitHead": "aca94a5963745069f9b15bde4733caaf580987cb"
 }

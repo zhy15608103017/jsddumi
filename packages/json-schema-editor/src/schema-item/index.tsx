@@ -52,7 +52,7 @@ export const SchemaItem: React.FunctionComponent<SchemaItemProps> = (
 									onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
 										// Todo: make toast for duplicate properties
 										if (data.properties[evt.target.value]) {
-											message.warn({
+											message.warning({
 												title: schema.localesLab['duplicateProperty'],
 												description: schema.localesLab['duplicatePropertyDesc'],
 												status: 'error',

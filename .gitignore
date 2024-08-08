@@ -22,3 +22,5 @@ build
 .dumi
 .umi
 /package-lock.json
+.nx
+/.env.local

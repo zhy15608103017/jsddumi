@@ -1,24 +1,24 @@
-import { isFoxconn } from '@jusda-tools/business-env-checker';
+import { isTms } from '@jusda-tools/business-env-checker';
 
 const juslinkTheme = {
     primaryColor: '#ffc500',
     infoColor: '#ffc500',
-    successColor: '#ffc500',
+    successColor: '#6fc677',
+    errorColor: '#ff6c6c',
     processingColor: '#ffc500',
-    errorColor: '#ffc500',
     warningColor: '#ffc500',
 };
 
 const foxconnTheme = {
-    primaryColor: '#4096ff',
+    primaryColor: '#2755a6',
     infoColor: '#4096ff',
-    successColor: '#4096ff',
-    processingColor: '#4096ff',
-    errorColor: '#4096ff',
-    warningColor: '#4096ff',
+    successColor: '#6fc677',
+    errorColor: '#ff6c6c',
+    processingColor: '#2755a6',
+    warningColor: '#2755a6',
 };
 
 export default function getAntdTheme() {
-    const antdTheme = isFoxconn() ? foxconnTheme: juslinkTheme;
+    const antdTheme = isTms() ? foxconnTheme: juslinkTheme;
     return antdTheme;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import './index.less';
 import { FailIcon } from '../svgIcon/file';
 import { DeleteIcon } from '../svgIcon/system';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import getLocale from '../../locale';
 import { CustomErrorProps } from '../types';
 import { currentLanguage } from '@jusda-tools/language-control-panel';
+import { failContainer } from './style';
 
 const CustomError = ({
     fileData = {},
@@ -19,7 +19,7 @@ const CustomError = ({
     const { name = '' } = fileData;
 
     return (
-        <div className={'fail-container'}>
+        <div className={failContainer()}>
             <div>
                 <FailIcon />
             </div>

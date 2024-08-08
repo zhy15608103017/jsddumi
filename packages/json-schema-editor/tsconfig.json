@@ -15,6 +15,7 @@
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
+        "noImplicitReturns": false,
         "skipLibCheck": true,
     },
     "include": [

@@ -17,7 +17,6 @@ const inputOptions = {
   external: [
     'react',
     'react-dom',
-    'antd',
     '@jusda-tools/url-config',
     'react-svg',
     'momo-user-control-panel',

@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/im-component",
-  "version": "0.2.3",
+  "version": "2.0.3-alpha.0",
   "description": "IM弹窗组件",
   "main": "dist/index.js",
   "sideEffects": true,
@@ -70,12 +70,12 @@
   },
   "dependencies": {
     "@babel/runtime": "7.1.2",
-    "@jusda-tools/language-control-panel": "^0.3.16",
+    "@jusda-tools/language-control-panel": "^0.3.22",
     "@jusda-tools/url-config": "^0.0.16",
     "@jusda-tools/web-api-client": "0.0.5",
-    "antd": "4.24.8",
-    "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "antd": "5.10.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "gitHead": "25992abcd77b584dcbb3420b1b2ada523f14c2eb"
 }

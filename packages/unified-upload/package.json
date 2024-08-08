@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/unified-upload",
-  "version": "0.0.23",
+  "version": "1.0.0",
   "description": "统一上传组件UI",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -34,7 +34,7 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.10.1",
     "@js-lib/cli": "^1.6.0",
-    "@jusda-tools/jusda-file-upload": "^0.3.0",
+    "@jusda-tools/jusda-file-upload": "^0.3.4",
     "@soda/friendly-errors-webpack-plugin": "^1.7.1",
     "@types/react": "^16.9.53",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
@@ -69,12 +69,13 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "@jusda-tools/jusda-theme-config": "^1.0.10",
     "@types/node": "^14.14.13",
-    "antd": "4.8.4",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
-    "react-svg": "^11.2.1",
+    "antd": "5.11.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-svg": "16.1.29",
     "url-loader": "^4.1.1"
   },
-  "gitHead": "8ab0abd494e2da3b7395ea20dca9ca0befbd6181"
+  "gitHead": "9722880f77c1f9ee293b61c17c89ddf2c1bffa9b"
 }

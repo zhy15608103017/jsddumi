@@ -1,0 +1,11 @@
+{
+    "name": "auth-switch",
+    "npmname": "auth-switch",
+    "umdname": "auth-switch",
+    "username": "yazohu",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": null,
+    "lang": "zh",
+    "version": "1.6.0"
+}

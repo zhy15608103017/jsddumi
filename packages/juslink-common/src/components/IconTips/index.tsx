@@ -6,6 +6,7 @@
 import React from 'react';
 import Icon from '@ant-design/icons';
 import { Tooltip } from 'antd';
+import type { ActionType } from '@rc-component/trigger/lib/interface';
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/indent
@@ -13,10 +14,10 @@ type Props = {
   style?: any,
   click?: Function,
   component: any,
-  trigger?: string[] | string
+  trigger?: ActionType | ActionType[] | undefined
 }
 
-export default function index({ title = '', style = {}, click, component, trigger }: Props) {
+export default function Index({ title = '', style = {}, click, component, trigger }: Props) {
   return (
     <Tooltip title={title} trigger={trigger}>
       <Icon style={{

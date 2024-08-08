@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/buried-point",
-  "version": "0.3.14",
+  "version": "0.3.27",
   "description": "新埋点组件",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
-    "@jusda-tools/auth-tools": "^0.3.2",
+    "@jusda-tools/auth-tools": "^0.3.11",
     "@jusda-tools/jusda-publicmethod": "^0.0.6",
     "@jusda-tools/url-config": "^0.0.16",
     "uuid": "8.3.2"

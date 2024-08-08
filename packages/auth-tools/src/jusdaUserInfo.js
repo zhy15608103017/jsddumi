@@ -20,10 +20,11 @@ export default class JusdaUserInfo {
     }
 
     async logout(urlParam, newClientId) {
-        const cookieTools = new CookieTools();
-        const token = tokenFn.getToken()
         const { jusdaBaseConfig } = window;
-        const { isMobile, clientId } = jusdaBaseConfig || {};
+        const { isMobile, clientId, isCustomLogout } = jusdaBaseConfig || {};
+        if(isCustomLogout) return;
+        const cookieTools = new CookieTools();
+        const token = tokenFn.getToken();
         // 退出接口header带上JSESSION (解决项目和登录域名不一致的问题)
         const session = cookieTools.get('JSESSION') || '';
         request.interceptors.request.use(

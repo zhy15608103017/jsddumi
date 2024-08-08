@@ -1,0 +1,15 @@
+export default {
+    searchItemsArea: '搜索项展示',
+    restore:"还原",
+    reset:"重置",
+    search: "查询",
+    more:"更多搜索",
+    all:"全部",
+    confirm:"确定",
+    close:"关闭",
+    searchItems:'可添加项',
+    nodata:'暂无数据',
+    oneWeek:'一周',
+    oneMonth:'1个月',
+    threeMonth:'3个月',
+}

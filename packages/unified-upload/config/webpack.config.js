@@ -32,8 +32,8 @@ module.exports = {
                         loader: 'less-loader', // compiles Less to CSS
                         options: {
                             modifyVars: {
-                                '@ant-prefix': 'uni-filed',
-                                'primary-color': '#ffc500',
+                                '@ant-prefix': 'juslink',
+                                '@root-entry-name': 'variable',
                             },
                             javascriptEnabled: true,
                         },
@@ -64,6 +64,7 @@ module.exports = {
     externals: {
         react: 'react',
         'react-dom': 'react-dom',
+        antd: 'window.antd',
     },
     plugins: [new FriendlyErrorsWebpackPlugin(), new Webpackbar()],
 };

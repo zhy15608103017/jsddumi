@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import './index.less';
 import { FiledIcon } from '../svgIcon/file';
 import { Upload, message } from 'antd';
 // @ts-ignore
@@ -14,7 +13,7 @@ const initUpload = new InitUpload();
 const { Dragger } = Upload;
 
 const DefaultState = ({
-    setFileData = () => {},
+    setFileData = () => { },
     maxSize,
     accept,
     locale = 'zh-CN',
@@ -106,7 +105,7 @@ const DefaultState = ({
                 </p>
                 <p className={'uploadText'}>
                     {uploadDescribe ||
-            currentLocale['Click or drag file to this area to upload']}
+                        currentLocale['Click or drag file to this area to upload']}
                 </p>
             </Dragger>
         </div>

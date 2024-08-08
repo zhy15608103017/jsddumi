@@ -3,6 +3,11 @@ import { ProgressProps } from 'antd/lib/progress';
 import { TableProps } from 'antd/lib/table';
 import { ModalProps } from 'antd/lib/modal';
 
+export interface ButtonHoverPropertiesProps {
+    items: { label: string; key?: string }[];
+    menuItemOnClick?(menuProps: any): void;
+}
+
 export interface UploadProps {
     visible: boolean;
     onChange: Function;
@@ -33,7 +38,9 @@ export interface UploadProps {
     submitButtonLoading?: boolean;
     successFooterButton?: any;
     customErrorFailTitle?: (num: number) => any;
-    customerElement?: any; //空元素
+    customerElement?: ReactNode; //空元素
+    customerTipBottom?: ReactNode; // 自定义注意事项文案.
+    buttonHoverProperties?: ButtonHoverPropertiesProps;
 }
 
 export interface FileProps {

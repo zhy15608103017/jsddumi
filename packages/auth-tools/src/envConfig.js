@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { loginSiteUrl, mpApiUrl, mp_domain_prefix, mp_403_url } from '@jusda-tools/url-config';
 
 const {

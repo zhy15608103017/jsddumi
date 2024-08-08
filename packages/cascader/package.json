@@ -1,13 +1,13 @@
 {
   "name": "@jusda-tools/cascader",
-  "version": "0.1.1",
+  "version": "2.0.0-alpha.0",
   "description": "",
   "main": "./dist/index.js",
   "types": "./types/src/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && tsc && rollup -c config/rollup.config.js",
+    "build": "npm run clean && tsc && rollup -c config/rollup.config.js && node main.js",
     "build:css": "npm run clean && rollup -c config/rollup.config.js && node main.js",
     "prepublish": "npm run build"
   },
@@ -39,7 +39,7 @@
     "postcss": "^8.3.6",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-preset-env": "8.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.57.0",
     "rollup-plugin-img": "^1.1.0",
@@ -50,8 +50,12 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@jusda-tools/language-control-panel": "^0.3.16",
-    "@jusda-tools/web-api-client": "^0.0.16"
+    "@jusda-tools/jusda-theme-config": "^1.0.10",
+    "@jusda-tools/language-control-panel": "^0.3.22",
+    "@jusda-tools/web-api-client": "^0.0.16",
+    "antd": "5.9.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "gitHead": "4ed0acdf2bda6f9b9f3d0263bc796a8225c09ea3"
 }

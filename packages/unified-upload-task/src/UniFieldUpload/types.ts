@@ -4,6 +4,9 @@ import { TableProps } from 'antd/lib/table';
 import { ModalProps } from 'antd/lib/modal';
 
 export interface UploadProps {
+    showExtraSubmit?:boolean,
+    extraSubmitLable?:string,
+    submitLable?:string,
     visible: boolean;
     onChange: Function;
     title?: string;
@@ -15,6 +18,7 @@ export interface UploadProps {
     maxSize?: number;
     onCancel: MouseEventHandler<HTMLElement>;
     onSubmit: MouseEventHandler<HTMLElement>;
+    onSubmitExtra: MouseEventHandler<HTMLElement>;
     rowKey?: string | any[];
     tableColumns?: any[];
     tableProps?: TableProps<any>;

@@ -48,11 +48,11 @@ interface Props {
     // 图标对象
     IconMap?: {
         // 下拉图标
-        'downIcon'?: React.ForwardRefExoticComponent<any>,
+        'downIcon'?: React.ReactSVGElement,
         // 返回图标
-        'goBackIcon'?: React.ForwardRefExoticComponent<any>,
+        'goBackIcon'?: React.ReactSVGElement,
         // 选中图标
-        'CheckIcon'?: React.ForwardRefExoticComponent<any>,
+        'CheckIcon'?: React.ReactSVGElement,
     }
 }
 
@@ -137,9 +137,9 @@ export default function DownSelection({
         }
     }, [downState]);
     return (
-        <div className={"juslinkCommondownSelection"} ref={downSelectionRef}>
-            <div className={"juslinkCommondescribe"} title={defaultData[name]}>{lable}: {defaultData[name]}</div>
-            <div className={"juslinkCommondownBtn"}>
+        <div className={'juslinkCommondownSelection'} ref={downSelectionRef}>
+            <div className={'juslinkCommondescribe'} title={defaultData[name]}>{lable}: {defaultData[name]}</div>
+            <div className={'juslinkCommondownBtn'}>
                 {downIcon?           <IconTipx style={{
                     marginRight: '8px',
                     transform: !downState ? 'rotate(0deg)' : 'rotate(180deg)',
@@ -194,17 +194,17 @@ export default function DownSelection({
                         />
                     </Tooltip>}                        
             </div>
-            {downState ? <div className={"juslinkCommondropDown"}  >
+            {downState ? <div className={'juslinkCommondropDown'}  >
                 <Spin spinning={loading}>
-                    <input type='text' className={"juslinkCommoninput"} placeholder={placeholder} onChange={(e) => {
+                    <input type='text' className={'juslinkCommoninput'} placeholder={placeholder} onChange={(e) => {
                         serach(e.target.value);
                         searchKeyword.current = e.target.value;
                     }} />
 
-                    <div className={"juslinkCommondropDownList"} ref={dropDownListRef} id='dropDownList' style={{
+                    <div className={'juslinkCommondropDownList'} ref={dropDownListRef} id='dropDownList' style={{
                         overflowY: total > 10 ? 'scroll' : 'auto'
                     }}>
-                        <div className={"juslinkCommonli"} title={defaultData[name]} onClick={
+                        <div className={'juslinkCommonli'} title={defaultData[name]} onClick={
                             () => {
                                 setDownState(false);
                             }
@@ -228,7 +228,7 @@ export default function DownSelection({
                         </div>
                         {listRandr?.map((Item: any) => {
 
-                            return (<div className={"juslinkCommonli"} key={Item[code]} title={Item[name]} onClick={
+                            return (<div className={'juslinkCommonli'} key={Item[code]} title={Item[name]} onClick={
                                 () => {
                                     setDownState(false);
                                     itemClick(Item);

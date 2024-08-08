@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-feedback",
-  "version": "0.3.3",
+  "version": "2.1.2-alpha.0",
   "description": "意见反馈",
   "main": "dist/index.js",
   "types": "types",
@@ -89,13 +89,15 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "@jusda-tools/auth-tools": "^0.3.2",
+    "@jusda-tools/auth-tools": "^0.3.11",
     "@jusda-tools/jusda-file-upload": "0.0.9",
     "@jusda-tools/jusda-publicmethod": "^0.0.6",
-    "@jusda-tools/local-permission": "^0.0.8",
+    "@jusda-tools/jusda-theme-config": "^1.0.10",
+    "@jusda-tools/local-permission": "^0.0.9",
     "@jusda-tools/web-api-client": "^0.0.16",
-    "antd": "4.24.8",
+    "antd": "5.10.3",
     "less": "^3.11.1",
+    "moment": "2.29.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },

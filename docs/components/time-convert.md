@@ -10,6 +10,7 @@ group:
 ## 代码演示
 <code iframe="600" src="../../demo/time-convert/time-convert.tsx"></code>
 
+<!-- 提取MD -->
 ## API及参数说明
 组件属性:
 * initialValue:默认显示时间
@@ -26,3 +27,4 @@ convertByTimezone(time,[originTimezone],[format],[withTimezone])
 |originTimezone|需要转到到的时区|string|UTC+8,UTC+7.5等|当前所在地区时区|
 |format|返回的日期格式|string|符合dayjs日期格式|YYYY-MM-DD HH:mm:ss|
 |withTimezone|是否需要携带时区信息|boolean|true、false|true|
+<!-- end提取MD -->

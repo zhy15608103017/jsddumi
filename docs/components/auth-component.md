@@ -97,7 +97,7 @@ window.jusdaBaseConfig = {
 ```bash
 $ npm install --save @jusda-tools/auth-component --registry http://nexus.jusda.int/verdaccio/
 ```
-
+<!-- 提取MD -->
 ## API
 
 | 参数            | 说明                                               | 类型     | 默认 | 备注                 |
@@ -109,3 +109,4 @@ $ npm install --save @jusda-tools/auth-component --registry http://nexus.jusda.i
 
 > > 注: 1. 全局配置: 需要配置 window.jusdaBaseConfig 变量  
 > >  2. 默认从 cookie 中获取 token 和 clientId
+<!-- end提取MD -->

@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-file-upload",
-  "version": "0.3.0",
+  "version": "0.3.4",
   "description": "新文件服务上传下载组件",
   "main": "dist/index.js",
   "sideEffects": false,
@@ -75,5 +75,5 @@
     "crypto-js": "^4.0.0",
     "urlencode": "^1.1.0"
   },
-  "gitHead": "5b40f928ba8bab85179ca7e19aa4eb2f34aa9e15"
+  "gitHead": "9722880f77c1f9ee293b61c17c89ddf2c1bffa9b"
 }

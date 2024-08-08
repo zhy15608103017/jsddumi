@@ -8,6 +8,8 @@ group:
 ---
 # workflow-task-manager 待办任务处理组件
 
+<!-- 提取MD -->
+
 ## API
 
 ### workflow-task-manager
@@ -22,6 +24,7 @@ group:
 | theme      | 主题     | string                      | light   | -    |
 | modalProps | 弹框配置 | Omit<ModalProps, "visible"> | -       | -    |
 
+<!-- end提取MD -->
 
 ## Example
 
@@ -79,9 +82,19 @@ import { useModel } from 'umi';
 
 ### 其他子组件
 
+<!-- 提取MD -->
+
 #### BusinessManager
 
     用于展示当前用户的待办列表，mounted后或当前展示代办数据变化时时刷新列表。
+
+| 参数       | 说明     | 类型                        | 默认    | 备注 |
+| ---------- | -------- | --------------------------- | ------- | ---- | 
+| locale     | 国际化   | string                      | 'en-US' |      |
+| modalProps | 弹框配置 | Omit<ModalProps, "visible"> | -       | -    |
+| ref | ref可获取到更新列表数据的方法updateTableData | - | -       | -    |
+
+<!-- end提取MD -->
 
 ```jsx | pure
 import React, { useRef } from 'react';
@@ -101,12 +114,6 @@ const App: React.FC = () => {
   );
 };
 ```
-
-| 参数       | 说明     | 类型                        | 默认    | 备注 |
-| ---------- | -------- | --------------------------- | ------- | ---- | --- |
-| locale     | 国际化   | string                      | 'en-US' |      |     |
-| modalProps | 弹框配置 | Omit<ModalProps, "visible"> | -       | -    |
-| ref | ref可获取到更新列表数据的方法updateTableData | - | -       | -    |
 
 
 #### deserializeContextData

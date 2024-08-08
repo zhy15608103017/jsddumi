@@ -1,22 +1,14 @@
 // @ts-nocheck
-import React, { ReactNode, useState, useEffect, Fragment } from 'react';
-import { Form, Input, Button, Upload, message, Radio } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import { request } from './request';
+import React, {Fragment, ReactNode, useEffect, useState} from 'react';
+import {Button, Form, Input, message, Radio, Upload} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
+import {request} from './request';
 import moment from 'moment';
-import {
-  prefix,
-  UrlModal,
-  Allbtnstyle,
-  WarmInfo,
-  Title,
-  TitleUpload,
-  Span,
-  NewModal,
-} from './detailStyle';
+import {Allbtnstyle, NewModal, prefix, Span, Title, TitleUpload, UrlModal, WarmInfo,} from './detailStyle';
 import authTools from '@jusda-tools/auth-tools';
-import { InitUpload } from '@jusda-tools/jusda-file-upload';
-import {fileNameType } from './fileType';
+import {InitUpload} from '@jusda-tools/jusda-file-upload';
+import {fileNameType} from './fileType';
+
 const { JusdaUserInfo } = authTools;
 
 interface controlShowProps {
@@ -80,7 +72,7 @@ export const InfoDetail: React.SFC<controlShowProps> = (
         `feedbackUpload/${file?.name}`,
       );
       option.onSuccess(result);
-    } catch (error) {    
+    } catch (error) {
       option.onError(error);
     }
   };
@@ -152,7 +144,7 @@ export const InfoDetail: React.SFC<controlShowProps> = (
         if (textValueCode.length >= 10) {
           submitAxios(val);
         } else {
-          message.warn(currentLocale?.notice?.fileLeast);
+          message.warning(currentLocale?.notice?.fileLeast);
         }
       })
       .catch((err: any) => {
@@ -255,12 +247,13 @@ export const InfoDetail: React.SFC<controlShowProps> = (
   return (
     <Fragment>
       <NewModal
-        visible={visible}
+          open={visible}
         onCancel={onCancel}
         footer={null}
         title={currentLocale?.NewModal.headText}
         width="420px"
         themes={props?.currenTheme?.NewModal}
+          className="feedBackModal"
       >
         <Form form={form} hideRequiredMark colon={false}>
           <Title themes={props?.currenTheme?.Title}>

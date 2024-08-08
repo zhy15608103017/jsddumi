@@ -6,14 +6,6 @@ import { css } from '@emotion/css';
 // import { theme } from 'antd';
 import { getAntdConfig } from "@jusda-tools/jusda-theme-config";
 import userAvatar42 from './userAvatar42.png';
-import switchBlack from './switchBlack.png';
-import safeSettingBlack from './safeSettingBlack.png';
-import feedBackBlack from './feedBackBlack.png';
-import messageBlack from './messageBlack.png';
-import switchYellow from './switchYellow.png';
-import safeSettingYellow from './safeSettingYellow.png';
-import feedBackYellow from './feedBackYellow.png';
-import messageYellow from './messageYellow.png';
 // import { themeTokenFn } from '@jusda-tools/antd-theme-token';
 // eslint-disable-next-line camelcase, @typescript-eslint/camelcase
 const ant_prefix = 'juslink';
@@ -27,7 +19,7 @@ const config: any = {
 const { colorPrimary } = config.token;
 
 const textHover = (uiTheme: string) => {
-    const color = uiTheme === 'light' ? '#EA9000' : colorPrimary;
+    const color = uiTheme === 'light' ? 'var(--jusda-action-icon-color)' : colorPrimary;
     return {
         color,
         cursor: 'pointer',
@@ -53,7 +45,7 @@ const userInfoStyle = (uiTheme: string) : any => {
 };
 
 const userInfoContainerStyle = (uiTheme: string) : any => {
-    const hoverColor = uiTheme === 'light' ? '#F9B400' : '#3D3D3D';
+    const hoverColor = uiTheme === 'light' ? 'var(--jusda-action-icon-color)' : '#3D3D3D';
     return css({
         height: '100%',
         padding: '0px 10px',
@@ -71,8 +63,10 @@ const userControlPanelSubmenu = (uiTheme : string): any => {
     const colorObject = {
         ulColor: uiTheme === 'light' ? '#222222' : '#fff',
         ulBackColor: uiTheme === 'light' ? '#ffffff' : '#000000',
-        currentColor: uiTheme === 'light' ? '#EA9000' : colorPrimary,
+        currentColor: uiTheme === 'light' ? 'var(--jusda-background-white-text-secondary)' : colorPrimary,
     };
+    const item_disabled = uiTheme === 'light' ? 'rgba(0, 0, 0, 0.25)' : 'grey';
+
     return css`
         .${ant_prefix}-menu: {
             borderRadius: 0px !important,
@@ -80,7 +74,7 @@ const userControlPanelSubmenu = (uiTheme : string): any => {
         ul,li{
             opacity: 0.86;
             background: ${colorObject.ulBackColor} !important;
-            color: ${colorObject.ulColor};
+            color: ${colorObject.ulColor} !important;
             font-size: 12px !important;
         }
         li[role="menuitem"]{
@@ -94,7 +88,7 @@ const userControlPanelSubmenu = (uiTheme : string): any => {
         }
         .default-identity:hover{
             background-color: ${colorPrimary};
-            color: #222222;
+            color: var(--jusda-primary-button-text-color);
         }
         .${ant_prefix}-menu-item-disabled{
             cursor: not-allowed !important;
@@ -102,6 +96,9 @@ const userControlPanelSubmenu = (uiTheme : string): any => {
         }
         .current-identity{
             color: ${colorObject.currentColor} !important;
+        }
+        .${ant_prefix}-dropdown-menu-item-disabled{
+            color: ${item_disabled} !important
         }
     `;
 };
@@ -115,12 +112,9 @@ const overlayPanelContainer = (uiTheme : string): any => {
         menusUl: uiTheme === 'light' ? '#222222' : '#fff',
         menuItemSelected: uiTheme === 'light' ? '#222222' : '#fff',
     };
-    const imguRL = {
-        switchIcon: uiTheme === 'light' ? switchBlack : switchYellow,
-        safeSettingIcon: uiTheme === 'light' ? safeSettingBlack : safeSettingYellow,
-        feedBackIcon: uiTheme === 'light' ? feedBackBlack : feedBackYellow,
-        messageIcon: uiTheme === 'light' ? messageBlack : messageYellow,
-    };
+    const iconColor = uiTheme === 'light' ? '#222222' : '#ffc500';
+    const iconColorHover = uiTheme === 'light' ? 'var(--jusda-primary-button-text-color)' : '#222222';
+
     return css`
     width: 330px;
     max-height: 307px;
@@ -210,47 +204,38 @@ const overlayPanelContainer = (uiTheme : string): any => {
                 display: flex;
                 align-items: center;
                 .icon{
-                    height: 16px;
-                    width: 16px;
+                    height: 22px;
+                    width: 22px;
                     margin-right: 10px;
+                    display: inline-grid;
                     background-size: cover;
+                    svg{
+                        fill: ${iconColor};
+                    }
                 }
-                .switch-icon{
-                    background-image: url(${imguRL.switchIcon});
-                }
-                .safe-setting-icon{
-                    background-image: url(${imguRL.safeSettingIcon});
-                }
-                .feed-back-icon{
-                    background-image: url(${imguRL.feedBackIcon});
-                }
-                .message-icon{
-                    background-image: url(${imguRL.messageIcon});
+                span{
+                    color: ${colorObject.panelContainerColor};
                 }
             }
             .jusda-title:hover{
-                color: #222222;
+                color: ${iconColorHover};
+                .icon{
+                    svg{
+                        fill: ${iconColorHover};
+                    }
+                }
+                span{
+                    color: ${iconColorHover};
+                }
             }
-            ${uiTheme === 'light' ? '' : `
-                    .jusda-title:hover{
-                        .switch-icon{
-                        background-image: url(${switchBlack});
-                        }
-                    }
-                    .safe-setting-icon{
-                        background-image: url(${safeSettingBlack});
-                    }
-                    .feed-back-icon{
-                        background-image: url(${feedBackBlack});
-                    }`}
             li[role="menuitem"]:hover{
                 background-color: ${colorPrimary} !important;
-                color: #222222 !important;
+                color: var(--jusda-primary-button-text-color) !important;
                 border-radius: 0 !important;
             }
             li[role="none"]:hover{
                 background-color: ${colorPrimary} !important;
-                color: #222222 !important;
+                color: var(--jusda-primary-button-text-color) !important;
                 border-radius: 0 !important;
             }
         }

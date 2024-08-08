@@ -1,4 +1,5 @@
-import * as React from 'react'
+import * as React from 'react';
+import {flushSync } from "react-dom";
 import IframeModal from './IframeModal.jsx'
 import Draggable from 'react-draggable';
 import getCfgTypeUrl from './envConfig.js';
@@ -58,16 +59,21 @@ export default class ImSuspend extends React.Component {
                 // 获取客服绑定的userId
                 const userData = await getIMInfoReq.getUserId({ jusdaDomainAccountEq: whitelist[1].value });
                 if(userData.userId) {
-                    this.setState(() => ({
-                        userId: userData.userId
-                    }));
+                    flushSync(()=>{
+                        this.setState(() => ({
+                            userId: userData.userId
+                        }));
+                    })
+              
                 }
             } else {
                 const businessList = await getIMInfoReq.getCustomerCode({ crmCode: tenantData.company.crmCode });
+            flushSync(()=>{
                 this.setState(() => ({
                     crmCode: tenantData.company.crmCode,
                     businessList: businessList && businessList.length > 0 ? businessList : null
                 }));
+            })
             }
         }
         imCallBack&&imCallBack();

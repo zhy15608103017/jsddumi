@@ -25,7 +25,7 @@ group:
 
 $ npm install --save @jusda-tools/jusda-waybillList --registry http://nexus.jusda.int/verdaccio/
 ```
-
+<!-- 提取MD -->
 ## API
 
 | 参数                 | 说明                | 类型      | 默认    | 备注 |
@@ -40,3 +40,4 @@ $ npm install --save @jusda-tools/jusda-waybillList --registry http://nexus.jusd
 | iconColor            | 自定义异常节点颜色 （非必传）      |  string  | 红色    |- |
 | headerText            | 自定义弹框title文本（非必传）      |  string  | 订单运输状态更新    |- |
 
+<!-- end提取MD -->

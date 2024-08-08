@@ -63,7 +63,7 @@ const rollPostcssConfig = {
         less: {
             modifyVars: {
                 '@ant-prefix': 'juslink',
-                'primary-color': '#ffc500',
+                // '@root-entry-name': 'variable',
             },
             javascriptEnabled: true,
         },

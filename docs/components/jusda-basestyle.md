@@ -12,7 +12,7 @@ group:
 
 `import '@jusda-tools/jusda-base-style/dist/jusda-baseStyle.css';`
 
-## 3.按照约定的 HTML与CLASS类名  h1进行排版  只进行排版 样式
+## 3.按照约定的 HTML与CLASS类名  h1进行排版  只进行排版与颜色样式
 
 # 示例页面1.内嵌表格
 
@@ -47,5 +47,6 @@ group:
     {/* tabs 部分 */}
     <div className="jusda-tabs-container"></div>
 </div>
-
 // 只可在table-container内使用 修改图标颜色 .jusda-table-icon-color = color: #ea9000;
+```
+

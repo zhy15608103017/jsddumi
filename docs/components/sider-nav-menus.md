@@ -28,6 +28,8 @@ group:
 $ npm install --save @jusda-tools/sider-nav-menus --registry http://nexus.jusda.int/verdaccio/
 ```
 
+<!-- 提取MD -->
+
 ## API
 
 ### sider-nav-menus
@@ -56,7 +58,7 @@ $ npm install --save @jusda-tools/sider-nav-menus --registry http://nexus.jusda.
 | authCode | 权限 Code | string                                                                 | -    | -                  |
 | target   | 打开方式  | [target](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/open) | -    | 有值时点击后就不会选中该菜单了                  |
 
-
+<!-- end提取MD -->
 
 ### 0.0.6 更新日志.
 

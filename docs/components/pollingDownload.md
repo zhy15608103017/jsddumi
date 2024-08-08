@@ -44,6 +44,7 @@ export default Demo;
 $ npm install --save @jusda-tools/pollingdownload --registry http://nexus.jusda.int/verdaccio/
 ```
 
+<!-- 提取MD -->
 
 ## API及参数说明
 exportFn(taskId,[options],[downloadBaseUrl])
@@ -62,3 +63,5 @@ exportFn(taskId,[options],[downloadBaseUrl])
 
 
 + downloadBaseUrl ，非必传，download 接口的基础地址，兼容 CAA 下载。
+
+<!-- end提取MD -->

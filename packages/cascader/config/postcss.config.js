@@ -62,8 +62,8 @@ const rollPostcssConfig = {
   use: {
     less: {
       modifyVars: {
-        '@ant-prefix': 'jusda-header',
-        'primary-color': '#ffc500',
+        '@ant-prefix': 'juslink',
+        '@root-entry-name': 'variable'
       },
       javascriptEnabled: true,
     },

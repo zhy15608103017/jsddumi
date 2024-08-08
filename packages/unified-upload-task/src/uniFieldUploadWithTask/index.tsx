@@ -3,19 +3,41 @@ import UniFileUpload, {
     // @ts-ignore
     UniFiledUploadRef,
 } from '../UniFieldUpload';
-import { currentLanguage } from "@jusda-tools/language-control-panel";
+import { currentLanguage } from '@jusda-tools/language-control-panel';
 // @ts-ignore
 import exportFn from '@jusda-tools/pollingdownload';
 import { errorColumn } from './configure';
 import { ConfigProvider, message, Spin } from 'antd';
-import enUS from '../locale/en-US'
+import enUS from '../locale/en-US';
 import { getTaskStatus } from '../service/task';
 import { sleep } from '../utils';
 import getLocale from '../locale';
-import antd_enUS from "antd/lib/locale/en_US";
-import antd_zhCN from "antd/lib/locale/zh_CN";
+import antd_enUS from 'antd/lib/locale/en_US';
+import antd_zhCN from 'antd/lib/locale/zh_CN';
+ConfigProvider.config({
+    theme: {
+        //@ts-ignore
+        token:  {...{
+            'colorPrimary': '#ffc500',
+            'colorPrimaryBg': '#FFF8D9',
+            'colorSuccess': '#6fc677',
+            'colorError': '#ff6c6c',
+            'colorPrimaryHover': '#FFDA39',
+            'colorBgLayout': '#F2F2F2',
+            'colorPrimaryBorder': '#fcbe5b',
+            'colorPrimaryBorderHover': '#fa8c16',
+            'colorPrimaryActive': '#FFE366',
+            'colorPrimaryBgHover': '#FFDA39',
+            'colorInfo': '#ffc500'
+        },colorTextLightSolid:'#000',borderRadius:2}
+    },
+    prefixCls: 'unified-upload-task',
+});
 const UnifiedUploadWithTask = (
     {
+        showExtraSubmit,
+        extraSubmitLable,
+        submitLable,
         visible,
         onChange,
         templateDescribe,
@@ -33,6 +55,7 @@ const UnifiedUploadWithTask = (
         buttonDescribe,
         downLoadTemplateApi,
         uploadApi,
+        uploadExtraApi,
         taskCenter = false,
         ossParams,
         autoSubmit = false,
@@ -51,6 +74,9 @@ const UnifiedUploadWithTask = (
         customErrorFailTitle = () => { },
         customerElement
     }: {
+        showExtraSubmit?: boolean;
+        extraSubmitLable?: string;
+        submitLable?: string;
         visible?: any;
         onChange?: () => {};
         templateDescribe?: string;
@@ -64,19 +90,20 @@ const UnifiedUploadWithTask = (
         tableColumns?: any;
         tableProps?: any;
         modalProps?: any;
-        downLoadTemplateApi?: any,
-        uploadApi?: any,
-        taskCenter?: boolean,
+        downLoadTemplateApi?: any;
+        uploadApi?: any;
+        uploadExtraApi?: any;
+        taskCenter?: boolean;
         isShowProgress?: boolean;
-        ossParams?: any,
-        autoSubmit?: boolean
-        title?: string,
-        taskTitle?: string
-        locale?: string
-        templateName?: string
-        downloadTip?: string
-        progressProps?: any
-        onCancel?: () => {}
+        ossParams?: any;
+        autoSubmit?: boolean;
+        title?: string;
+        taskTitle?: string;
+        locale?: string;
+        templateName?: string;
+        downloadTip?: string;
+        progressProps?: any;
+        onCancel?: () => {};
         accept?: string;
         uploadCustomMethod?: Function | false;
         addRules?: (file: any) => { rule: boolean; errorMessage: string }[];
@@ -104,8 +131,8 @@ const UnifiedUploadWithTask = (
 
     const downloadOrderUpdateTemplate = async () => {
         setuploadLoading(true);
-        let result = downLoadTemplateApi && downLoadTemplateApi()
-        templateName = templateName || `${(enUS as any)['bulkImportInfoTemplate']}.xlsx`
+        let result = downLoadTemplateApi && downLoadTemplateApi();
+        templateName = templateName || `${(enUS as any)['bulkImportInfoTemplate']}.xlsx`;
         result?.then((res: any) => {
             setuploadLoading(false);
 
@@ -114,32 +141,32 @@ const UnifiedUploadWithTask = (
                 if (res?.data?.includes('http')) {
                     const a = document.createElement('a');
                     // @ts-ignore
-                    a.download = templateName
+                    a.download = templateName;
                     a.href = res?.data;
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
-                    return
+                    return;
                 }
-                message.info(downloadTip || currentLocale['Downloading files, please wait'], 7)
+                message.info(downloadTip || currentLocale['Downloading files, please wait'], 7);
                 return exportFn(
                     String(res?.data),
                     {
                         duration: 3000,
                         fileName: templateName
                     }
-                )
+                );
             }
 
 
-        })
+        });
     };
 
     const uploadChange = (value: any) => {
         setUploadData(value);
-        setTaskStatus('CREATED')
-        setUploadPercent(0)
-        setUpLoadShow(false)
+        setTaskStatus('CREATED');
+        setUploadPercent(0);
+        setUpLoadShow(false);
     };
     const onSubmitUpload = (fileData: any) => {
         setSubmitButtonLoading(true);
@@ -149,41 +176,85 @@ const UnifiedUploadWithTask = (
         // api.paramsExcel(obj)
 
         uploadApi(obj)
-            .then(async (res: { data: string; success: boolean, errorCode: string, errorData: any }) => {
+            .then(async (res: { data: string; success: boolean; errorCode: string; errorData: any }) => {
                 if (!res?.success) {
                     if (res?.errorCode == 'EXCEL_TEMPLATE_ERROR') {
-                        message.error(currentLocale['EXCEL_TEMPLATE_ERROR'])
+                        message.error(currentLocale['EXCEL_TEMPLATE_ERROR']);
                     }
                     else {
-                        res.errorData = []
-                        message.error(currentLocale['Upload failed, please check whether the imported content is correct'])
+                        res.errorData = [];
+                        message.error(currentLocale['Upload failed, please check whether the imported content is correct']);
                     }
                     setSubmitButtonLoading(false);
                     return;
                 }
-                isShowProgress ? setUpLoadShow(true) : ''
-                let taskStatus = 'CREATED'
-                let nowUploadPercent = 0
+                isShowProgress ? setUpLoadShow(true) : '';
+                let taskStatus = 'CREATED';
+                let nowUploadPercent = 0;
                 while (taskCenter && taskStatus == 'CREATED') {
-                    let taskRes = await getTaskStatus(res?.data)
-                    taskStatus = taskRes?.data?.status
-                    nowUploadPercent += Math.ceil(Math.random() * 10)
-                    nowUploadPercent = Math.min(nowUploadPercent, 99)
-                    setUploadPercent(nowUploadPercent)
-                    await sleep(1)
+                    let taskRes = await getTaskStatus(res?.data);
+                    taskStatus = taskRes?.data?.status;
+                    nowUploadPercent += Math.ceil(Math.random() * 10);
+                    nowUploadPercent = Math.min(nowUploadPercent, 99);
+                    setUploadPercent(nowUploadPercent);
+                    await sleep(1);
                 }
-                setUploadPercent(100)
+                setUploadPercent(100);
                 if (!taskCenter) {
-                    message.success(currentLocale['uploadSuccess'])
+                    message.success(currentLocale['uploadSuccess']);
                 }
-                setTaskStatus(taskStatus)
+                setTaskStatus(taskStatus);
                 setSubmitButtonLoading(false);
-                !taskCenter ? onCancel?.() : ''
+                !taskCenter ? onCancel?.() : '';
             })
             .catch(() => {
                 setSubmitButtonLoading(false);
             });
     };
+    const onSubmitExtra = (fileData: any) => {
+        setSubmitButtonLoading(true);
+        const obj = {
+            fileId: fileData?.url || uploadData.url,
+        };
+        // api.paramsExcel(obj)
+
+        uploadExtraApi(obj)
+            .then(async (res: { data: string; success: boolean; errorCode: string; errorData: any }) => {
+                if (!res?.success) {
+                    if (res?.errorCode == 'EXCEL_TEMPLATE_ERROR') {
+                        message.error(currentLocale['EXCEL_TEMPLATE_ERROR']);
+                    }
+                    else {
+                        res.errorData = [];
+                        message.error(currentLocale['Upload failed, please check whether the imported content is correct']);
+                    }
+                    setSubmitButtonLoading(false);
+                    return;
+                }
+                isShowProgress ? setUpLoadShow(true) : '';
+                let taskStatus = 'CREATED';
+                let nowUploadPercent = 0;
+                while (taskCenter && taskStatus == 'CREATED') {
+                    let taskRes = await getTaskStatus(res?.data);
+                    taskStatus = taskRes?.data?.status;
+                    nowUploadPercent += Math.ceil(Math.random() * 10);
+                    nowUploadPercent = Math.min(nowUploadPercent, 99);
+                    setUploadPercent(nowUploadPercent);
+                    await sleep(1);
+                }
+                setUploadPercent(100);
+                if (!taskCenter) {
+                    message.success(currentLocale['uploadSuccess']);
+                }
+                setTaskStatus(taskStatus);
+                setSubmitButtonLoading(false);
+                !taskCenter ? onCancel?.() : '';
+            })
+            .catch(() => {
+                setSubmitButtonLoading(false);
+            });
+    };
+    
 
     useEffect(() => {
         if (!visible) {
@@ -192,17 +263,37 @@ const UnifiedUploadWithTask = (
                 state: 'default',
                 file: {},
             });
-            setTaskStatus('CREATED')
-            setUploadPercent(0)
-            setUpLoadShow(false)
+            setTaskStatus('CREATED');
+            setUploadPercent(0);
+            setUpLoadShow(false);
         }
 
     }, [visible]);
     return (
-        <ConfigProvider locale={currentLanguage()?.includes("zh") ? antd_zhCN : antd_enUS}>
+        <ConfigProvider locale={currentLanguage()?.includes("zh") ? antd_zhCN : antd_enUS}  theme={{
+            //@ts-ignore
+            token:  {...{
+                'colorPrimary': '#ffc500',
+                'colorPrimaryBg': '#FFF8D9',
+                'colorSuccess': '#6fc677',
+                'colorError': '#ff6c6c',
+                'colorPrimaryHover': '#FFDA39',
+                'colorBgLayout': '#F2F2F2',
+                'colorPrimaryBorder': '#fcbe5b',
+                'colorPrimaryBorderHover': '#fa8c16',
+                'colorPrimaryActive': '#FFE366',
+                'colorPrimaryBgHover': '#FFDA39',
+                'colorInfo': '#ffc500'
+            },colorTextLightSolid:"#000",borderRadius:2}
+          }}
+          prefixCls = 'unified-upload-task'
+          >
             <Spin spinning={uploadLoading}>
                 {/* 上传Excel部分 */}
                 <UniFileUpload
+                    showExtraSubmit={showExtraSubmit}
+                    extraSubmitLable={extraSubmitLable}
+                    submitLable={submitLable}
                     visible={visible}
                     onChange={onChange || uploadChange}
                     title={title}
@@ -235,7 +326,7 @@ const UnifiedUploadWithTask = (
                             ...progressProps
                         }
 
-                    }
+                    } 
                     autoSubmit={autoSubmit}
                     taskTitle={taskTitle}
                     accept={accept}
@@ -247,6 +338,7 @@ const UnifiedUploadWithTask = (
                     // @ts-ignore
                     ref={uploadRef} // 获取设置组件状态的方法.
                     onSubmit={onSubmit || onSubmitUpload}
+                    onSubmitExtra={onSubmitExtra}
 
                 />
             </Spin>

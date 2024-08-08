@@ -15,7 +15,7 @@ const inputOptions = {
   // 写你自己的入口文件
   input: "src/index.ts",
   // 写自己要排除的依赖
-  external: ["react", "react-dom",  "umi","antd",'@jusda-tools/jusda-pro-table-umi4' ],
+  external: ["react", "react-dom",  "umi",'@jusda-tools/jusda-pro-table-umi4' ],
   // 自己的插件
   plugins: [
     json(),
@@ -49,7 +49,7 @@ const outputOptions = {
   file: 'dist/index.js', // 输出文件
   format: "esm", // 输出文件类型
   exports: "named", // 具体解释 https://www.rollupjs.com/guide/big-list-of-options#exports
-  sourcemap: true,  // 输出map文件
+  sourcemap: false,  // 输出map文件
   plugins: [],  // 输出时要用到的插件 一般不填
 };
 

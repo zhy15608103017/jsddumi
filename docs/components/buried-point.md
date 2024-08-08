@@ -128,6 +128,7 @@ npm install --save @jusda-tools/buried-point --registry=http://nexus.jusda.int/v
 
 ### registerUserActions(appCode,[options])
 
+<!-- 提取MD -->
 ### registerUserActions options 参数
     该对象为扩展参数，会原封不动的传给中台接口
     datasend_timeout = 6000,
@@ -159,6 +160,9 @@ pageBrowseAction
 | storage_length             |    localStorage条数       | Number  |   200 |   该值不应过大，防止本地存储过大和发送请求发送参数过大，超过这个条数会立即发送  |
 | send_interval            | 多少时间发送一次              | Number  |   6000 |     |
 | collect_tags           | 自定义触发元素             | object  |   {} |   {li:true，...} div配置为{max_level: 1}数字最大为3。  |
+
+<!-- end提取MD -->
+
 ## 更新日志
 ###### 0.1.0更新内容:
 ```base
@@ -175,4 +179,16 @@ pageBrowseAction
 ###### 0.3.13更新内容:
 ```base
 增加自定义元素触发字段collect_tags
+```
+###### 0.3.23更新内容:
+```base
+增加字段clientId
+```
+###### 0.3.24更新内容:
+```base
+页面停留小于5s的数据不发送
+```
+###### 0.3.25更新内容:
+```base
+增加配置buriedPointTimeOnPage字段
 ```

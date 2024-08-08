@@ -6,9 +6,12 @@ import { extend } from '@jusda-tools/web-api-client';
 import authTools from '@jusda-tools/auth-tools';
 import PropTypes from 'prop-types';
 import { Dropdown, Menu, ConfigProvider, message } from 'antd';
+import { getAntdConfig } from "@jusda-tools/jusda-theme-config";
 import { mpApiUrl, mp_domain_prefix, sccp_domain_prefix } from '@jusda-tools/url-config';
 import { CookieTools } from '@jusda-tools/jusda-publicmethod';
-import { avatar } from '../icons';
+import { currentLanguage } from '@jusda-tools/language-control-panel';
+import authSwitch from '@jusda-tools/auth-switch';
+import { avatar, switchIcon, safeSettingIcon, feedBackIcon, messageIcon } from '../icons';
 import envConfig from '../envConfig.js';
 import zhCN from '../locales/zh-CN.js';
 import enUS from '../locales/en-US.js';
@@ -23,6 +26,7 @@ const MenuItem = Item;
 const { JusdaUserInfo } = authTools;
 
 const cookieTools = new CookieTools();
+const { authorizedSwitch } = authSwitch;
 
 const locales = new Map()
     .set('en-US', enUS)
@@ -75,7 +79,12 @@ export default class UserControlPanel extends Component {
             return {
                 options: {
                     ...options,
-                    headers: { ...headers, authorization, clientId },
+                    headers: {
+                        ...headers,
+                        authorization,
+                        clientId,
+                        'accept-language': currentLanguage(),
+                    },
                 },
             };
         }, { global: false });
@@ -154,7 +163,7 @@ export default class UserControlPanel extends Component {
             typeCode: null,
             userId: userInfo.data.user.userId,
         };
-        const result = await request.post(`${mpApiUrl}/juslink-internal-message/receiver/count`, { data: { ...params } });
+        const result = await request.post(`${mpApiUrl}/message-service/internal-message-receivers/count`, { data: { ...params } });
         if (result.success) {
             this.setState({
                 unreadNum: result.data,
@@ -250,8 +259,8 @@ export default class UserControlPanel extends Component {
                 key: 'switchIdentity',
                 label: (
                     <div className="jusda-title">
-                        <div className="icon switch-icon" />
-                        {this.intl('UserControlPanel.切换身份')}
+                        <div className="icon">{switchIcon}</div>
+                        <span>{this.intl('UserControlPanel.切换身份')}</span>
                     </div>
                 ),
                 popupClassName: `${userControlPanelSubmenu(theme)} UserControlPanel-submenu-${theme} ${subMenuWrapClassName || ''}`,
@@ -265,18 +274,31 @@ export default class UserControlPanel extends Component {
         }
         const menuData = [{
             key: 'safeSetting',
-            label: <div className="jusda-title"><div className="icon safe-setting-icon" />{this.intl('UserControlPanel.安全设置')}</div>,
+            label: (
+                <div className="jusda-title">
+                    <div className="icon">{safeSettingIcon}</div>
+                    <span>{this.intl('UserControlPanel.安全设置')}</span>
+                </div>
+            ),
         }, {
             key: 'internalmsg',
             label:
     <div className="jusda-title">
-        <div className="icon message-icon" />
-        {unreadNum > 0 ? this.returnCountNumberDom(unreadNum) : `${this.intl('UserControlPanel.未读消息')}`}
+        <div className="icon">{feedBackIcon}</div>
+        <span>{unreadNum > 0 ? this.returnCountNumberDom(unreadNum) : `${this.intl('UserControlPanel.未读消息')}`}</span>
     </div>,
-        }, {
-            key: 'feedback',
-            label: <div className="jusda-title"><div className="icon feed-back-icon" />{this.intl('UserControlPanel.我的反馈')}</div>
         }];
+        if (authorizedSwitch('juslink_feedback')) {
+            menuData.push({
+                key: 'feedback',
+                label: (
+                    <div className="jusda-title">
+                        <div className="icon">{messageIcon}</div>
+                        <span>{this.intl('UserControlPanel.我的反馈')}</span>
+                    </div>
+                ),
+            });
+        }
         menuItems.push(...menuData);
 
         return (
@@ -332,7 +354,12 @@ export default class UserControlPanel extends Component {
             ...otherProps
         } = this.props;
         return (
-            <ConfigProvider prefixCls="juslink">
+            <ConfigProvider
+                prefixCls="juslink"
+                theme={{
+                    token: getAntdConfig('v5'),
+                }}
+            >
                 <Dropdown
                     {...otherProps}
                     placement="bottomLeft"

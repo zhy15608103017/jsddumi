@@ -5,7 +5,6 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import type { UploadProps, FileProps } from './types';
-import './index.less';
 import { Modal, Button, Progress, Divider, Drawer } from 'antd';
 import Tabs from './Tabs';
 import { DownloadOutlined } from '@ant-design/icons';
@@ -23,17 +22,22 @@ import { getTask, getTaskHistoriesPage } from '../service/task';
 import ProTable from './Table';
 import TaskDetails from './TaskDetails';
 import { currentLanguage } from '@jusda-tools/language-control-panel';
+import { uniFieldUploadContainer } from './style';
 
 const FILE_ACCEPT =
   '.xlsx,.docx,.3gpp,.ac3,.asf,.au,.css,.csv,.doc,.dot,.dtd,.dwg,.dxf,.gif,.htm,.html,.jp2,.jpe,.jpeg,.jpg,.js,.json,.mp2,.mp3,.mp4,.mpeg,.mpg,.mpp,.ogg,.pdf,.png,.pot,.pps,.ppt,.rtf,.svf,.tif,.tiff,.txt,.wdb,.wps,.xhtml,.xlc,.xlm,.xls,.xlt,.xlw,.xml,';
 
 const UploadComponent = (
   {
+    showExtraSubmit,
+    extraSubmitLable,
+    submitLable,
     visible,
     autoSubmit,
     onChange = () => { },
     onCancel = () => { },
     onSubmit = () => { },
+    onSubmitExtra=()=>{},
     rowKey = 'lineNo',
     tableColumns = [],
     tableProps = {},
@@ -79,7 +83,7 @@ const UploadComponent = (
   });
   const TableSelectRef = React.useRef(null);
   const [params, setParams] = React.useReducer((params: any, action: any) => {
-    return { ...params, ...action };
+    return { taskNameContains:params?.taskNameContains, ...action };
   }, {});
   const [taskId, setTaskId] = React.useReducer((_: any, action: any) => {
     return action;
@@ -144,11 +148,12 @@ const UploadComponent = (
     return await getTask(value);
   };
   const initTime = (time: any) => {
+     
     return {
-      startTimeGte: time ? Date.parse(moment(time[0]).format()) : null,
+      startTimeGte: time ? time[0]?.startOf("second")?.valueOf() : null,
       startTimeLte: time
         ? // 后端数据要求结束时间必须为毫秒的最大值
-        Date.parse(moment(time[1]).format()) + 999
+        time[1]?.endOf('second')?.valueOf()
         : null,
     };
   };
@@ -202,15 +207,18 @@ const UploadComponent = (
     const data = { ...params, taskNameContains: taskTitle ? Trim(taskTitle || params.taskNameContains) : undefined, page: current - 1, size: pageSize, sorts };
     return await getTaskHistoriesPage(data);
   };
+  useEffect(()=>{
+    setParams({})
+  },[tabStatus])
   return (
-    <div>
+    (<div>
       <Modal
         centered={true}
         title={title || 'Upload'}
         footer={false}
-        visible={visible}
+        open={visible}
         width={740}
-        className={'uni-field-upload-container'}
+        className={uniFieldUploadContainer()}
         onCancel={onCancel}
         destroyOnClose
         maskClosable={false}
@@ -280,13 +288,22 @@ const UploadComponent = (
                     <Button onClick={onCancel} style={{ marginRight: '16px' }}>
                       {currentLocale['Cancel']}
                     </Button>
+                    {showExtraSubmit && <Button
+                     style={{ marginRight: '16px' }}
+                      type="primary"
+                      loading={submitButtonLoading}
+                      disabled={submitButtonLoading}
+                      onClick={onSubmitExtra}
+                    >
+                      {extraSubmitLable || currentLocale['Submit']}
+                    </Button>}
                     <Button
                       type="primary"
                       loading={submitButtonLoading}
                       disabled={submitButtonLoading}
                       onClick={onSubmit}
                     >
-                      {currentLocale['Submit']}
+                      {submitLable || currentLocale['Submit']}
                     </Button>
                   </>
                 )}
@@ -308,7 +325,7 @@ const UploadComponent = (
                 onSearch({});
               }}
             />
-
+ 
             <ProTable
               rowKey="taskId"
               resizable
@@ -316,6 +333,12 @@ const UploadComponent = (
               params={params}
               columns={colums(view, currentLocale)}
               customizeKey='taskCenter'
+              scroll={
+                {
+                  y: 260,
+                  x:"80vw"
+                }
+              }
               options={{
                 reload: false,
                 density: false,
@@ -327,7 +350,7 @@ const UploadComponent = (
               // @ts-ignore
               extra={<Close />}
               title={currentLocale['TaskDetails']}
-              visible={visibleDrawer}
+              open={visibleDrawer}
               closable={false}
               onClose={() => setVisible(false)}
               destroyOnClose={true}
@@ -342,8 +365,7 @@ const UploadComponent = (
           </>
         }
       </Modal>
-    </div>
-
+    </div>)
   );
 };
 

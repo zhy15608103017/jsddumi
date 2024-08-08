@@ -22,6 +22,7 @@ CAA 个人信息面板组件，用于 caa 管理端
 $ npm install --save @jusda-tools/caa-user-control-panel --registry http://nexus.jusda.int/verdaccio/
 ```
 
+<!-- 提取MD -->
 ## API
 
 | 参数                 | 说明     | 类型   | 默认值               | 版本 | 备注 |
@@ -39,5 +40,7 @@ $ npm install --save @jusda-tools/caa-user-control-panel --registry http://nexus
 | requirePermission    | 是否校验切换身份     | boolean | true   | -    |
 | subMenuWrapClassName | 子菜单展开样式名称   | string  | -      | -    |
 | locale | 国际化   | string  | - | -    |
+
+<!-- end提取MD -->
 
 - - -

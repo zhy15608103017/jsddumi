@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-pro-table-umi4",
-  "version": "0.0.7",
+  "version": "2.0.8",
   "description": "",
   "main": "./dist/index.js",
   "types": "./types/src/index.d.ts",
@@ -27,14 +27,15 @@
     "@babel/preset-env": "^7.15.4",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
-    "@jusda-tools/language-control-panel": "^0.3.16",
+    "@jusda-tools/language-control-panel": "^0.3.22",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-terser": "0.4.4",
     "@sixian/css-url": "^1.0.3",
     "@types/node": "17.0.40",
-    "antd": "4.24.8",
+    "antd": "5.10.3",
     "autoprefixer": "^10.3.4",
     "babel-plugin-import-style": "^0.0.1",
     "cssnano": "^5.0.8",
@@ -43,7 +44,7 @@
     "postcss": "^8.3.6",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-preset-env": "8.1.0",
     "react-resizable": "3.0.4",
     "rimraf": "^3.0.2",
     "rollup": "^2.57.0",
@@ -53,9 +54,12 @@
     "rollup-plugin-typescript2": "^0.30.0",
     "rollup-plugins-csc-images": "^1.0.1",
     "typescript": "^4.4.3",
-    "umi": "4.0.28"
+    "umi": "4.0.72"
   },
   "dependencies": {
+    "@jusda-tools/fore-end-export": "^1.0.13-alpha.0",
+    "@jusda-tools/jusda-theme-config": "^1.0.10",
+    "@jusda-tools/metadata-ui-render": "^1.4.1",
     "rc-field-form": "1.27.4"
   }
 }

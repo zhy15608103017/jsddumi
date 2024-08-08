@@ -2,30 +2,36 @@
 
 .jusda-nested-table-container {
   margin-top: 16px;
-  .tableShadow > td {
+
+  .tableShadow>td {
     border-bottom: 0 !important;
   }
-  .ant-table-thead > tr > th {
-    background-color: #fffbea;
+
+  .ant-table-thead>tr>th {
+    background-color: var(--jusda-table-header-background-color);
     // padding: 16px 8px !important;
     border-bottom: 0;
+
     .ant-table-column-sorters {
       padding: 0;
     }
   }
 
   .ant-table-tbody {
-    & > tr > td {
-      border-bottom: 1px solid #e9e9e9;
+    &>tr>td {
+      border-bottom: 1px solid var(--jusda-divider-color);
     }
+
     //    嵌套的表格内的内容
     .ant-table-expanded-row {
-      background-color: #f9f9f9;
+      background-color: var(--jusda-table-row-background-color);
+
       td,
       tr {
-        background-color: #f9f9f9 !important;
+        background-color: var(--jusda-table-row-background-color) !important;
       }
-      & > td {
+
+      &>td {
         border-bottom: 0;
       }
     }
@@ -42,26 +48,30 @@
   td.ant-table-column-sort {
     background: none;
   }
+
   //     .ant-table-tbody > tr:nth-of-type(2n) {
-  //       background: #f9f9f9;
+  //       background: var(--jusda-table-row-background-color);
   //     }
-  tr:nth-of-type(2n) > .ant-table-cell-fix-right,
-  tr:nth-of-type(2n) > .ant-table-cell-fix-left {
-    background-color: #f9f9f9;
+  tr:nth-of-type(2n)>.ant-table-cell-fix-right,
+  tr:nth-of-type(2n)>.ant-table-cell-fix-left {
+    background-color: var(--jusda-table-row-background-color);
   }
+
   // 以上区域都是在改table表单的颜色
   .jusda-table-icon-color {
-    color: #ea9000;
+    color: var(--jusda-background-white-text-secondary);
     cursor: pointer;
+
     &:hover {
-      color: #ffc500;
+      color: var(--jusda-primary-color);
     }
 
     svg {
-      color: #ea9000;
+      color: var(--jusda-background-white-text-secondary);
       cursor: pointer;
+
       &:hover {
-        color: #ffc500;
+        color: var(--jusda-primary-color);
       }
     }
   }

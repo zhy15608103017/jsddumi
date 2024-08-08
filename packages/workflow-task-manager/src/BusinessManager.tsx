@@ -1,19 +1,21 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { ModalProps } from "antd/lib/modal";
-import React, { ForwardedRef, forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import { genTodoColumns } from "./BussinessColumns";
-import VirtualTable from "./components/VirtualTable";
-import useRequest from "./hooks/useRequest";
-import { fetchTodo } from "./services";
-import WidgetModal from "./WidgetModal";
+import { ModalProps } from 'antd/lib/modal';
+import React, { ForwardedRef, forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { genTodoColumns } from './BussinessColumns';
+import VirtualTable from './components/VirtualTable';
+import useRequest from './hooks/useRequest';
+import { fetchTodo } from './services';
+import WidgetModal from './WidgetModal';
 import {LOCALE_KEY} from '../utils/utils';
 import LocaleLibrary from './locale';
+import { ConfigProvider } from 'antd';
+import { getAntdConfig } from '@jusda-tools/jusda-theme-config';
 
-type BusinessManagerProps = {
+interface BusinessManagerProps {
     // type?: "whole" | "part";
-    modalProps?: Omit<ModalProps, "visible">; // 弹窗的属性
+    modalProps?: Omit<ModalProps, 'visible'>; // 弹窗的属性
     locale?: string;
-};
+}
 
 type TableData = any[];
 
@@ -23,11 +25,11 @@ function BusinessManager(
     props: BusinessManagerProps, ref?: ForwardedRef<any>
 ): React.ReactElement {
 
-    let defaultLocale = localStorage.getItem(LOCALE_KEY) || "zh-CN";
+    let defaultLocale = localStorage.getItem(LOCALE_KEY) || 'zh-CN';
     if (props?.locale) {
         defaultLocale = props?.locale;
     }
-    const localeLibrary  = LocaleLibrary[defaultLocale]?LocaleLibrary[defaultLocale]:LocaleLibrary["zh-CN"];
+    const localeLibrary  = LocaleLibrary[defaultLocale]?LocaleLibrary[defaultLocale]:LocaleLibrary['zh-CN'];
 
     // eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
     const { modalProps = { title: localeLibrary.modelTitle, footer: false } as ModalProps } = props;
@@ -47,7 +49,7 @@ function BusinessManager(
 
     const _handleCancel = (e) => {
         setData4Show(null);
-        typeof onCancel === "function" && onCancel(e);
+        typeof onCancel === 'function' && onCancel(e);
     };
 
     async function initData(
@@ -72,7 +74,7 @@ function BusinessManager(
         initData(runFetchToto, setTododata);
     }, [data4Show]);
     return (
-        <>
+        <ConfigProvider prefixCls="jusda-workflow-task-manager" theme={{token: getAntdConfig('v5')}}>
             <VirtualTable
                 className="businessTable"
                 columns={genTodoColumns(handler,localeLibrary)}
@@ -90,7 +92,7 @@ function BusinessManager(
                     setData4Show(null);
                 }}
             />
-        </>
+        </ConfigProvider>
     );
 }
 

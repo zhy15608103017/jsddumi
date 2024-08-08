@@ -1,0 +1,68 @@
+@prefix: juslink-muti-filters;
+@border-color: #bbb;
+@primary-color: var(--juslink-primary-color);
+@primary-btn-text-color: var(--jusda-primary-button-text-color);
+
+.@{prefix}-wrapper{
+    .@{prefix}{
+        display: flex;
+        
+        .@{prefix}-title{
+            line-height: 28px;
+            width: 80px;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            border-left: 1px solid @border-color;
+            border-bottom: 1px solid @border-color;
+            border-top: 1px solid @border-color;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .@{prefix}-base-search-input{
+            flex:1;
+            margin-right: 16px;
+            border-top-left-radius: 0px !important;
+            border-bottom-left-radius: 0px !important;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-right: 1px solid @border-color;
+            border-bottom: 1px solid @border-color;
+            border-top: 1px solid @border-color;
+        }
+        .juslink-muti-filters-search-input{
+            margin-right: 16px;
+        }
+        
+    }
+    .@{prefix}-sub-filters{
+        position: relative;
+        flex:1;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-right: 16px;
+        border: 1px solid @border-color;
+        gap:0 !important;
+        max-width: calc(100% - 100px);
+    }
+    .@{prefix}-add-btn{
+        color: @primary-color;
+        height: 22px;
+        line-height: 22px;
+        padding: 0;
+        .juslink-btn{
+            height: 22px;
+            line-height: 22px;
+            padding: 0;
+        }
+        &:hover, &:focus{
+            background-color:transparent
+        }
+    }
+    .@{prefix}-reset-btn{
+        color: @primary-btn-text-color !important;
+    }
+    .juslink-btn-text:not(:disabled):not(.juslink-btn-disabled):hover{
+        color: @primary-color;
+        background-color:transparent
+    }
+}

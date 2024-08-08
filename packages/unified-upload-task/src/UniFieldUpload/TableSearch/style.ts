@@ -1,0 +1,28 @@
+import { css } from '@emotion/css';
+export const tableSelect = () => {
+    return css`
+    width: 100%;
+    margin:10px 0;
+    display: flex;
+    align-items: center;
+    .table-select-inline {
+        display: flex;
+        margin-top:20px;
+        margin-left:-4.5vw;
+    }
+    .lebel {
+        // position: absolute;
+        // top: -24px;
+        color: #8d9aad;
+    }
+    .table-select-button-right {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        right: 0;
+        top: 0;
+        .ant-btn-primary {
+            margin-left: 16px;
+        }
+    }`
+}

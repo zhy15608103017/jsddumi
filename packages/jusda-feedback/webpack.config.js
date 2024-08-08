@@ -1,15 +1,15 @@
-const path = require("path");
-const FriendlyErrorsWebpackPlugin = require("@soda/friendly-errors-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Webpackbar = require("webpackbar");
+const path = require('path');
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Webpackbar = require('webpackbar');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: "./src/index.ts",
+    entry: './src/index.ts',
     output: {
-        path: path.resolve(__dirname, "./dist"),
-        filename: "index.js",
-        libraryTarget: "umd",
+        path: path.resolve(__dirname, './dist'),
+        filename: 'index.js',
+        libraryTarget: 'umd',
         umdNamedDefine: true,
     },
     mode:'production',
@@ -24,7 +24,7 @@ module.exports = {
             {
                 test: /\.(j|t)sx?$/,
                 exclude: /node_modules/,
-                loader: "babel-loader",
+                loader: 'babel-loader',
             },
             {
                 test: /\.less$/,
@@ -33,23 +33,23 @@ module.exports = {
                         loader:'style-loader'
                     },
                     {
-                        loader: "css-loader", // translates CSS into CommonJS
+                        loader: 'css-loader', // translates CSS into CommonJS
                         options:{
-                            
+
                         }
                     },
                     {
-                        loader: "postcss-loader",
+                        loader: 'postcss-loader',
                         options: {
-                            plugins: [require("autoprefixer")()],
+                            plugins: [require('autoprefixer')()],
                         },
                     },
                     {
-                        loader: "less-loader", // compiles Less to CSS
+                        loader: 'less-loader', // compiles Less to CSS
                         options: {
                             modifyVars: {
-                                "@ant-prefix": "juslink",
-                                "primary-color": "#ffc500",
+                                '@ant-prefix': 'juslink',
+                                // '@root-entry-name': 'variable',
                             },
                             javascriptEnabled: true,
                         },
@@ -58,14 +58,14 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["css-loader"],
+                use: ['css-loader'],
             },
             {
                 test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/,/\.ttf$/,/\.woff$/,/\.eot$/,/\.svg$/],
-                loader: require.resolve("url-loader"),
+                loader: require.resolve('url-loader'),
                 options: {
                     limit: 100000,
-                    name: "static/media/[name].[hash:8].[ext]",
+                    name: 'static/media/[name].[hash:8].[ext]',
                 },
             },
             //  {
@@ -85,20 +85,20 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
+        extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
     },
     externals: {
         'react': 'react',
         'react-dom': 'react-dom',
-        'antd': 'antd',
+        'moment': 'moment',
+        '@jusda-tools/auth-tools':'@jusda-tools/auth-tools',
+        '@jusda-tools/jusda-file-upload':'@jusda-tools/jusda-file-upload',
+        '@jusda-tools/jusda-publicmethod':'@jusda-tools/jusda-publicmethod',
+        '@jusda-tools/web-api-client':'@jusda-tools/web-api-client',
+
     },
     plugins: [
         new FriendlyErrorsWebpackPlugin(),
-        // new MiniCssExtractPlugin({
-        //     filename: "jusda-feedback.css",
-        //     chunkFilename: "[id].css",
-        //     ignoreOrder: false,
-        // }),
         new UglifyJsPlugin({
             cache: true,
             parallel: true,

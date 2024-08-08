@@ -127,6 +127,7 @@ export function jusdaDataConversionFn(obj) {
         returnobj.type = parms?.type
         returnobj.event = parms?.event?.replace("$", "")
         returnobj.appCode = Jusda_Appname||productCode || appName || clientId
+        returnobj.clientId =clientId ?? null
         returnobj.userInfo.userId = jusdaUserInfo?.data?.user?.userId ?? null
         returnobj.userInfo.nickName = jusdaUserInfo?.data?.user?.nickName   ?? null
         returnobj.userInfo.tenantId = jusdaUserInfo?.data?.userIdentity?.tenant?.tenantId ?? null
@@ -185,20 +186,29 @@ export function jusdaDataConversionFn(obj) {
     }
 
 }
+export const filterBelowspecifiedTime=(item,tiem=1)=>{
+   if( item?.event==="$WebPageLeave"){
+    if(item?.properties?.event_duration<tiem){
+        return false
+    }
+    return true
 
+   }
+   return true
+}
 export const jusdaremoveEvents = (obj) => {
     //   那些事件需要被发送的
     const eventlist = Array.isArray(window?.Jusda_sfInstantEventArr) ? ["$WebPageLoad", "$pageview", "$WebClick", "$WebPageLeave", "custom", "elementExposure", ...window?.Jusda_sfInstantEventArr] : ["$WebPageLoad", "$pageview", "$WebClick", "$WebPageLeave", "custom", "elementExposure"];
     obj = JSON.parse(obj)
     if (typeJudgment(obj) === 'object') {
-        if (eventlist.includes(obj?.event)) {
+        if (eventlist.includes(obj?.event)&&filterBelowspecifiedTime(obj,window?.jusdaBaseConfig?.buriedPointTimeOnPage)) {
             return obj
         }
 
         return false
     }
     if (typeJudgment(obj) === 'array') {
-        const arr = obj.filter(item => eventlist?.includes(item?.event))
+        const arr = obj.filter(item => eventlist?.includes(item?.event)&&filterBelowspecifiedTime(item,window?.jusdaBaseConfig?.buriedPointTimeOnPage))
         if (arr?.length) {
             return arr
         }

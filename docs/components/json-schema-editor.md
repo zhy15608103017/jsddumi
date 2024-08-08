@@ -8,6 +8,7 @@ group:
 ---
 # Json Schema 编辑器
 
+<!-- 提取MD -->
 ## API
 ### json-schema-editor
 | 参数    | 说明                   | 类型                                  | 默认  | 备注 |
@@ -18,7 +19,10 @@ group:
 | readOnly  | 只读标志         | boolean                                | false    | -    |
 | locale  | 语言参数        |   "zh-CN"|"en-US"                              | "en-US"    | -    |
 
+<!-- end提取MD -->
+
 ## Example
+<code iframe="true" src="../../demo/json-schema-editor/json-schema-editor.jsx"></code>
 
 <!-- ```jsx
 import React from 'react';

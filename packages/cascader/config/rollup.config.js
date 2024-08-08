@@ -15,7 +15,7 @@ const inputOptions = {
   // 写你自己的入口文件
   input: "src/index.tsx",
   // 写自己要排除的依赖
-  external: ["react", "react-dom", "antd"],
+  external: ["react", "react-dom",'antd'],
   // 自己的插件
   plugins: [
     json(),
@@ -33,7 +33,8 @@ const inputOptions = {
     babel({
       babelHelpers: 'bundled',
       exclude: /^(.+\/)?node_modules\/.+$/,
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      skipPreflightCheck: 'true',
     }),
     // 处理js,ts中的图片
     image({

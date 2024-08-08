@@ -2,6 +2,8 @@ import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { isEqual } from '../utils';
 // @ts-ignore
 import { currentLanguage } from '@jusda-tools/language-control-panel';
+import { initCssVariables } from '@jusda-tools/jusda-theme-config';
+
 import { Select } from 'antd';
 
 const { Option } = Select;
@@ -11,14 +13,9 @@ function MetaSelect(props: any) {
     const [value, setValue] = useState(props.value);
     const [selectOptionData, setSelectOptionData] = useState([]);
 
-    // useEffect(() => {
-    //     // // 两值相等则说明依赖项没有发生变化，不进行清空本select的值和optionList等操作
-    //     // if (props?.dependencyCode && !isEqual(value[`${props?.dependencyCode}`], props.value?.[`${props?.dependencyCode}`])) {
-    //     //     props?.changeValue(props?.code, { value: '', label:''});
-    //     //     getOptionDataFn();
-    //     // }
-    //     setValue(props.value);
-    // }, [props.value])
+    useEffect(() => {
+        initCssVariables?.()
+    }, [])
 
     useEffect(() => {
         if (props?.dependencyCode && props.isOperation) {

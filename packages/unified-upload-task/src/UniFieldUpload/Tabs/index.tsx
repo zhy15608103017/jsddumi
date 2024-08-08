@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Menu, Button, Upload, Popover, message } from 'antd';
-import './index.less';
+import { taskTabs } from './style';
 
 interface TabsProps {
     handleClick?: (key: any) => void;
@@ -10,13 +10,9 @@ interface TabsProps {
 }
 
 const Tabs: FunctionComponent<TabsProps> = (props) => {
-
-
-
-
     const { list = [], handleClick, defaultTab } = props;
     return (
-        <div className="task-tabs">
+        <div className={taskTabs()}>
             
             <Menu defaultSelectedKeys={[defaultTab as any]} mode="horizontal" onClick={handleClick}>
                 {list.map((each, i) => {

@@ -24,15 +24,9 @@ export const Allbtnstyle = styled.div`
         width: 120px;
         height: 40px;
     }
-    .cancel {
-        color: ${(props: any) => props?.themes?.cancelBtn?.cancelColor};
-        background-color: ${(props: any) => props?.themes?.cancelBtn?.bgColor};
-        border: 1px solid ${(props: any) =>
-            props?.themes?.cancelBtn?.cancelBorder};
-    }
     .comfirm {
         margin-left: 20px;
-        color: #444;
+        color: var(--jusda-primary-button-text-color);
         box-shadow: unset;
         text-shadow: unset;
 `;

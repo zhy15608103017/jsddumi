@@ -21,7 +21,8 @@ const inputOptions = {
     "@jusda-tools/url-config",
     "@jusda-tools/web-api-client",
     "@jusda-tools/auth-tools",
-    "@jusda-tools/jusda-publicmethod"
+    "@jusda-tools/jusda-publicmethod",
+    "@jusda-tools/auth-switch",
   ],
   // 自己的插件
   plugins: [

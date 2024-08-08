@@ -119,4 +119,5 @@ jusdaUserInfo.logout();// 在0.0.76不支持callback
 | 0.0.84        | 获取用户信息接口报错时应调用接口退出登录             |
 | 0.0.85        | setCookie 时增加SameSite、Secure 标记             |
 | 0.0.86        | 退出登录调用接口时在Header上增加JSESSION标记,解决跨域时session销毁不到的问题             |
+| 0.3.11        | 微信绑定时如果登录信息已经过期，返回登录流程时需要去掉URL上的ignoreType参数，不然无法正常走code换token的流程             |
 

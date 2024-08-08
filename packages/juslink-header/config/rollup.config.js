@@ -24,11 +24,18 @@ const inputOptions = {
     '@jusda-tools/user-control-panel',
     '@jusda-tools/web-api-client',
     '@jusda-tools/local-permission',
+    "@jusda-tools/auth-switch",
   ],
   // 自己的插件
   plugins: [
     json(),
-    nodeResolve(), // 必写!! 让rollup能够定位node_modules里面的依赖
+    nodeResolve({
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        jsnext: true,
+        main: true,
+        browser: true,
+        module: true,
+      }), // 必写!! 让rollup能够定位node_modules里面的依赖
     postcss(rollPostcssConfig),
     commonjs(), // 必写!! 让rollup能够解析commonjs格式的包
     // ts文件转换
@@ -41,8 +48,10 @@ const inputOptions = {
     // 代码降级
     babel({
       babelHelpers: 'bundled',
-      exclude: '**/node_modules/**',
-      extensions: ['.js', '.jsx', '.ts', '.tsx']
+    //   exclude: '**/node_modules/**',
+      exclude: /^(.+\/)?node_modules\/.+$/,
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      skipPreflightCheck: 'true',
     }),
     image({
       limit: 80000,

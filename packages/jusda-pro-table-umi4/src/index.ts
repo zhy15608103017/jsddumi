@@ -1,4 +1,6 @@
-import ProTable from "./pro-table";
+import ProTable from './proTableContainer';
 
-export { ProTable }
+export { ProTable };
+
+
 

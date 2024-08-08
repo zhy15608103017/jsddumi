@@ -5,7 +5,13 @@ import {
     UserIdentityId_Newest,
 } from './utils/baseTypes';
 import CookieTools from './utils/cookieTools';
-import { History, getUrlParams, JusdaHistory } from './utils/history';
+import { convertJuslinkDomainToFoxconnDomain } from './utils/internalNetworkPenetration';
+import {
+    History,
+    getUrlParams,
+    JusdaHistory,
+    subApplicationPathParamsSpell,
+} from './utils/history';
 import ReloadOfApplication from './ReloadOfApplication';
 import { tokenFn } from './utils/token';
 export {
@@ -18,5 +24,7 @@ export {
     ReloadOfApplication,
     History,
     JusdaHistory,
+    subApplicationPathParamsSpell,
+    convertJuslinkDomainToFoxconnDomain,
     getUrlParams,
 };

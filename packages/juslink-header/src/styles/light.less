@@ -158,14 +158,23 @@
 
 .tooltip_overlay_@{theme} {
     .@{ant-prefix}-tooltip-arrow {
-        margin-top: -6px;
+        // margin-top: -6px !important;
+        width: 13px !important;
+        height: 13px !important;
+        margin-top: 3px !important;
         .@{ant-prefix}-tooltip-arrow-content {
-            background: #fff;
+            // background: #fff !important;
+            width: 5px !important;
+            height: 5px !important;
+            &::before{
+                background: #fff !important;
+            }
         }
     }
     .@{ant-prefix}-tooltip-inner {
-        margin-top: -6px;
-        background: #fff;
-        color: #000000;
+        // margin-top: -6px !important;
+        margin-top: -14px !important;
+        background: #fff !important;
+        color: #000000 !important;
     }
 }

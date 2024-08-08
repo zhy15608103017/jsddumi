@@ -10,10 +10,16 @@ module.exports = function (api) {
           targets: "> 0.25%, not dead",
         },
       ],
-      '@babel/typescript',
-      '@babel/preset-react',
+      [
+        '@babel/preset-react',
+        { "runtime": "automatic", "importSource": "@emotion/react" }
+      ],
+      [
+        "@emotion/babel-preset-css-prop",
+      ]
     ],
     plugins: [
+      "@emotion/babel-plugin",
       '@babel/plugin-proposal-class-properties',
       [
         require.resolve('@babel/plugin-transform-runtime'),
@@ -23,13 +29,13 @@ module.exports = function (api) {
           babelHelpers: "runtime"
         },
       ],
-      [
-        require.resolve("babel-plugin-import-style"),
-        {
-          libName: "antd",
-          libDir: "lib",
-        },
-      ],
+      // [
+      //   require.resolve("babel-plugin-import-style"),
+      //   {
+      //     libName: "antd",
+      //     libDir: "lib",
+      //   },
+      // ],
     ],
   };
 };

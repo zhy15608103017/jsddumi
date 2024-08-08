@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-base-style",
-  "version": "0.0.26",
+  "version": "0.1.4",
   "description": "jusda公共样式",
   "main": "dist/index.js",
   "types": "types",

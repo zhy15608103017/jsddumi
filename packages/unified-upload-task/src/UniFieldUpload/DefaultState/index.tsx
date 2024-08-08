@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import './index.less';
 import { FiledIcon } from '../svgIcon/file';
 import { Upload, message } from 'antd';
 // @ts-ignore

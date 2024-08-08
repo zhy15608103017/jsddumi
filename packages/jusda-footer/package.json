@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/jusda-footer",
-  "version": "0.1.13",
+  "version": "0.1.16",
   "description": "jslib最好用的js库脚手架",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -17,7 +17,6 @@
     "build:aio": "rollup -c config/rollup.config.aio.js",
     "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
     "build": "npm run clean && npm run build:self && npm run build:esm && npm run build:aio && npm run build:aio.min",
-    "publish": "npm run build",
     "prepublish": "npm run build"
   },
   "author": "yazohu",
@@ -57,6 +56,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.2",
+    "@jusda-tools/local-permission": "^0.0.9",
     "rollup-plugin-postcss": "^3.1.2"
   }
 }

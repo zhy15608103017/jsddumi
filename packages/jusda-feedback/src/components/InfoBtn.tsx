@@ -1,15 +1,25 @@
 // @ts-nocheck
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { ConfigProvider, Tooltip, Badge } from "antd";
-import DetailInfoFb from "./InfoDetail";
-import { Icons, MyFeedbackIcon, Info } from "./SVG";
-import QrCode from "../qrcode.png";
-import { sccp_domain_prefix } from "@jusda-tools/url-config";
-import LocalPermissionWrap from "@jusda-tools/local-permission";
-import { request } from "./request";
-import themStye from "./theme";
-import locales from "./locale/locale";
+import React, {useEffect, useState} from 'react';
+import styled, {createGlobalStyle} from 'styled-components';
+import {Badge, ConfigProvider, Tooltip} from 'antd';
+import DetailInfoFb from './InfoDetail';
+import {Icons, Info, MyFeedbackIcon} from './SVG';
+import QrCode from '../qrcode.png';
+import {sccp_domain_prefix} from '@jusda-tools/url-config';
+import LocalPermissionWrap from '@jusda-tools/local-permission';
+import {request} from './request';
+import themStye from './theme';
+import locales from './locale/locale';
+import {getAntdConfig, initCssVariables} from '@jusda-tools/jusda-theme-config';
+
+const GlobalStyle = createGlobalStyle`
+    .feedBackModal {
+      .juslink-modal-close-x {
+        width: 22px;
+        height: 18px;
+      }
+    }
+`;
 const NewPopover = styled(Tooltip)`
   text-align: center;
   .jusda-feedback-popover-arrow {
@@ -26,10 +36,10 @@ const ClickBtn = styled.div`
   }
   .header-container:hover {
     .header-title {
-      color: #ffc500;
+      color: var(--jusda-primary-color);
     }
     svg path {
-      fill: #ffc500;
+      fill: var(--jusda-primary-color);
     }
   }
   .qrcode {
@@ -78,7 +88,7 @@ const InfosBtn = styled.div`
 `;
 const CountBadge = styled(Badge)`
   .jusda-feedback-badge-count {
-    background: #ffffff;
+    background: var(--jusda-page-background-color);
     border: 1px solid #ff6c6c;
     border-radius: 50%;
     padding: 0;
@@ -89,130 +99,130 @@ const CountBadge = styled(Badge)`
     color: #ff6c6c;
   }
   .hovers:hover {
-    background: #ffc500;
+    background: var(--jusda-primary-color);
   }
 `;
 
 interface InfoBtn {
-  bottom?: string;
-  right?: string;
-  theme?: string;
-  locale?: string;
-  localeKey?: string;
-  showQrcode?: boolean;
-  showText?: boolean;
-  submit?: () => {};
-  isBtnHidden?: boolean;
-  isModalVisible?: boolean;
-  closeModalCallback?: () => void;
+    bottom?: string;
+    right?: string;
+    theme?: string;
+    locale?: string;
+    localeKey?: string;
+    showQrcode?: boolean;
+    showText?: boolean;
+    submit?: () => {};
+    isBtnHidden?: boolean;
+    isModalVisible?: boolean;
+    closeModalCallback?: () => void;
 }
 window.timer = null;
 const InfoBtn: React.SFC<InfoBtn> = (props: InfoBtn) => {
-  const [detailControl, setDetailControl] = useState(false);
-  const [count, setCount] = useState(0);
+    const [detailControl, setDetailControl] = useState(false);
+    const [count, setCount] = useState(0);
+    initCssVariables?.();
+    const {
+        locale,
+        localeKey = 'umi_locale',
+        showQrcode = false,
+        showText = true,
+        submit = () => {},
+        isBtnHidden = true,
+        isModalVisible,
+        closeModalCallback
+    } = props;
+    const currenTheme = themStye;
+    const browserLocale = (navigator.language || navigator.browserLanguage)
+        .toLowerCase()
+        .includes('zh')
+        ? 'zh-CN'
+        : 'en-US';
+    let defaultLocale = localStorage.getItem(localeKey) || browserLocale;
+    if (locale) {
+        defaultLocale = locale;
+    }
+    const getCount = () => {
+        request()
+            .get('/juslink-common-feedback/feedbacks/unread-count')
+            .then((res) => {
+                if (res.success) {
+                    setCount(res.data);
+                }
+            });
+    };
+    window.Sdp.getCount = getCount;
+    const jumpToMyFeedback = () => {
+        window.open(`${sccp_domain_prefix}/fb/`, '_blank');
+    };
+    useEffect(() => {
+        window.timer = setInterval(getCount, 2000000);
+        getCount();
+    }, []);
 
-  const {
-    theme = "light",
-    locale,
-    localeKey = "umi_locale",
-    showQrcode = false,
-    showText = true,
-    submit = () => {},
-    isBtnHidden = true,
-    isModalVisible,
-    closeModalCallback
-  } = props;
-  const currenTheme = themStye[theme];
-  const browserLocale = (navigator.language || navigator.browserLanguage)
-    .toLowerCase()
-    .includes("zh")
-    ? "zh-CN"
-    : "en-US";
-  let defaultLocale = localStorage.getItem(localeKey) || browserLocale;
-  if (locale) {
-    defaultLocale = locale;
-  }
-  const getCount = () => {
-    request()
-      .get("/juslink-common-feedback/feedbacks/unread-count")
-      .then((res) => {
-        if (res.success) {
-          setCount(res.data);
-        }
-      });
-  };
-  window.Sdp.getCount = getCount;
-  const jumpToMyFeedback = () => {
-    window.open(`${sccp_domain_prefix}/fb/`, "_blank");
-  };
-  useEffect(() => {
-    window.timer = setInterval(getCount, 2000000);
-    getCount();
-  }, []);
+    useEffect(() => {
+        setDetailControl(isModalVisible);
+    }, [isModalVisible]);
 
-  useEffect(() => {
-    setDetailControl(isModalVisible)
-  }, [isModalVisible])
+    const currentLocale = locales[defaultLocale];
+    return (
+        <ConfigProvider prefixCls="juslink" theme={{ token: getAntdConfig('v5')}}>
+            <div style={{ 'display': isBtnHidden ? 'none' : '' }}>
+                <GlobalStyle />
+                <NewPopover
+                    color="#2f2f2f"
+                    placement="leftBottom"
+                    title={
+                        <ClickBtn themes={currenTheme?.ClickBtn}>
+                            {showQrcode && (
+                                <LocalPermissionWrap>
+                                    <div className="qrcode">
+                                        <img src={QrCode}></img>
+                                        <p>{currentLocale?.ClickBtn.des}</p>
+                                    </div>
+                                </LocalPermissionWrap>
+                            )}
+                            <div
+                                className="header-container"
+                                onClick={() => setDetailControl(true)}
+                            >
+                                <Icons></Icons>
+                                <div className="header-title">
+                                    {currentLocale?.ClickBtn.headText}
+                                </div>
+                            </div>
+                            <div className="header-container" onClick={jumpToMyFeedback}>
+                                <CountBadge count={count} offset={[-29]}>
+                                    <MyFeedbackIcon />
+                                </CountBadge>
+                                <div className="header-title">
+                                    {currentLocale?.ClickBtn.myFeedback}
+                                </div>
+                            </div>
+                        </ClickBtn>
+                    }
+                >
+                    <div>
+                        <CountBadge count={count}>
+                            <InfosBtn className={!showText ? 'hovers' : ''}>
+                                <Info></Info>
+                                {showText && (
+                                    <div className="want-feed">{currentLocale?.InfosBtn.text}</div>
+                                )}
+                            </InfosBtn>
+                        </CountBadge>
+                    </div>
+                </NewPopover>
+            </div>
 
-  const currentLocale = locales[defaultLocale];
-  return (
-    <ConfigProvider prefixCls="juslink">
-      <div style={{ "display": isBtnHidden ? 'none' : '' }}>
-        <NewPopover
-          color="#2f2f2f"
-          placement="leftBottom"
-          title={
-            <ClickBtn themes={currenTheme?.ClickBtn}>
-              {showQrcode && (
-                <LocalPermissionWrap>
-                  <div className="qrcode">
-                    <img src={QrCode}></img>
-                    <p>{currentLocale?.ClickBtn.des}</p>
-                  </div>
-                </LocalPermissionWrap>
-              )}
-              <div
-                className="header-container"
-                onClick={() => setDetailControl(true)}
-              >
-                <Icons></Icons>
-                <div className="header-title">
-                  {currentLocale?.ClickBtn.headText}
-                </div>
-              </div>
-              <div className="header-container" onClick={jumpToMyFeedback}>
-                <CountBadge count={count} offset={[-29]}>
-                  <MyFeedbackIcon />
-                </CountBadge>
-                <div className="header-title">
-                  {currentLocale?.ClickBtn.myFeedback}
-                </div>
-              </div>
-            </ClickBtn>
-          }
-        >
-          <div>
-            <CountBadge count={count}>
-              <InfosBtn className={!showText ? "hovers" : ""}>
-                <Info></Info>
-                {showText && (
-                  <div className="want-feed">{currentLocale?.InfosBtn.text}</div>
-                )}
-              </InfosBtn>
-            </CountBadge>
-          </div>
-        </NewPopover>
-      </div>
-
-      <DetailInfoFb
-        submit={submit}
-        currenTheme={currenTheme}
-        currentLocale={currentLocale}
-        defaultLocale={defaultLocale}
-        visible={detailControl}
-        onCancel={() => {closeModalCallback&&closeModalCallback(); setDetailControl(false)}}
-      />
-    </ConfigProvider>
-  );
+            <DetailInfoFb
+                submit={submit}
+                currenTheme={currenTheme}
+                currentLocale={currentLocale}
+                defaultLocale={defaultLocale}
+                visible={detailControl}
+                onCancel={() => {closeModalCallback&&closeModalCallback(); setDetailControl(false);}}
+            />
+        </ConfigProvider>
+    );
 };
 export default InfoBtn;

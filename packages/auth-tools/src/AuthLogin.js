@@ -4,7 +4,7 @@ import { CookieTools, JUSDATOKEN, UserIdentityId_Tab, UserIdentityId_Newest } fr
 import envConfig from './envConfig.js';
 import { tokenFn } from './token.js';
 import JusdaUserInfo from './jusdaUserInfo.js';
-import { getUrlParam, monitorWindowStatus } from './utils.js';
+import { getUrlParam, monitorWindowStatus, removeParameters } from './utils.js';
 
 const cookieTools = new CookieTools();
 const loginAnimate = new LoginAnimate();
@@ -32,9 +32,12 @@ function getReplaceCodeRegexp() {
 export default async function AuthLogin(coverRedirectUrl) {
     const token = tokenFn.getToken();
     const verificationCode = getUrlParam(window.location.href, 'code');
+    // 个人中心绑定微信后由于微信返回的参数是code，和juslink的令牌换token的参数 重名，所以在绑定微信时增加ignoreType参数来做区分，
+    // 有ignoreType这个参数时，就不需要去做code换token操作了
+    const ignoreType = getUrlParam(window.location.href, 'ignoreType');
     const { href } = window.location;
     // 登录中
-    if (verificationCode) {
+    if (verificationCode && ignoreType!=='codeToToken') {
         // 显示登录动画 (移动端无动画)
         !isMobile && loginAnimate.show();
         cookieTools.remove(JUSDATOKEN);
@@ -97,7 +100,12 @@ async function getUserInfo(coverRedirectUrl) {
 }
 
 export function getRuntimeRedirectUrl() {
-    const redirectUrl = window.location.origin + window.location.pathname + window.location.hash;
+    let redirectUrl = window.location.origin + window.location.pathname + window.location.hash;
+    // ignoreType参数为绑定微信时加的特殊参数(因为微信绑定时返回的url上也会带一个微信的code与统一登录的code参数key重复了，所以增加ignoreType参数来区分)
+    // 但在微信绑定时如果登录信息已经过期，返回登录流程就需要去掉这个参数，不然无法正常走code换token的流程
+    if(redirectUrl.includes('ignoreType')){
+        redirectUrl = removeParameters(redirectUrl, ['ignoreType']);
+    }
     return decodeURIComponent(redirectUrl).replace(getReplaceCodeRegexp(), '');
 }
 

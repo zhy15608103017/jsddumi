@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import MetaSelect from './component/metaSelect';
-import { ICascaderType } from './type';
+import {ICascaderType} from './type';
+import {ConfigProvider} from 'antd';
 // @ts-ignore
 import request from '@jusda-tools/web-api-client';
 // @ts-ignore
-import { mpApiUrl } from '@jusda-tools/url-config';
+import {mpApiUrl} from '@jusda-tools/url-config';
 // @ts-ignore
-import { currentLanguage } from '@jusda-tools/language-control-panel';
-import { getInterfaceUrl, areaType } from './utils';
+import {currentLanguage} from '@jusda-tools/language-control-panel';
+import {initCssVariables} from '@jusda-tools/jusda-theme-config';
+import {areaType, getInterfaceUrl} from './utils';
 import localesConfig from './locales';
 
-const locales = localesConfig.get(currentLanguage().includes('zh')?'zh-CN':'en-US');
 
-function Cascader(props: any) {
+const locales = localesConfig.get(currentLanguage().includes('zh') ? 'zh-CN' : 'en-US');
+
+function Cascader(props: { independentFlag: boolean; value: any; disabled: boolean; onChange: (value: any) => void }) {
     const [value, setValue] = useState(props.value || {
-        country: {value: '', label: ''},
-        subdivision: {value: '', label: ''},
-        city: {value: '', label: ''},
-        county: {value: '', label: ''},
+        country: { value: '', label: '' },
+        subdivision: { value: '', label: '' },
+        city: { value: '', label: '' },
+        county: { value: '', label: '' },
     });
     const [isOperation, setIsOperation] = useState(false);
 
@@ -25,11 +28,12 @@ function Cascader(props: any) {
     const getCounty = async (e?: string): Promise<any> => {
         const result = await request.post(`${mpApiUrl}/${getInterfaceUrl('country')}`, {
             data: {
-                languageEq: currentLanguage().replace('-', '_')
+                languageEq: currentLanguage().replace('-', '_'),
+                independentFlag: props?.independentFlag ?? true
             }
         });
         if (result?.data?.content) {
-            return result?.data?.content.map((item: { name: string; iso2Code: string }) => { return { name: item.name, code: item.iso2Code };});
+            return result?.data?.content.map((item: { name: string; iso2Code: string }) => { return { name: item.name, code: item.iso2Code }; });
         }
         return [];
     };
@@ -49,7 +53,7 @@ function Cascader(props: any) {
             });
             if (result?.data?.content) {
                 const value: areaType = areaType[code as areaType];
-                return result?.data?.content.map((item: { [x: string]: { name: string; code: string } }) => { return { name:  item[value]?.name, code: item[value]?.code };});
+                return result?.data?.content.map((item: { [x: string]: { name: string; code: string } }) => { return { name: item[value]?.name, code: item[value]?.code }; });
             }
         }
         return [];
@@ -65,7 +69,7 @@ function Cascader(props: any) {
             ui: {
                 placeholder: locales.pleaseSelectCountry,
                 disabled: false,
-                style: {width: '25%'},
+                style: { width: '25%' },
             },
         },
         {
@@ -76,7 +80,7 @@ function Cascader(props: any) {
             ui: {
                 placeholder: locales.firstLevelArea,
                 disabled: false,
-                style: {width: '25%'},
+                style: { width: '25%' },
             },
         },
         {
@@ -87,7 +91,7 @@ function Cascader(props: any) {
             ui: {
                 placeholder: locales.secondaryLevelArea,
                 disabled: false,
-                style: {width: '25%'},
+                style: { width: '25%' },
             },
         },
         {
@@ -98,48 +102,51 @@ function Cascader(props: any) {
             ui: {
                 placeholder: locales.tertiaryLevelArea,
                 disabled: false,
-                style: {width: '25%'},
+                style: { width: '25%' },
             },
         },
     ];
 
-    // useEffect(() => {
-    //     getCounty().then(r => null);
-    // }, []);
+    useEffect(() => {
+        initCssVariables?.()
+    }, []);
 
     useEffect(() => {
         setValue(Object.assign({}, value, props.value));
     }, [props.value]);
 
     const changeValue = (code, valueObj: { value: string | number; label: string }): void => {
-        let newValue = Object.assign({}, value, {[`${code}`]: {value: valueObj.value, label: valueObj.label}});
+        let newValue = Object.assign({}, value, { [`${code}`]: { value: valueObj.value, label: valueObj.label } });
         setIsOperation(true);
         setValue(newValue);
         props?.onChange?.(newValue);
     };
 
     return (
-        <React.Fragment>
-            {
-                cascaderArr.map((item: ICascaderType, index: number) => {
-                    return (
-                        <MetaSelect
-                            disabled={props.disabled}
-                            code={item.code}
-                            ui={item?.ui}
-                            isOperation={isOperation}
-                            value={value?.[`${item.code}`]}
-                            dependencyValue={value?.[`${item.dependencyCode}`]}
-                            key={item.code}
-                            changeValue={changeValue}
-                            dependencyCode={item?.dependencyCode}
-                            optionData={item?.optionData}
-                            optionDataFn={item?.optionDataFn}
-                        />
-                    );
-                })
-            }
-        </React.Fragment>
+        <ConfigProvider prefixCls="juslink">
+            <div className='Cascader'>
+                {
+                    cascaderArr.map((item: ICascaderType, index: number) => {
+                        return (
+                            <MetaSelect
+                                disabled={props?.disabled}
+                                code={item.code}
+                                ui={item?.ui}
+                                isOperation={isOperation}
+                                value={value?.[`${item.code}`]}
+                                dependencyValue={value?.[`${item.dependencyCode}`]}
+                                key={item.code}
+                                changeValue={changeValue}
+                                dependencyCode={item?.dependencyCode}
+                                optionData={item?.optionData}
+                                optionDataFn={item?.optionDataFn}
+                            />
+                        );
+                    })
+                }
+            </div>
+
+        </ConfigProvider>
     );
 }
 

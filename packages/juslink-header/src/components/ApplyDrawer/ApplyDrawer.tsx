@@ -11,8 +11,9 @@ import {
     arrow_down,
     arrow_right,
 } from '../../assets/svgIcon';
-import './applydrawerLight.less';
-import './applydrawerDark.less';
+import { applyDrawerStyle } from  './applyDrawerStyle';
+// import './applydrawerLight.less';
+// import './applydrawerDark.less';
 
 interface ApplyDrawerProps {
     visible: boolean;
@@ -118,11 +119,11 @@ const ApplyDrawer: React.FC<ApplyDrawerProps> = (props) => {
 
     return (
         <Drawer
-            className={`jusda_header_drawer_${theme}`}
+            rootClassName={`${applyDrawerStyle(theme)} jusda_header_drawer_${theme}`}
             title={null}
             placement='left'
             closable={false}
-            visible={visible}
+            open={visible}
             getContainer={false}
             destroyOnClose={true}
         // onClose={onChangeVisible(false)}

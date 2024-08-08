@@ -1,4 +1,4 @@
-import isFoxconn from './getIsFoxconn';
+import isTms from './getIsTms';
 export {
-    isFoxconn,
+    isTms,
 };

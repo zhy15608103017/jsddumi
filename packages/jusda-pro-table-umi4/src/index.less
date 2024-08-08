@@ -1,3 +1,4 @@
+
 .ant-tree-node-content-wrapper {
     .ant-pro-table-column-setting-list-item-title{
         max-width: 100px;
@@ -57,18 +58,43 @@
     .react-resizable .react-resizable-handle {
         opacity: 0.5;
     }
+    .exportExcelBtn{
+        font-size:14px; 
+        height: 24px;
+        padding: 0 8px;
+        span{
+            margin-left:4px;
+            position:relative;
+            top:-2px
+        }
+    }
+    .ant-btn-loading{
+        span{
+            top:0;
+        }
+    }
 }
 // 自定义行高的选中后的字体颜色
 .ant-dropdown-menu-item-selected {
-    color: #ea9000;
+    color: var(--jusda-background-white-text-secondary);
 }
 // 列隐藏的重置字体颜色
 .ant-pro-table-column-setting-overlay {
     a {
-        color: #ea9000;
+        color:var(--jusda-background-white-text-secondary);
+        &:hover {
+            color: var(--jusda-background-white-text-secondary)
+        }
     }
 }
-
+// Protable 固定列首、列尾的icon颜色
 .ant-pro-table-list-toolbar-setting-item:hover {
-    color: #ffc500;
+    color:var(--jusda-primary-color);
+}
+.ant-tree-title .ant-pro-table-column-setting-list-item-option > span > span.anticon {
+    color: var(--jusda-primary-color);
+}
+
+.ant-tree-title .ant-pro-table-column-setting-list-item-option > span > span.anticon {
+    color: var(--jusda-primary-color);
 }

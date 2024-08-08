@@ -7,13 +7,13 @@
 import React from 'react';
 import Icon from '@ant-design/icons';
 import {Tooltip} from 'antd';
-
+import type { ActionType } from '@rc-component/trigger/lib/interface';
 type Props = {
     title?:string,
     style?:any,
     click?:Function,
     component:any,
-    trigger?:string[]|string
+    trigger?:ActionType | ActionType[] | undefined
 }
 
 export default function index({title='',style={},click,component,trigger}: Props) {

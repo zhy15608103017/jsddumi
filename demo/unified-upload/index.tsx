@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useRef, useState } from 'react';
 import UniFieldUpload, { UniFiledUploadRef } from '@jusda-tools/unified-upload';
-import '../../packages/unified-upload/node_modules/antd/dist/antd.css';
 
 const App = () => {
     const uploadRef = useRef<UniFiledUploadRef>({
@@ -8,7 +8,7 @@ const App = () => {
             state: 'default',
             name: '',
         },
-        setFileData: () => {},
+        setFileData: () => { },
     });
 
     const onSubmitUpload = () => {
@@ -67,14 +67,20 @@ const App = () => {
             //   isShowProgress={upLoadShow} // 进度条
             //   locale={getLocale()} // 国际化
             ref={uploadRef} // 获取设置组件状态的方法.
-      //   onChange={uploadChange}
+
+            //   onChange={uploadChange}
             visible={true}
-      //   onCancel={onCancel}
+            // templateButtonLoading={true}
+            buttonHoverProperties={{
+                items: [{ label: '123', key: '123' }],
+            }}
+            //   onCancel={onCancel}
             onSubmit={onSubmitUpload}
             ossParams={{
                 systemName: 'juslink-sccp-ow',
                 bucketName: 'overseas_warehouse/excelParsing',
             }}
+            customerTipBottom={<div>注意事项看看呢</div>}
         />
     );
 };

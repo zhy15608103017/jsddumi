@@ -40,6 +40,7 @@ $ npm install --save @jusda-tools/jusda-Map --registry http://nexus.jusda.int/ve
   statusCode: string,//运输节点
   isWaybill: boolean,//判断是运单还是运段 不传默认是运端
   ```
+<!-- 提取MD -->
 | 参数                 | 说明                | 类型      | 默认    | 备注 |
 | -------------------- | ------------------- | ---------| ------- | ---- |
 | originToDestination  | 起始地-目的地       | any       | -       | -   |
@@ -57,3 +58,4 @@ $ npm install --save @jusda-tools/jusda-Map --registry http://nexus.jusda.int/ve
 | changeMap            | 是否开启切换地图功能| boolean  | false   |-     |
 | isWaybill            | 判断是运单还是运段| boolean  | false(运段)   |-     |
 
+<!-- end提取MD -->

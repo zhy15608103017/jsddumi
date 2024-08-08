@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/foxconn-header",
-  "version": "1.0.2-alpha.0",
+  "version": "1.0.29",
   "description": "Foxconn头部",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -89,9 +89,11 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "@jusda-tools/local-permission": "^0.0.8",
+    "@jusda-tools/auth-tools": "^0.3.11",
+    "@jusda-tools/language-control-panel": "^0.3.22",
+    "@jusda-tools/local-permission": "^0.0.9",
     "@jusda-tools/url-config": "^0.0.16",
-    "@jusda-tools/user-control-panel": "^1.0.1-alpha.0",
+    "@jusda-tools/user-control-panel": "^2.0.6-alpha.0",
     "@jusda-tools/web-api-client": "^0.0.16",
     "@types/node": "^14.14.13",
     "antd": "4.8.4",

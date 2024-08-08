@@ -1,10 +1,14 @@
 import { Input, Form, Button, Table, Tabs } from 'antd';
-import './jusda-baseStyle.css';
+import './jusda-baseStyle.less';
 const AppLayout = (props) => {
   const [form] = Form.useForm();
   const onFinish = () => {
     form.submit();
   };
+
+  const { initCssVariables } = window.jusdaTheme || {};
+  initCssVariables();
+
   const array = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <div className="jusda-main-container">
@@ -39,7 +43,7 @@ const AppLayout = (props) => {
           </div>
         </Form>
         {/* '展开更多' '可选' 自行添加需要的图标   */}
-        <div className="jusda-search-switch" />
+        <div className="jusda-search-switch" >MORE</div>
       </div>
       {/* 有嵌套样式的表格 */}
       <div className="jusda-nested-table-container">

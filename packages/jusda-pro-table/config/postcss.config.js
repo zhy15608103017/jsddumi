@@ -60,11 +60,12 @@ const plugins = [
 const rollPostcssConfig = {
   plugins,
   extract: true,
+  minimize:true,
   use: {
     less: {
       modifyVars: {
-        'primary-color': '#ffc500',
-        'primary-color-hover': '#ffc500',
+        // '@ant-prefix': 'juslink',
+        '@root-entry-name': 'variable'
       },
       javascriptEnabled: true,
       plugins: [new NpmImport({prefix: '~'})],

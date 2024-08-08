@@ -27,7 +27,7 @@ export default function initGlobalPoints(appCode, parms = {}) {
     collect_tags={}
   } = parms
   // 作为乾坤子应用
-  if(window?.__POWERED_BY_QIANKUN__)return
+//   if(window?.__POWERED_BY_QIANKUN__)return
   if(location.href.includes("127.0.0.1")&&!open) return
   // if(!open&&cfgType!=="prod") return
   if (appCode) {

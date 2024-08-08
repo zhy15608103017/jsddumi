@@ -1,0 +1,12 @@
+lerna-debug.log
+/node_modules/
+*/.idea
+*/.umi
+/es
+/dist
+.umi
+/.history/
+/.idea/
+/**/.idea/
+/**/*.d.ts
+/**/.rpt2_cache/

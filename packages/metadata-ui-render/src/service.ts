@@ -42,7 +42,7 @@ export async function getTenantFunctionConfiguration(
 ) {
     const {functionCode} = data;
     return request(
-        `${basePath}/tenant/${tenantCode}/function/${functionCode}/compound-ui`,
+        `${basePath}/tenant/${tenantCode}/function/${functionCode}/compound-config`,
         {
             method: 'get',
         },

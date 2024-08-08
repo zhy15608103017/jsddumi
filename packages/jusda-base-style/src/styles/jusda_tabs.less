@@ -1,5 +1,6 @@
 .jusda-tabs-container {
-    background-color: #ffffff;
+    background-color: var(--jusda-page-background-color);
+
     .ant-tabs {
         height: 100%;
 
@@ -7,39 +8,39 @@
             margin: 0;
 
             &::before {
-                border-bottom-color: #ffc500;
+                border-bottom-color: var(--jusda-primary-color);
                 border-bottom-width: 2px;
             }
 
             .ant-tabs-tab {
                 height: 35px;
                 // margin-right: 5px !important;
-                // border-bottom-color: #ffc500;
+                // border-bottom-color: var(--jusda-primary-color);
                 margin-bottom: 5px;
                 margin-right: 2px;
-                color: #999999;
-                background-color: #f5f5f5;
+                color: var(--jusda-primary-button-text-color);
+                background-color: var(--jusda-page-background-color);
                 // &:hover {
                 //     border: 1px dashed red;
                 // }
 
-                & > div {
+                &>div {
                     min-width: 130px;
                     text-align: center;
                 }
             }
 
             .ant-tabs-tab:hover {
-                color: #ea9000;
-                background-color: #fffbea;
+                color: var(--jusda-background-white-text-secondary);
+                background-color: var(--jusda-table-header-background-color);
                 border-color: transparent;
             }
 
             .ant-tabs-tab-active {
                 height: 40px;
                 margin-bottom: 0;
-                background-color: #fff;
-                border-color: #ffc500;
+                background-color: var(--jusda-page-background-color);
+                border-color: var(--jusda-primary-color);
                 border-width: 2px;
                 border-bottom-color: transparent;
 
@@ -48,9 +49,9 @@
                 }
 
                 &:hover {
-                    color: #ea9000;
-                    background-color: #fff;
-                    border-color: #ffc500;
+                    color: var(--jusda-background-white-text-secondary);
+                    background-color: var(--jusda-page-background-color);
+                    border-color: var(--jusda-primary-color);
                     border-width: 2px;
                     border-bottom-color: transparent;
                 }

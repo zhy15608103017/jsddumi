@@ -1,0 +1,15 @@
+export default {
+    searchItemsArea: 'Search item display',
+    restore:"restore",
+    reset:"reset",
+    search: "query",
+    more:"more",
+    all:"all",
+    confirm:"confirm",
+    close:"close",
+    searchItems:'Addable item',
+    nodata:'No data available',
+    oneWeek:'1 week',
+    oneMonth:'1 month',
+    threeMonth:'3 months',
+}

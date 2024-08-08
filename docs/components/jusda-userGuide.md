@@ -118,7 +118,7 @@ requirejs(['node_modules/@jusda-tools/jusda-userguide/dist/index.aio.js'], funct
 ```html
 <script src="node_modules/@jusda-tools/jusda-userguide/dist/index.aio.js"></script>
 ```
-
+<!-- 提取MD -->
 ## 实例方法
 
 | 方法名                 | 说明                | 参数      | 默认    | 备注 |
@@ -127,7 +127,7 @@ requirejs(['node_modules/@jusda-tools/jusda-userguide/dist/index.aio.js'], funct
 | show                | 在页面渲染完成后调用show方法，传入要展示的tourId集合。                | [toursForShow: string[]]    | -   | -    |
 | replay       | 调用replay方法，发送请求重置相关引导的数据。    | [tourIds: string[], callback：Function]   | -    | -    |
 | overrideApi        | 使用该方法覆盖Joyride组件props，由于callback中会处理引导记录接口的调用，所以不可覆盖callback。   | [apiProps: object]   | -    | -    |
-
+<!-- end提取MD -->
 ## :kissing_heart: 贡献者指南
 首次运行需要先安装依赖
 

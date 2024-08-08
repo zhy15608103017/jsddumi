@@ -1,6 +1,6 @@
 {
   "name": "@jusda-tools/business-env-checker",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.3",
   "description": "business-env-checker",
   "main": "dist/index.js",
   "sideEffects": true,

@@ -87,6 +87,8 @@ chainWebpack(memo: any, { env }: any) {
      "postbuild": "rimraf ./build/**/*.map"
 }
  ```
+ <!-- 提取MD -->
+
  ## API
 
 | 参数                 | 说明                   | 类型      | 默认    | 备注 |
@@ -97,3 +99,4 @@ chainWebpack(memo: any, { env }: any) {
 | tracesSampleRate     | 捕获错误百分比  | number   | -   |介于 0 和 1 之间的数字，控制给定事务发送到 Sentry 的机会百分比 |
 | maxValueLength      | 发送错误长度  | number   | 250   |单个值在被截断之前可以具有的最大字符数（默认为250 |
 
+<!-- end提取MD -->

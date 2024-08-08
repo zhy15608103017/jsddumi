@@ -9,6 +9,7 @@ group:
 
 # cascader
 
+<!-- 提取MD -->
 ## API
 ### cascader组件
 
@@ -17,13 +18,15 @@ group:
 | disabled | 级联组件是否可用 | boolean | true/false | false |
 | onChange | 值变化时，调用此函数 | function(value) | - | - |
 
+<!-- end提取MD -->
+
 ## Example
 
 ```jsx
 import React, {useEffect, useLayoutEffect} from 'react';
 import { Cascader } from '@jusda-tools/cascader';
 import {Form, Button, Input} from 'antd';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 
 function Test() {
     const [form] = Form.useForm();

@@ -4,16 +4,16 @@
 /* eslint-disable */
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
-import request from '@jusda-tools/web-api-client';
+import request from '../utils/request';
+import authTools from '@jusda-tools/auth-tools';
 import { ConfigProvider, Divider, Tooltip } from 'antd';
-import ApplyDrawer from './components/ApplyDrawer/ApplyDrawer';
 // @ts-ignore
 import QrcodeIcon from './components/QrcodeIcon';
 // @ts-ignore
 import UserControlPanel from '@jusda-tools/user-control-panel';
 // @ts-ignore
 import { mp_workbench_url } from '@jusda-tools/url-config';
-import { flod } from './assets/svgIcon';
+import { loginout_icon } from './assets/svgIcon';
 // @ts-ignore
 import executeStateFN from '../utils/globalVariable';
 import { announcementIcon, helpIcon, taskCenterIcon, workbenchIcon } from './icon';
@@ -55,28 +55,30 @@ interface HeaderProps {
 }
 
 const LANGS = ['zh-CN', 'en-US'];
+const { JusdaUserInfo } = authTools;
 
 const internationalMap = new Map()
     .set('zh-CN', {
         'intl.工作台': '工作台',
         'intl.帮助中心': '帮助中心',
         'intl.公告中心': '公告中心',
-        'intl.首页logo': '点击返回JusLink首页',
-        'intl.任务中心': '任务中心'
+        'intl.首页logo': '点击返回Foxconn首页',
+        'intl.任务中心': '任务中心',
+        'intl.退出': '退出'
     })
     .set('en-US', {
         'intl.工作台': 'Work Space',
         'intl.帮助中心': 'Help Center',
         'intl.公告中心': 'Announcement Center',
-        'intl.首页logo': 'Click to visit JusLink homepage',
-        'intl.任务中心': 'Task Center'
+        'intl.首页logo': 'Click to visit Foxconn homepage',
+        'intl.任务中心': 'Task Center',
+        'intl.退出': 'Logout'
     });
 
 const Header: React.FC<HeaderProps> = (props) => {
-    const [drawerVisible, setDrawerVisible] = useState(false);
     const [hasNewBulletin, setHasNewBulletin] = useState(false);
     const [language, setLanguage] = useState<LocaleType>('en-US');
-    const [navigationData, setNavigationData] = useState([]);
+    const [menuData, setMenuData] = useState([]);
     const [showState, setShowState] = useState(undefined);
 
     const {
@@ -98,29 +100,23 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     let timer: NodeJS.Timeout | null = null;
 
+    const logoutClick = () => {
+        const { onLogout } = props;
+        if (onLogout && typeof onLogout === 'function') {
+            onLogout();
+        } else {
+            new JusdaUserInfo().logout();
+        }
+    }
+
     const onChangeVisible = (state: boolean) => {
-        setDrawerVisible(state);
+        // setDrawerVisible(state);
     };
 
     const onChangeShowState = (state: any) => {
         setShowState(state);
     };
 
-    const moveInDraw = () => {
-        executeStateFN.setData(false);
-        setDrawerVisible(true);
-    };
-
-    const moveOutDraw = () => {
-        executeStateFN.setData(true);
-        if (timer) {
-            clearTimeout(timer);
-            timer = null;
-        }
-        timer = setTimeout(() => {
-            executeStateFN.getData() && setDrawerVisible(false);
-        }, 100);
-    };
 
     const logoClick = () => {
         window.open(mp_workbench_url, 'target');
@@ -136,19 +132,19 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     useEffect(() => {
         // 调用中台获取数据
-        request(mpApiUrl + '/usercenter-service/applications/base-list/home', {
+        request(mpApiUrl + '/usercenter-service/menus/apps/TMS_HEADER/me', {
             method: 'GET',
-            data: {}
         }).then(response => {
             if (response.success && response.data) {
-                setNavigationData(response.data);
+                console.log(response.data);
+                setMenuData(response?.data || []);
             }
         }).catch(e => { console.error(e); });
     }, []);
 
 
     useEffect(() => {
-        request(mpApiUrl + '/bulletin-center/bulletin-documents/is-new', {
+        request(mpApiUrl + '/message-service/bulletin-documents/is-new', {
             method: 'GET',
         }).then(response => {
             if (response.success && response.data) {
@@ -171,12 +167,6 @@ const Header: React.FC<HeaderProps> = (props) => {
             <div className={`foxconn-${theme}`}>
                 <div className="header_left transform-pop-container">
                     {
-                        showNavigation &&
-                        <div className={`apply_icon ${drawerVisible ? 'open' : 'close'}`} onMouseEnter={moveInDraw} onMouseLeave={moveOutDraw}>
-                            {flod}
-                        </div>
-                    }
-                    {
                         logoReplaceReactNode ? logoReplaceReactNode :
                             (
                                 <div className={`logo_${theme} ${isIntranet !== true ? `tip_lang_${language}` : ''}`} onClick={logoClick}>
@@ -195,6 +185,16 @@ const Header: React.FC<HeaderProps> = (props) => {
                 <div className="header_right">
                     {leftReactNode}
                     {
+                        menuData.map((item, index) => {
+                            return  <div className={'tooltip_icon menu_word'} key={index}>
+                                <div onClick={()=> window.open(item?.url, '_blank') }>{item.name}</div>
+                            </div>
+                        })
+                    }
+                    <div className="dividerWarp">
+                        <div className="line" />
+                    </div>
+                    {
                         props.showTaskCenter ? (
                             <Tooltip
                                 transitionName=""
@@ -208,34 +208,8 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </Tooltip>
                         ) : null
                     }
-                    <QrcodeIcon
-                        locale={locale}
-                        theme={theme}
-                    />
-                    <Tooltip
-                        transitionName=""
-                        overlayClassName={`tooltip_overlay_${theme}`}
-                        title={internationalMap.get(language)['intl.公告中心']}
-                    >
-                        <div
-                            className={`tooltip_icon ${hasNewBulletin ? 'has-new-bulletin' : 'not-new-bulletin'}`}
-                            onClick={() => goWebsite('ac')}
-                        >{announcementIcon} <i /></div>
-                    </Tooltip>
-                    <Tooltip
-                        transitionName=""
-                        overlayClassName={`tooltip_overlay_${theme}`}
-                        title={internationalMap.get(language)['intl.帮助中心']}
-                    >
-                        <div
-                            className="tooltip_icon"
-                            onClick={() => goWebsite('ch')}
-                        >{helpIcon}</div>
-                    </Tooltip>
+
                     {rightReactNode}
-                    <div className="dividerWarp">
-                        <div className="line" />
-                    </div>
                     <UserControlPanel
                         locale={locale}
                         theme={theme}
@@ -244,17 +218,17 @@ const Header: React.FC<HeaderProps> = (props) => {
                         onIdentityChange={onIdentityChange}
                         userIdentitySwitcher={userIdentitySwitcher}
                     />
+                    <div className="quit tooltip_icon" >
+                        <Tooltip
+                            title={internationalMap.get(language)['intl.退出']}
+                        >
+                            <div
+                                className="tooltip_icon"
+                                onClick={() => logoutClick()}
+                            >{loginout_icon} <i /></div>
+                        </Tooltip>
+                    </div>
                 </div>
-                {showNavigation && drawerVisible && <ApplyDrawer
-                    visible={drawerVisible}
-                    onChangeVisible={onChangeVisible}
-                    showState={showState}
-                    onChangeShowState={onChangeShowState}
-                    language={language}
-                    theme={theme}
-                    navigationData={navigationData}
-                />
-                }
             </div>
         </ConfigProvider>
     );

@@ -13,7 +13,9 @@ import AMapLoader from '@amap/amap-jsapi-loader';
 import RouteComp from '../RouteComp';
 // import RePlay from '../RePlay';
 import language from '../../locales/index';
+import arrow from '../../assets/img/arrow.png';
 import change from '../../assets/img/change.png';
+import TestSvg  from "../../assets/img/TPM_AIR.svg"
 import './index.less';
 
 export default (props: any) => {
@@ -155,7 +157,7 @@ export default (props: any) => {
                 'line-join': 'round',
             },
             paint: {
-                'line-color': '#ffc500',
+                'line-color': '#56c082',
                 'line-width': 5,
                 'line-opacity': 0.8,
             },
@@ -253,7 +255,7 @@ export default (props: any) => {
             //     let polyline = new AMap.Polyline({
             //         path: path,
             //         borderWeight: 5, // 线条宽度，默认为 1
-            //         strokeColor: '#ffc500', // 线条颜色
+            //         strokeColor: '#56c082', // 线条颜色
             //         lineJoin: 'round', // 折线拐点连接处样式
             //     });
             //     // 将折线添加至地图实例
@@ -304,6 +306,27 @@ export default (props: any) => {
     //绘制轨迹
     const drawTrcks = ({ line, AMap, map, type ,id='routeLayer'}: any) => {
         map.on('load', () => {
+            map.loadImage(
+                arrow ,
+                 (error: any, image: any) => {
+                   if (error) throw error;
+                   // Add the image to the map style.
+                   map.addImage('arrowIcon', image);
+                   map.addLayer({
+                    id: "arrowLayers",
+                    type: 'symbol',
+                    source: id,
+                    layout: {
+                      'symbol-placement': 'line',
+                      'symbol-spacing': 30, // 图标间隔，默认为250
+                      'icon-image': 'arrowIcon', //箭头图标
+                      'icon-size': 0.2,
+                      // "icon-opacity":0.9
+                    },
+                    zIndex: 99
+                  })
+                }
+               );
             map.addLayer({
                 id,
                 'type': 'line',
@@ -322,27 +345,35 @@ export default (props: any) => {
                     }
                 },
                 'paint': {
-                    "line-color": "#ffc500",
-                    "line-width": 5,
+                    "line-color": "#56c082",
+                    "line-width": 10,
                     "line-opacity": 0.6,
                 },
                 layout: {
                     'line-cap': 'round',
                     'line-join': 'round',
+               
                 },
             });
+            
+            
         });
+        
      if(type==='amap'){
-        new AMap.Polyline({  
+          new AMap.Polyline({  
             'lineCap': 'round',
             lineJoin: 'round',
             map:map,  
             path:line,  
-            strokeColor:"#ffc500",//线颜色  
+            strokeColor:"#56c082",//线颜色  
             strokeOpacity:0.6,//线透明度  
-            strokeWeight:5,//线宽  
-            strokeStyle:"solid",//线样式  
+            strokeWeight:10,//线宽  
+            strokeStyle:"solid",//线样式 
+            showDir:true,
+            // dirImg:arrow,
+
         }); 
+        
      } 
 
     };

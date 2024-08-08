@@ -1,9 +1,9 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
 import { Row, Col, Divider, Spin, Badge, Empty } from 'antd';
-import './index.less';
 import getLocale from '../../locale';
 import { currentLanguage } from '@jusda-tools/language-control-panel';
+import { taskDetails } from './style';
 interface Props {
     visible: boolean;
     taskId: React.Key;
@@ -21,6 +21,7 @@ interface Data {
     endTime: number;
     inputFile: InputFile;
     outPutFile?: InputFile;
+    message:string
 }
 
 interface InputFile {
@@ -84,7 +85,7 @@ const TaskDetails: React.FC<Props> = props => {
     }, [visible]);
 
     return (
-        <div className="taskDetails">
+        <div className={taskDetails()}>
             <Spin spinning={loading}>
                 {info ? (
                     <>
@@ -110,6 +111,12 @@ const TaskDetails: React.FC<Props> = props => {
                                 </span>
                             )}
                         </p>
+                        {info?.status !== 'SUCCESS' && info?.message && (<p>
+                            <span>{`${currentLocale['abnormalReason']}：`} </span>
+                            <span style={{ marginRight: 12 }}>
+                                {`${currentLocale[info?.message]}`}
+                            </span>
+                        </p>)}
                         {info?.outPutFile && (
                             <div className="item">
                                 <span className="content">
